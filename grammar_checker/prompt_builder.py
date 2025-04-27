@@ -1,36 +1,26 @@
-def build_prompt(sentence):
-    prompt = f"""
-        You are a grammar-checking assistant.
-        Analyze the following sentence for grammar mistakes, including but not limited to:
-            - verb tense issues,
-            - word order mistakes,
-            - incorrect articles,
-            - identify incorrect use of comparative forms (e.g., "more faster"),
-            - punctuation errors (such as missing commas or misplaced punctuation marks),
-            - sentence structure or fluency issues.
-            
-        Return your analysis strictly as a JSON object with the following structure:
-        {{
-            "input": "<original sentence>",
-            "mistakes": [
-                {{
-                "type": "<type of mistake: PunctuationMistake, WordOrderMistake, WrongArticleMistake, VerbTenseMistake, ComparativeFormMistake, etc.>",
-                "original": "<incorrect part of sentence>",
-                "corrected": "<corrected version>"
-                }}
-                // ... repeat for each mistake
-            ],
-            "corrected_sentence": "<the full corrected sentence>"
-        }}
+from grammar_checker.logger import get_logger
+from grammar_checker.config import PROMPT_TEMPLATE
 
-        Be very specific in identifying the mistake types. For example:
-            - If the mistake is related to a missing or misplaced comma, label it as **PunctuationMistake**.
-            - If the mistake is related to word order (e.g., subject-verb, adverb placement), label it as **WordOrderMistake**.
-            - If the mistake is related to verb tense or form, label it as **VerbTenseMistake**.
+logger = get_logger(__name__)
 
-        Only return valid JSON. Do not include any explanation or extra text.
-        
-        Sentence: {sentence}
-        """.strip()
-
+def build_prompt(sentence, prompt_template_path=PROMPT_TEMPLATE):
+    # load prompt
+    try:
+        with open(prompt_template_path, "r", encoding="utf-8") as file:
+            template = file.read().strip()
+        logger.info(f"Loaded prompt template from {prompt_template_path}")
+    except FileNotFoundError:
+        logger.error(f"Prompt template file not found: {prompt_template_path}")
+        raise
+    except Exception as e:
+        logger.error(f"Error loading prompt template: {e}")
+        raise        
+    
+    # build prompt
+    if not sentence:
+        logger.error("Empty sentence provided for prompt building")
+        raise ValueError("Sentence cannot be empty") 
+    prompt = template.replace("{sentence}", sentence)
+    logger.info(f"Prompt built successfully for sentence: {sentence}")    
+    
     return prompt

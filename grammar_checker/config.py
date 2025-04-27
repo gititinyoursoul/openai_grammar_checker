@@ -14,6 +14,9 @@ MODELS = [
     #"gpt-4.1"
 ]
 
+# prompt template configuration
+PROMPT_TEMPLATE = "prompts/grammar_prompt.txt"
+
 # Test Cases configuration
 TEST_CASES_FILE = "tests/test_cases.json"
 TEST_CASES_FILE_REF = "tests/test_cases_REF.json"
