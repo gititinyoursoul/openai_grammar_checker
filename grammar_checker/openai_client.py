@@ -1,5 +1,4 @@
 import os
-import logging
 import json
 from openai import OpenAI
 from grammar_checker.logger import get_logger
@@ -9,12 +8,13 @@ logger = get_logger(__name__)
 # get the OpenAI API key from environment variables
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
+    logger.error("OPENAI_API_KEY not found in environment variables.")
     raise RuntimeError("Missing OPENAI_API_KEY in environment variables!")
 
 client = OpenAI(api_key=api_key)
 
-def get_model_response(model, prompt, client=client):
-    logger.info(f"Sending request to model: {model} with prompt: {prompt}")
+def get_model_response(model, prompt, template_path, sentence, client=client):
+    logger.info(f"Sending request to model: {model} with prompt: '{template_path}' and '{sentence}'")
     try:
         response = client.chat.completions.create(
             model=model,

@@ -1,9 +1,8 @@
 from grammar_checker.logger import get_logger
-from grammar_checker.config import PROMPT_TEMPLATE
 
 logger = get_logger(__name__)
 
-def build_prompt(sentence, prompt_template_path=PROMPT_TEMPLATE):
+def build_prompt(sentence: str, prompt_template_path):
     # load prompt
     try:
         with open(prompt_template_path, "r", encoding="utf-8") as file:
@@ -21,6 +20,8 @@ def build_prompt(sentence, prompt_template_path=PROMPT_TEMPLATE):
         logger.error("Empty sentence provided for prompt building")
         raise ValueError("Sentence cannot be empty") 
     prompt = template.replace("{sentence}", sentence)
-    logger.info(f"Prompt built successfully for sentence: {sentence}")    
+    
+    truncted_sentence = sentence[:20] + "..." if len(sentence) > 20 else sentence
+    logger.info(f"Building prompt using template '{prompt_template_path}' with sentence: '{truncted_sentence}'")  
     
     return prompt

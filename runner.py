@@ -3,7 +3,7 @@ from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import build_prompt
 from grammar_checker.openai_client import get_model_response
 from grammar_checker.evaluator import evaluate_result
-from grammar_checker.config import MODELS, TEST_RESULTS_FILE, TEST_CASES_FILE_REF
+from grammar_checker.config import MODELS, TEST_RESULTS_FILE, TEST_CASES_FILE_REF, PROMPT_TEMPLATE
 from grammar_checker.utils import load_test_cases, save_test_results
 from dotenv import load_dotenv
 
@@ -14,17 +14,16 @@ logger.info("Logging configuration set up successfully.")
 # load environment variables
 load_dotenv()
 logger.info("Environment variables loaded successfully.")
-
-    
+ 
 # test cases
 def run_tests(test_cases):
     results = []
     for model in MODELS:
-        print(f"\nEvaluating model: {model}")
+        logger.info(f"Evaluating model: {model}")
         for test_case in test_cases:
-            prompt = build_prompt(test_case["input"])
+            prompt = build_prompt(test_case["input"], PROMPT_TEMPLATE)
             try:
-                response = get_model_response(model, prompt)
+                response = get_model_response(model, prompt, PROMPT_TEMPLATE, test_case["input"])
                 match = evaluate_result(test_case, response)
                 results.append(
                     {
@@ -35,9 +34,9 @@ def run_tests(test_cases):
                         "match": match,
                     }
                 )
-                print(f"- {test_case['input']} => {'✓ PASS' if match else '✗ FAIL'}")
+                logger.info(f"Sentence: {test_case['input']} => {'PASS' if match else 'FAIL'}")
             except Exception as e:
-                print(f"- {test_case['input']} => ERROR: {str(e)}")
+                logger.error(f"Error processing test case: {test_case['input']} => {str(e)}")
     return results
 
 
@@ -52,7 +51,7 @@ if __name__ == "__main__" :
     for result in results:
         if result["match"]:
             model_matches[result["model"]] += 1
-    logger.info(f"Model Matches: {model_matches}\n")    
+    logger.info(f"Model Matches: {model_matches}")    
         
     # write the results to a file
     save_test_results(TEST_RESULTS_FILE, results)
