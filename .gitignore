@@ -172,3 +172,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Vscide Code
+.vscode
+
+# Other
+learnings.md
+sandbox/
