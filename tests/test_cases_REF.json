@@ -1,0 +1,18 @@
+[
+    {
+        "input": "She quickly ran to the store.",
+        "expected_mistakes": [],
+        "expected_corrected_sentence": "She quickly ran to the store."
+    },
+    {
+        "input": "She go to school every day.",
+        "expected_mistakes": [
+            {
+                "type": "VerbTenseMistake",
+                "original": "go",
+                "corrected": "goes"
+            }
+        ],
+        "expected_corrected_sentence": "She goes to school every day."
+    }
+]
