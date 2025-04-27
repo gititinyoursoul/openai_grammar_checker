@@ -1,6 +1,6 @@
 # This script runs the grammar checker tests using the OpenAI API.
 from grammar_checker.logger import get_logger
-from grammar_checker.prompt_builder import build_prompt
+from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import get_model_response
 from grammar_checker.evaluator import evaluate_result
 from grammar_checker.config import MODELS, TEST_RESULTS_FILE, TEST_CASES_FILE_REF, PROMPT_TEMPLATE
@@ -17,11 +17,13 @@ logger.info("Environment variables loaded successfully.")
  
 # test cases
 def run_tests(test_cases):
+    prompt_builder = PromptBuilder(PROMPT_TEMPLATE)
     results = []
     for model in MODELS:
         logger.info(f"Evaluating model: {model}")
         for test_case in test_cases:
-            prompt = build_prompt(test_case["input"], PROMPT_TEMPLATE)
+            logger.info(f"Sentence: {test_case['input']}")
+            prompt = prompt_builder.build_prompt(test_case["input"])
             try:
                 response = get_model_response(model, prompt, PROMPT_TEMPLATE, test_case["input"])
                 match = evaluate_result(test_case, response)
