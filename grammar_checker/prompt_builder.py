@@ -2,9 +2,10 @@ from grammar_checker.logger import get_logger
 
 logger = get_logger(__name__)
 
+
 class PromptBuilder:
     """A class for building prompts by loading a template from a file and replacing placeholders with a given sentence.
-    
+
     Attributes:
         prompt_template_path (str): The file path to the prompt template.
         template (str): The loaded prompt template content.
@@ -15,9 +16,9 @@ class PromptBuilder:
             Loads the prompt template from the specified file path, handling errors appropriately.
         build_prompt():
             Constructs a prompt by replacing the placeholder in the template with the provided sentence."""
-            
+
     def __init__(self, prompt_template_path: str):
-        self.prompt_template_path = prompt_template_path
+        self.template_path = prompt_template_path
         self.template = self._load_template()
 
     def _load_template(self):
@@ -32,18 +33,18 @@ class PromptBuilder:
             Exception: If any other error occurs while reading the file.
         """
         try:
-            with open(self.prompt_template_path, "r", encoding="utf-8") as file:
+            with open(self.template_path, "r", encoding="utf-8") as file:
                 template = file.read().strip()
-            logger.info(f"Loaded prompt template from '{self.prompt_template_path}'")
+            logger.info(f"Loaded prompt template from '{self.template_path}'")
             return template
         except FileNotFoundError:
-            logger.error(f"Prompt template file not found: '{self.prompt_template_path}'")
+            logger.error(f"Prompt template file not found: '{self.template_path}'")
             raise
         except Exception as e:
             logger.error(f"Error loading prompt template: {e}")
             raise
 
-    def build_prompt(self, sentence: str): 
+    def build_prompt(self, sentence: str):
         """
         Builds a prompt by replacing the placeholder in the template with the provided sentence.
 
@@ -58,6 +59,6 @@ class PromptBuilder:
         prompt = self.template.replace("{sentence}", sentence)
 
         truncated_sentence = sentence[:20] + "..." if len(sentence) > 20 else sentence
-        logger.info(f"Building prompt using template '{self.prompt_template_path}' with sentence: '{truncated_sentence}'")
+        logger.info(f"Building prompt using template '{self.template_path}' with sentence: '{truncated_sentence}'")
 
         return prompt
