@@ -1,5 +1,5 @@
 # Simple evaluator
-def evaluate_result(expected, actual):
+def evaluate_response(expected, actual):
     def normalize(s):
         return s.strip().lower()
 
