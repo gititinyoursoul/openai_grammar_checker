@@ -11,9 +11,10 @@ def get_logger(name: str) -> logging.Logger:
     logger = logging.getLogger(name)
     
     # Set the logging level based on the DEBUG environment variable
-    debug_mode = os.getenv("DEBUG", "False").lower() == "true"
-    level = logging.DEBUG if debug_mode else logging.INFO
-    logger.setLevel(level)
+    if logger.level == logging.NOTSET:
+        debug_mode = os.getenv("DEBUG", "False").lower() == "true"
+        level = logging.DEBUG if debug_mode else logging.INFO
+        logger.setLevel(level)
 
     # Prevent duplicate handlers if get_logger is called multiple times
     if not logger.handlers:
@@ -32,7 +33,7 @@ def get_logger(name: str) -> logging.Logger:
         # Stream (console) handler
         stream_handler = logging.StreamHandler()
         stream_handler.setFormatter(formatter)
-
+        
         # Attach handlers
         logger.addHandler(file_handler)
         logger.addHandler(stream_handler)
