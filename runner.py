@@ -1,4 +1,5 @@
 # This script runs the grammar checker tests using the OpenAI API.
+import os
 import argparse
 from dotenv import load_dotenv
 
@@ -46,7 +47,13 @@ def parse_arguments():
         default=PROMPT_TEMPLATE,
         help="Path to the prompt template file (default: from config).",
     )
+    parser.add_argument(
+        "--debug",
+        default=os.getenv("DEBUG", "False").lower() == "true",
+        help="Enable debug mode (default: value from .env, 'False' if not set).",
+    )
     return parser.parse_args()
+
 
 # test cases
 def run_tests(test_cases, prompt_builder: PromptBuilder, client: OpenAIClient):
@@ -56,8 +63,7 @@ def run_tests(test_cases, prompt_builder: PromptBuilder, client: OpenAIClient):
             logger.info(f"Begin grammar check of model: '{model}' and sentence: '{test_case['input']}'")
             sentence = test_case["input"]
             try:
-                grammar_checker = GrammarChecker(
-                    prompt_builder, sentence, model, client)
+                grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
                 response = grammar_checker.check_grammar()
                 is_match = evaluate_response(test_case, response)
                 results.append(
@@ -78,6 +84,7 @@ def run_tests(test_cases, prompt_builder: PromptBuilder, client: OpenAIClient):
 
 def summary_results(results):
     # summarize the results
+
     summary = {}
     for result in results:
         model = result["model"]
@@ -88,17 +95,20 @@ def summary_results(results):
             summary[model]["passed"] += 1
     logger.info(f"Model Matches: {summary}")
     return summary
-    
+
 
 def main():
+    # args = parse_arguments()
+
     logger.info("Starting Grammar Checker Runner...")
+    # logger.debug("Debug Test")
     # load environment variables
     setup_environment()
-    
+
     # set up the OpenAI client and prompt builder
     prompt_builder = PromptBuilder(PROMPT_TEMPLATE)
     client = OpenAIClient()
-    
+
     # run the tests
     test_cases = load_test_cases(TEST_CASES_FILE_REF)
     results = run_tests(test_cases, prompt_builder, client)
