@@ -1,7 +1,6 @@
 from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
-from grammar_checker.evaluator import evaluate_response
 
 logger = get_logger(__name__)
 
