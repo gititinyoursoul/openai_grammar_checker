@@ -34,7 +34,7 @@ pydantic_core==2.33.1
 Pygments==2.19.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.1.0
-pywin32==310
+pywin32==310; platform_system == "Windows"
 pyzmq==26.4.0
 six==1.17.0
 sniffio==1.3.1
