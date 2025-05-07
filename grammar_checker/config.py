@@ -13,6 +13,7 @@ MODELS = [
     # "gpt-4",
     #"gpt-4.1"
 ]
+DEFAULT_MODEL = "gpt-3.5-turbo"  # default model to use if none is specified
 
 # prompt template configuration
 PROMPT_TEMPLATE = "prompts/grammar_prompt.txt"
