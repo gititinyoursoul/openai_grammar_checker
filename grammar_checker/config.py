@@ -7,6 +7,16 @@
         TEST_RESULTS_FILE (str): The relative file path to the JSON file where test results 
             will be stored.
 """
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load variables from .env
+
+# MongoDB configuration
+MONGO_URI = os.getenv("MONGO_URI")
+MONGO_DB = os.getenv("MONGO_DB")
+MONGO_COLLECTION = os.getenv("MONGO_COLLECTION")
+
 # Models
 MODELS = [
     "gpt-3.5-turbo",

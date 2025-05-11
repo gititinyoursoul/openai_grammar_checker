@@ -173,9 +173,14 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Vscide Code
+# Vscode Code
 .vscode
 
 # Other
 learnings.md
 sandbox/
+TODO.md
+
+# mongoDB
+mongo/data
+mongo/log
