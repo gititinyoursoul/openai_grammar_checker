@@ -2,6 +2,8 @@ from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
 from grammar_checker.grammar_checker import GrammarChecker
+from grammar_checker.db import MongoDBHandler
+from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from grammar_checker.config import PROMPT_TEMPLATE, DEFAULT_MODEL
 
 
@@ -21,6 +23,9 @@ def main(model: str = DEFAULT_MODEL):
     # initialize logger
     logger = get_logger(__name__)
     logger.info("Logging configuration set up successfully.")
+    
+    # connect to MongoDB
+    mongo_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)    
     
     logger.info("Starting Grammar Checker CLI...")
     logger.debug(f"Model selected: {model}")
@@ -45,6 +50,14 @@ def main(model: str = DEFAULT_MODEL):
     logger.debug("Grammar check completed.")
     
     print(f"Response: {response}")
+    
+    mongo_handler.save_record(
+        input_data=sentence,
+        model_response=response,
+        metadata={"model": model, 
+                  "mode": "interactive.py"}
+    )
+    logger.info("Record saved to MongoDB successfully.")
 
 if __name__ == "__main__":
     main()   
