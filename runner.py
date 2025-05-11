@@ -9,7 +9,9 @@ from grammar_checker.openai_client import OpenAIClient
 from grammar_checker.grammar_checker import GrammarChecker
 from grammar_checker.evaluator import evaluate_response
 from grammar_checker.config import MODELS, TEST_RESULTS_FILE, TEST_CASES_FILE_REF, PROMPT_TEMPLATE
+from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from grammar_checker.utils import load_test_cases, save_test_results
+from grammar_checker.db import MongoDBHandler
 
 
 # initialize logger
@@ -101,9 +103,11 @@ def main():
     # args = parse_arguments()
 
     logger.info("Starting Grammar Checker Runner...")
+
     # logger.debug("Debug Test")
     # load environment variables
     setup_environment()
+    db_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
 
     # set up the OpenAI client and prompt builder
     prompt_builder = PromptBuilder(PROMPT_TEMPLATE)
@@ -117,6 +121,20 @@ def main():
 
     # write the results to a file
     save_test_results(TEST_RESULTS_FILE, results)
+    
+    for result in results:
+        db_handler.save_record(
+            input_data=result["input"],
+            model_response=result["output"],
+            test_eval={
+                "match": result["match"],
+                "expected": result["expected"]
+                },
+            metadata={
+                "mode": "test_runner.py",
+                "model": result["model"]
+                }
+        )
     logger.info("Test results saved successfully.")
 
 
