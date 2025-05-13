@@ -65,12 +65,12 @@ def summary_results(results):
 def main(test_cases_file: str,
          models: list,
          output_destination: str,
-         prompt_template: str):
+         prompt_template: str,
+         db_handler: MongoDBHandler):
     logger.info("Starting Grammar Checker Tests.")
 
     # load environment variables
     setup_environment()
-    db_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
 
     # set up the OpenAI client and prompt builder
     prompt_builder = PromptBuilder(prompt_template)

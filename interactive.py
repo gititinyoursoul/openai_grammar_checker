@@ -19,13 +19,11 @@ def get_cli_input(prompt: str, logger) -> str:
         return ""
 
 
-def main(model: str = DEFAULT_MODEL):
+def main(mongo_handler, 
+         model: str = DEFAULT_MODEL):
     # initialize logger
     logger = get_logger(__name__)
     logger.info("Logging configuration set up successfully.")
-    
-    # connect to MongoDB
-    mongo_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)    
     
     logger.info("Starting Grammar Checker CLI...")
     logger.debug(f"Model selected: {model}")
