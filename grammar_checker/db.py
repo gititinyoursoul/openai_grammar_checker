@@ -25,3 +25,15 @@ class MongoDBHandler:
         except Exception as e:
             logger.error(f"Failed to save record: {e}")
             raise
+    
+    # delete record
+    def delete_record(self, record_id):
+        try:
+            result = self.collection.delete_one({"_id": record_id})
+            if result.deleted_count > 0:
+                logger.debug(f"Record with ID {record_id} deleted successfully.")
+            else:
+                logger.warning(f"No record found with ID {record_id}.")
+        except Exception as e:
+            logger.error(f"Failed to delete record: {e}")
+            raise
