@@ -17,23 +17,25 @@ OpenAI Grammar Checker is a project designed to leverage AI for grammar and spel
 
 ## 📦 Project Structure
 
+```
 .
-├── main.py # Entry point (CLI/API/runner)
-├── runner.py # Runs test cases in batch
-├── interactive.py # CLI-based grammar checker
-├── api.py # FastAPI app (WIP)
-├── start_mongo.py # Starts MongoDB subprocess
+├── main.py              # Entry point (CLI/API/runner)
+├── runner.py            # Runs test cases in batch
+├── interactive.py       # CLI-based grammar checker
+├── api.py               # FastAPI app (WIP)
+├── start_mongo.py       # Starts MongoDB subprocess
 ├── grammar_checker/
-│ ├── prompt_builder.py # Builds prompts for OpenAI
-│ ├── grammar_checker.py # Core logic for API calls
-│ ├── evaluator.py # Compares actual vs expected output
-│ ├── db.py # MongoDB handler
-│ ├── config.py # Central config (env and defaults)
-│ └── logger.py # Logging utility
-├── tests/ # Pytest test cases
-├── .env # Environment configuration
+│   ├── prompt_builder.py  # Builds prompts for OpenAI
+│   ├── grammar_checker.py # Core logic for API calls
+│   ├── evaluator.py       # Compares actual vs expected output
+│   ├── db.py              # MongoDB handler
+│   ├── config.py          # Central config (env and defaults)
+│   └── logger.py          # Logging utility
+├── tests/               # Pytest test cases
+├── .env                 # Environment configuration
 ├── requirements.txt
 └── README.md
+```
 
 
 ## Setup
@@ -86,4 +88,3 @@ python main.py --mode run_tests
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
