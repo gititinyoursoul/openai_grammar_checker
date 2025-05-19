@@ -45,8 +45,8 @@ def test_save_record_failure(monkeypatch, caplog, mock_mongo_handler):
     def mock_insert_one_fail(*args, **kwargs):
         raise Exception("DB error")
     
-    #mock_mongo_handler.collection.insert_one.side_effect = Exception("DB error")
-    monkeypatch.setattr(mock_mongo_handler, "save_record", mock_insert_one_fail)
+    # Apply monkeypatch to simulate failure in insert_one
+    monkeypatch.setattr(mock_mongo_handler.collection, "insert_one", mock_insert_one_fail)
     
     with caplog.at_level(logging.ERROR):
         with pytest.raises(Exception) as excinfo:
