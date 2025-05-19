@@ -25,7 +25,7 @@ class MongoDBHandler:
         except Exception as e:
             logger.error(f"Failed to save record: {e}")
             raise
-    
+
     # delete record
     def delete_record(self, record_id):
         try:

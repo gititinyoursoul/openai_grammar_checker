@@ -22,7 +22,7 @@ def parse_arguments():
         default="interactive",
         help="Choose mode: 'interactive' for user input, 'run_tests' for test cases",
     )
-    
+
     parser.add_argument(
         "--output",
         choices=["save_to_db", "save_to_file"],
@@ -36,6 +36,7 @@ def parse_arguments():
         default=MODELS,
         help="List of models to evaluate (default: from config).",
     )
+
     parser.add_argument(
         "--test-cases",
         default=TEST_CASES_FILE_REF,
@@ -47,7 +48,7 @@ def parse_arguments():
         default=PROMPT_TEMPLATE,
         help="Path to the prompt template file (default: from config).",
     )
-    
+
     parser.add_argument(
         "--debug",
         action="store_true",
@@ -61,9 +62,9 @@ def parse_arguments():
 def main():
     logger = get_logger(__name__)
     logger.info("Logging configuration set up successfully.")
-    
+
     args = parse_arguments()
-    
+
     logger.info("Initializing MongoDB connection.")
     db_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
 
@@ -74,13 +75,13 @@ def main():
             models=args.models,
             output_destination=args.output,
             prompt_template=args.prompt_template,
-            db_handler=db_handler
+            db_handler=db_handler,
         )
-        
+
     else:
         logger.info("start_interactive_mode started successfully.")
         start_interactive_mode(db_handler)
-        
+
 
 if __name__ == "__main__":
     main()
