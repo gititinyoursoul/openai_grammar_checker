@@ -180,6 +180,7 @@ cython_debug/
 learnings.md
 sandbox/
 TODO.md
+notes.md
 
 # mongoDB
 mongo/data
