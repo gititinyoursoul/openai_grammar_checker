@@ -1,8 +1,8 @@
 import os
 import argparse
 from dotenv import load_dotenv
-load_dotenv()  # Load environment variables from .env file
 import uvicorn
+from start_mongo import start_mongo
 from runner import main as run_tests
 from interactive import main as start_interactive_mode
 from grammar_checker.logger import get_logger
@@ -73,14 +73,23 @@ def parse_arguments():
 
 
 def main():
+    load_dotenv()  # Load environment variables from .env file
     logger = get_logger(__name__)
-    logger.info("Logging configuration set up successfully.")
+    logger.info("Logging initialized.")
 
     args = parse_arguments()
-    logger.info(f"Command-line arguments parsed successfully: {args}")
+    logger.info(f"Parsed arguments: {vars(args)}")
 
-    db_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
-    logger.info("MongoDB handler initialized successfully.")
+    db_handler = None
+
+    # Start MongoDB if not already running
+    if args.output == "save_to_db":
+        if not start_mongo():
+            logger.error("Failed to start MongoDB. Exiting.")
+            raise RuntimeError("Failed to start MongoDB.")
+
+        db_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
+        logger.info("MongoDB handler initialized.")
 
     if args.mode == "run_tests":
         run_tests(
@@ -90,16 +99,17 @@ def main():
             prompt_template=args.prompt_template,
             db_handler=db_handler,
         )
-        logger.info("run_tests executed successfully.")
+        logger.info("run_tests completed.")
     elif args.mode == "api":
         logger.info(f"Starting FastAPI server at {args.api_host}:{args.api_port}")
         uvicorn.run("api:app", host=args.api_host, port=args.api_port, reload=True)
     elif args.mode == "interactive":
         start_interactive_mode(db_handler)
-        logger.info("Interactive mode started successfully.")
+        logger.info("Interactive mode started.")
     else:
-        logger.error("Invalid mode selected. Please choose 'interactive', 'api', or 'run_tests'.")
-        raise ValueError("Invalid mode selected. Please choose 'interactive', 'api', or 'run_tests'.")
+        error_msg = "Invalid mode selected. Please choose 'interactive', 'api', or 'run_tests'."
+        logger.error(error_msg)
+        raise ValueError(error_msg)
 
 
 if __name__ == "__main__":
