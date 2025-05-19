@@ -1,6 +1,7 @@
 import os
 import argparse
 from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file
 import uvicorn
 from runner import main as run_tests
 from interactive import main as start_interactive_mode
@@ -75,9 +76,6 @@ def main():
     logger = get_logger(__name__)
     logger.info("Logging configuration set up successfully.")
 
-    load_dotenv()  # Load environment variables from .env file
-    logger.info("Environment variables loaded successfully.")
-
     args = parse_arguments()
     logger.info(f"Command-line arguments parsed successfully: {args}")
 
@@ -94,8 +92,8 @@ def main():
         )
         logger.info("run_tests executed successfully.")
     elif args.mode == "api":
+        logger.info(f"Starting FastAPI server at {args.api_host}:{args.api_port}")
         uvicorn.run("api:app", host=args.api_host, port=args.api_port, reload=True)
-        logger.info("API mode started successfully.")
     elif args.mode == "interactive":
         start_interactive_mode(db_handler)
         logger.info("Interactive mode started successfully.")
