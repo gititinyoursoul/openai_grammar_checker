@@ -7,12 +7,12 @@ from grammar_checker.grammar_checker import GrammarChecker
 from grammar_checker.evaluator import evaluate_response
 from grammar_checker.utils import load_test_cases, save_test_results
 from grammar_checker.db import MongoDBHandler
-from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from grammar_checker.config import TEST_RESULTS_FILE
 
 
 # initialize logger
 logger = get_logger(__name__)
+
 
 def setup_environment():
     """Load environment variables."""
@@ -20,8 +20,31 @@ def setup_environment():
     logger.info("Environment variables loaded successfully.")
 
 
+def validate_main_inputs(
+    test_cases_file: str,
+    models: list,
+    output_destination: str,
+    prompt_template: str,
+    db_handler,
+):
+    if not isinstance(test_cases_file, str) or not test_cases_file.strip():
+        raise ValueError("test_cases_file must be a non-empty string path.")
+
+    if not isinstance(models, list) or not models:
+        raise ValueError("models must be a non-empty list of model names.")
+
+    if not isinstance(output_destination, str) or not output_destination.strip():
+        raise ValueError("output_destination must be non-empty string.")
+
+    if not isinstance(prompt_template, str) or not prompt_template.strip():
+        raise ValueError("prompt_template must be a non-empty string.")
+
+    if output_destination == "save_to_db" and db_handler is None:
+        raise ValueError("db_handler is required when output_destination is 'save_to_db'.")
+
+
 # test cases
-def run_tests(test_cases, models, prompt_builder: PromptBuilder, client: OpenAIClient):
+def run_tests(test_cases: str, models: list, prompt_builder: PromptBuilder, client: OpenAIClient):
     results = []
     for model in models:
         for test_case in test_cases:
@@ -47,7 +70,7 @@ def run_tests(test_cases, models, prompt_builder: PromptBuilder, client: OpenAIC
     return results
 
 
-def summary_results(results):
+def summary_results(results: list):
     # summarize the results
 
     summary = {}
@@ -62,13 +85,14 @@ def summary_results(results):
     return summary
 
 
-def main(test_cases_file: str,
-         models: list,
-         output_destination: str,
-         prompt_template: str,
-         db_handler: MongoDBHandler):
+def main(test_cases_file: str, models: list, output_destination: str, prompt_template: str, db_handler: MongoDBHandler):
     logger.info("Starting Grammar Checker Tests.")
 
+
+    # validate inputs
+    validate_main_inputs(test_cases_file, models, output_destination, prompt_template, db_handler)
+    logger.info("Input validation passed.")
+    
     # load environment variables
     setup_environment()
 
@@ -89,15 +113,9 @@ def main(test_cases_file: str,
             db_handler.save_record(
                 input_data=result["input"],
                 model_response=result["output"],
-                test_eval={
-                    "match": result["match"],
-                    "expected": result["expected"]
-                    },
-                metadata={
-                    "mode": "test_runner.py",
-                    "model": result["model"]
-                    }
-            ) 
+                test_eval={"match": result["match"], "expected": result["expected"]},
+                metadata={"mode": "runner.py", "model": result["model"]},
+            )
     elif output_destination == "save_to_file":
         logger.info(f"Saving test results to {TEST_RESULTS_FILE}")
         save_test_results(TEST_RESULTS_FILE, results)
