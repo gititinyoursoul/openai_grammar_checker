@@ -1,5 +1,6 @@
 import os
 import argparse
+from dotenv import load_dotenv
 from runner import main as run_tests
 from interactive import main as start_interactive_mode
 from grammar_checker.logger import get_logger
@@ -62,11 +63,15 @@ def parse_arguments():
 def main():
     logger = get_logger(__name__)
     logger.info("Logging configuration set up successfully.")
+    
+    load_dotenv()  # Load environment variables from .env file
+    logger.info("Environment variables loaded successfully.")
 
     args = parse_arguments()
+    logger.info(f"Command-line arguments parsed successfully: {args}")
 
-    logger.info("Initializing MongoDB connection.")
     db_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
+    logger.info("MongoDB handler initialized successfully.")
 
     if args.mode == "run_tests":
         logger.info("run_tests executed successfully.")

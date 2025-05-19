@@ -1,5 +1,4 @@
 # This script runs the grammar checker tests using the OpenAI API.
-from dotenv import load_dotenv
 from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
@@ -12,12 +11,6 @@ from grammar_checker.config import TEST_RESULTS_FILE
 
 # initialize logger
 logger = get_logger(__name__)
-
-
-def setup_environment():
-    """Load environment variables."""
-    load_dotenv()
-    logger.info("Environment variables loaded successfully.")
 
 
 def validate_main_inputs(
@@ -88,13 +81,9 @@ def summary_results(results: list):
 def main(test_cases_file: str, models: list, output_destination: str, prompt_template: str, db_handler: MongoDBHandler):
     logger.info("Starting Grammar Checker Tests.")
 
-
     # validate inputs
     validate_main_inputs(test_cases_file, models, output_destination, prompt_template, db_handler)
     logger.info("Input validation passed.")
-    
-    # load environment variables
-    setup_environment()
 
     # set up the OpenAI client and prompt builder
     prompt_builder = PromptBuilder(prompt_template)

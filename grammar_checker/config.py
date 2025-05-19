@@ -7,10 +7,9 @@
         TEST_RESULTS_FILE (str): The relative file path to the JSON file where test results 
             will be stored.
 """
-import os
-from dotenv import load_dotenv
 
-load_dotenv()  # Load variables from .env
+import os
+
 
 # MongoDB configuration
 MONGO_URI = os.getenv("MONGO_URI")
@@ -21,7 +20,7 @@ MONGO_COLLECTION = os.getenv("MONGO_COLLECTION")
 MODELS = [
     "gpt-3.5-turbo",
     # "gpt-4",
-    #"gpt-4.1"
+    # "gpt-4.1"
 ]
 DEFAULT_MODEL = "gpt-3.5-turbo"  # default model to use if none is specified
 

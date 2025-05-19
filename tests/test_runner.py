@@ -177,7 +177,6 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
     ]
 
     with (
-        patch("runner.setup_environment") as mock_env,
         patch("runner.PromptBuilder") as mock_prompt_builder,
         patch("runner.OpenAIClient") as mock_client,
         patch("runner.load_test_cases", return_value=dummy_test_cases) as mock_load_test_cases,
@@ -190,7 +189,6 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
         main(test_cases_file, models, output_destination, prompt_template, mock_db_handler)
 
         # --- Control Flow ---
-        mock_env.assert_called_once()
         mock_prompt_builder.assert_called_once_with(prompt_template)
         mock_client.assert_called_once()
         mock_load_test_cases.assert_called_once_with(test_cases_file)
