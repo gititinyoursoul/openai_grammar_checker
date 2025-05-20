@@ -3,7 +3,6 @@ from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
 from grammar_checker.grammar_checker import GrammarChecker
 from grammar_checker.db import MongoDBHandler
-from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from grammar_checker.config import PROMPT_TEMPLATE, DEFAULT_MODEL
 
 
