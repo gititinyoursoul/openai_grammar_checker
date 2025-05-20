@@ -1,6 +1,5 @@
-import os
 import logging
-from unittest import mock
+from unittest.mock import patch
 import pytest
 from grammar_checker.logger import get_logger
 from logging.handlers import RotatingFileHandler
@@ -16,7 +15,7 @@ def clean_logger_handlers():
         logger.filters.clear()
         logger.setLevel(logging.NOTSET)
         logger.propagate = True
-        
+
 
 def test_get_logger_returns_logger_instance():
     logger = get_logger("test_logger")
@@ -25,11 +24,14 @@ def test_get_logger_returns_logger_instance():
 
 
 # Tests three different scenarios for the DEBUG environment variable
-@pytest.mark.parametrize("debug_value,expected_level", [
-    ("true", logging.DEBUG),
-    ("false", logging.INFO),
-    ("", logging.INFO),
-])
+@pytest.mark.parametrize(
+    "debug_value,expected_level",
+    [
+        ("true", logging.DEBUG),
+        ("false", logging.INFO),
+        ("", logging.INFO),
+    ],
+)
 def test_logger_level_set_by_debug_env(monkeypatch, debug_value, expected_level):
     monkeypatch.setenv("DEBUG", debug_value)
     logger_name = f"test_logger_{debug_value or 'empty'}"
@@ -65,15 +67,14 @@ def test_logger_no_duplicate_handlers():
 
 def test_logger_file_handler_uses_config(monkeypatch):
     # Patch config values to test
-    monkeypatch.setattr("grammar_checker.logger.LOG_FILE", "test.log")
+    log_path = "test.log"
+    monkeypatch.setattr("grammar_checker.logger.LOG_FILE", log_path)
     monkeypatch.setattr("grammar_checker.logger.MAX_LOG_SIZE", 12345)
     monkeypatch.setattr("grammar_checker.logger.BACKUP_COUNT", 7)
 
-    logger = get_logger("config_logger")
-    file_handlers = [h for h in logger.handlers if isinstance(h, logging.handlers.RotatingFileHandler)]
-    assert file_handlers
+    with patch("grammar_checker.logger.RotatingFileHandler") as mock_handler_cls:
+        # call get_logger to trigger the file handler creation
+        get_logger("config_logger")
 
-    handler = file_handlers[0]
-    assert handler.baseFilename.endswith("test.log")
-    assert handler.maxBytes == 12345
-    assert handler.backupCount == 7
+        # Assert that RotatingFileHandler was called with the correct parameters
+        mock_handler_cls.assert_called_once_with(log_path, maxBytes=12345, backupCount=7)
