@@ -19,37 +19,29 @@ def get_cli_input(prompt: str, logger) -> str:
         return ""
 
 
-def main(mongo_handler: MongoDBHandler, model: str = DEFAULT_MODEL):
-    # initialize logger
+def main(
+    mongo_handler: MongoDBHandler,
+    prompt_builder: PromptBuilder = None,
+    client: OpenAIClient = None,
+    model: str = DEFAULT_MODEL,
+):
     logger = get_logger(__name__)
-    logger.info("Logging configuration set up successfully.")
-
     logger.info("Starting Grammar Checker CLI...")
-    logger.debug(f"Model selected: {model}")
 
     sentence = get_cli_input("Enter a sentence to check grammar: ", logger)
     if not sentence:
         logger.warning("No sentence provided. Exiting program.")
         return
 
-    logger.debug(f"Input sentence: {sentence}")
-
-    prompt_builder = PromptBuilder(PROMPT_TEMPLATE)
-    logger.debug("PromptBuilder initialized.")
-
-    client = OpenAIClient()
-    logger.debug("OpenAIClient initialized.")
+    prompt_builder = prompt_builder or PromptBuilder(PROMPT_TEMPLATE)
+    client = client or OpenAIClient()
 
     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
-    logger.debug("GrammarChecker initialized.")
-
     response = grammar_checker.check_grammar()
-    logger.debug("Grammar check completed.")
 
     mongo_handler.save_record(
         input_data=sentence, model_response=response, metadata={"model": model, "mode": "interactive.py"}
     )
-    logger.info("Record saved to MongoDB successfully.")
 
 
 if __name__ == "__main__":
