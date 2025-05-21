@@ -9,10 +9,10 @@ class DummyLogger:
         self.messages = []
 
     def info(self, msg):
-        self.messages.append(('info', msg))
+        self.messages.append(("info", msg))
 
     def error(self, msg):
-        self.messages.append(('error', msg))
+        self.messages.append(("error", msg))
 
 
 def test_load_template_success(monkeypatch):
@@ -34,7 +34,6 @@ def test_load_template_file_not_found(monkeypatch):
     monkeypatch.setattr("grammar_checker.prompt_builder.logger", DummyLogger())
     with pytest.raises(FileNotFoundError):
         PromptBuilder("nonexistent_template.txt")
-
 
 
 def test_load_template_other_exception(monkeypatch):
@@ -88,7 +87,11 @@ def test_build_prompt_long_sentence_truncation(monkeypatch):
     long_sentence = "a" * 50
     builder.build_prompt(long_sentence)
     # Check that the logger.info call contains the truncated sentence
-    found = any("aaaaaaaaaaaaaaaaaaaa..." in msg for level, msg in logger.messages if level == "info")
+    found = any(
+        "aaaaaaaaaaaaaaaaaaaa..." in msg
+        for level, msg in logger.messages
+        if level == "info"
+    )
     assert found
 
     os.remove(tmp_path)

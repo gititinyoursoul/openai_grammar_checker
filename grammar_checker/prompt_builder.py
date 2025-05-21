@@ -15,7 +15,8 @@ class PromptBuilder:
         _load_template():
             Loads the prompt template from the specified file path, handling errors appropriately.
         build_prompt():
-            Constructs a prompt by replacing the placeholder in the template with the provided sentence."""
+            Constructs a prompt by replacing the placeholder in the template with the provided sentence.
+    """
 
     def __init__(self, prompt_template_path: str):
         self.template_path = prompt_template_path
@@ -59,6 +60,8 @@ class PromptBuilder:
         prompt = self.template.replace("{sentence}", sentence)
 
         truncated_sentence = sentence[:20] + "..." if len(sentence) > 20 else sentence
-        logger.info(f"Building prompt using template '{self.template_path}' with sentence: '{truncated_sentence}'")
+        logger.info(
+            f"Building prompt using template '{self.template_path}' with sentence: '{truncated_sentence}'"
+        )
 
         return prompt

@@ -77,4 +77,6 @@ def test_logger_file_handler_uses_config(monkeypatch):
         get_logger("config_logger")
 
         # Assert that RotatingFileHandler was called with the correct parameters
-        mock_handler_cls.assert_called_once_with(log_path, maxBytes=12345, backupCount=7)
+        mock_handler_cls.assert_called_once_with(
+            log_path, maxBytes=12345, backupCount=7
+        )

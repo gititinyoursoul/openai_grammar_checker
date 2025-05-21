@@ -107,7 +107,9 @@ def main():
         start_interactive_mode(db_handler)
         logger.info("Interactive mode started.")
     else:
-        error_msg = "Invalid mode selected. Please choose 'interactive', 'api', or 'run_tests'."
+        error_msg = (
+            "Invalid mode selected. Please choose 'interactive', 'api', or 'run_tests'."
+        )
         logger.error(error_msg)
         raise ValueError(error_msg)
 

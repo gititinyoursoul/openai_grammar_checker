@@ -11,7 +11,8 @@ def evaluate_response(expected, actual):
 
     # Compare mistakes (loosely – for demo purposes)
     mistake_types_match = all(
-        any(m["type"] == e["type"] for m in actual["mistakes"]) for e in expected["expected_mistakes"]
+        any(m["type"] == e["type"] for m in actual["mistakes"])
+        for e in expected["expected_mistakes"]
     )
 
     return sentence_match and mistake_types_match

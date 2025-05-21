@@ -39,7 +39,9 @@ def main(
     response = grammar_checker.check_grammar()
 
     mongo_handler.save_record(
-        input_data=sentence, model_response=response, metadata={"model": model, "mode": "interactive.py"}
+        input_data=sentence,
+        model_response=response,
+        metadata={"model": model, "mode": "interactive.py"},
     )
 
 

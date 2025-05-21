@@ -30,7 +30,9 @@ def is_mongodb_running(host="127.0.0.1", port=27017, timeout=5):
 
 def start_mongo():
     if not exe or not cfg:
-        logger.error("Missing MONGO_BIN_PATH or MONGO_CONFIG_PATH is invalid or missing.")
+        logger.error(
+            "Missing MONGO_BIN_PATH or MONGO_CONFIG_PATH is invalid or missing."
+        )
         return False
 
     try:
@@ -52,14 +54,16 @@ def start_mongo():
             logger.info("MongoDB is live and accepting connections.")
             return True
         else:
-            logger.warning("MongoDB process started, but it's not responding on port 27017.")
+            logger.warning(
+                "MongoDB process started, but it's not responding on port 27017."
+            )
             return False
 
     except FileNotFoundError:
         logger.error("mongod.exe not found. Check MONGO_BIN_PATH.")
     except subprocess.CalledProcessError as e:
         logger.error(f"MongoDB failed to start: {e}")
-    
+
     return False
 
 

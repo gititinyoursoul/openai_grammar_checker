@@ -6,13 +6,21 @@ logger = get_logger(__name__)
 
 
 class GrammarChecker:
-    def __init__(self, prompt_builder: PromptBuilder, sentence: str, model: str, client: OpenAIClient):
+    def __init__(
+        self,
+        prompt_builder: PromptBuilder,
+        sentence: str,
+        model: str,
+        client: OpenAIClient,
+    ):
         self.prompt_builder = prompt_builder
         self.sentence = sentence
         self.model = model
         self.client = client
 
-        logger.info(f"GrammarChecker initialized with model: {model}, sentence: {sentence}")
+        logger.info(
+            f"GrammarChecker initialized with model: {model}, sentence: {sentence}"
+        )
 
     def check_grammar(self):
         prompt = self.prompt_builder.build_prompt(self.sentence)

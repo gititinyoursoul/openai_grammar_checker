@@ -1,11 +1,11 @@
 """
-    Configuration file for the grammar checker tool.
-    Attributes:
-        MODELS (list): A list of model names available for use in the grammar checker. 
-            Uncomment the desired model to activate it.
-        TEST_CASES_FILE (str): The relative file path to the JSON file containing test cases.
-        TEST_RESULTS_FILE (str): The relative file path to the JSON file where test results 
-            will be stored.
+Configuration file for the grammar checker tool.
+Attributes:
+    MODELS (list): A list of model names available for use in the grammar checker.
+        Uncomment the desired model to activate it.
+    TEST_CASES_FILE (str): The relative file path to the JSON file containing test cases.
+    TEST_RESULTS_FILE (str): The relative file path to the JSON file where test results
+        will be stored.
 """
 
 import os

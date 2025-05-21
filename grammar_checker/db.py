@@ -13,7 +13,11 @@ class MongoDBHandler:
         logger.info(f"Connected to MongoDB: {database_name}/{collection_name}")
 
     def save_record(self, input_data, model_response, test_eval=None, metadata=None):
-        record = {"input": input_data, "response": model_response, "timestamp": datetime.utcnow()}
+        record = {
+            "input": input_data,
+            "response": model_response,
+            "timestamp": datetime.utcnow(),
+        }
         if metadata:
             record["metadata"] = metadata
         if test_eval:

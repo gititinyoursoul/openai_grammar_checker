@@ -9,7 +9,7 @@ from grammar_checker.config import LOG_FILE, MAX_LOG_SIZE, BACKUP_COUNT
 def get_logger(name: str) -> logging.Logger:
     """Returns a configured logger with rotating file and console handlers."""
     logger = logging.getLogger(name)
-    
+
     # Set the logging level based on the DEBUG environment variable
     if logger.level == logging.NOTSET:
         debug_mode = os.getenv("DEBUG", "False").lower() == "true"
@@ -33,7 +33,7 @@ def get_logger(name: str) -> logging.Logger:
         # Stream (console) handler
         stream_handler = logging.StreamHandler()
         stream_handler.setFormatter(formatter)
-        
+
         # Attach handlers
         logger.addHandler(file_handler)
         logger.addHandler(stream_handler)

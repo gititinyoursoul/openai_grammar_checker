@@ -21,12 +21,14 @@ class TestValidateMainInputs:
             models=["gpt-3"],
             output_destination="save_to_db",
             prompt_template="Prompt",
-            db_handler=MagicMock()
+            db_handler=MagicMock(),
         )
 
     @pytest.mark.parametrize("invalid_file", ["", "   ", None])
     def test_invalid_test_cases_file(self, invalid_file):
-        with pytest.raises(ValueError, match="test_cases_file must be a non-empty string"):
+        with pytest.raises(
+            ValueError, match="test_cases_file must be a non-empty string"
+        ):
             validate_main_inputs(
                 test_cases_file=invalid_file,
                 models=["gpt-3"],
@@ -48,7 +50,9 @@ class TestValidateMainInputs:
 
     @pytest.mark.parametrize("invalid_output", ["", "  ", None])
     def test_invalid_output_destination(self, invalid_output):
-        with pytest.raises(ValueError, match="output_destination must be non-empty string."):
+        with pytest.raises(
+            ValueError, match="output_destination must be non-empty string."
+        ):
             validate_main_inputs(
                 test_cases_file="cases.json",
                 models=["gpt-3"],
@@ -59,7 +63,9 @@ class TestValidateMainInputs:
 
     @pytest.mark.parametrize("invalid_prompt", ["", "   ", None])
     def test_invalid_prompt_template(self, invalid_prompt):
-        with pytest.raises(ValueError, match="prompt_template must be a non-empty string"):
+        with pytest.raises(
+            ValueError, match="prompt_template must be a non-empty string"
+        ):
             validate_main_inputs(
                 test_cases_file="cases.json",
                 models=["gpt-3"],
@@ -91,7 +97,9 @@ def mock_client():
 
 
 # test cases for run_tests
-def test_run_tests_multiple_models_and_cases(monkeypatch, mock_prompt_builder, mock_client):
+def test_run_tests_multiple_models_and_cases(
+    monkeypatch, mock_prompt_builder, mock_client
+):
     test_cases = [{"input": "This is a test."}, {"input": "Another one."}]
     models = ["gpt-3", "gpt-4"]
 
@@ -112,9 +120,13 @@ def test_run_tests_multiple_models_and_cases(monkeypatch, mock_prompt_builder, m
             assert isinstance(result["match"], bool)
 
 
-def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_client, caplog):
+def test_run_tests_handles_exception(
+    monkeypatch, mock_prompt_builder, mock_client, caplog
+):
     test_cases = [{"input": "Bad sentence"}]
-    monkeypatch.setattr("runner.GrammarChecker", MagicMock(side_effect=Exception("error")))
+    monkeypatch.setattr(
+        "runner.GrammarChecker", MagicMock(side_effect=Exception("error"))
+    )
     monkeypatch.setattr("runner.logger", MagicMock())
 
     with pytest.raises(Exception):
@@ -179,21 +191,32 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
     with (
         patch("runner.PromptBuilder") as mock_prompt_builder,
         patch("runner.OpenAIClient") as mock_client,
-        patch("runner.load_test_cases", return_value=dummy_test_cases) as mock_load_test_cases,
+        patch(
+            "runner.load_test_cases", return_value=dummy_test_cases
+        ) as mock_load_test_cases,
         patch("runner.run_tests", return_value=dummy_results) as mock_run_tests,
         patch("runner.summary_results") as mock_summary,
         patch("runner.save_test_results") as mock_save_test_results,
         patch("runner.TEST_RESULTS_FILE", "dummy_results.json"),
-        patch("runner.logger") as mock_logger
+        patch("runner.logger") as mock_logger,
     ):
-        main(test_cases_file, models, output_destination, prompt_template, mock_db_handler)
+        main(
+            test_cases_file,
+            models,
+            output_destination,
+            prompt_template,
+            mock_db_handler,
+        )
 
         # --- Control Flow ---
         mock_prompt_builder.assert_called_once_with(prompt_template)
         mock_client.assert_called_once()
         mock_load_test_cases.assert_called_once_with(test_cases_file)
         mock_run_tests.assert_called_once_with(
-            dummy_test_cases, models, mock_prompt_builder.return_value, mock_client.return_value
+            dummy_test_cases,
+            models,
+            mock_prompt_builder.return_value,
+            mock_client.return_value,
         )
         mock_summary.assert_called_once_with(dummy_results)
 

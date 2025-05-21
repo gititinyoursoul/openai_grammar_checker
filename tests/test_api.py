@@ -16,7 +16,9 @@ def test_health_check():
 @patch("api.OpenAIClient")
 @patch("api.GrammarChecker")
 @patch("api.db")  # Patch the MongoDBHandler instance directly
-def test_check_grammar_success(mock_db, mock_checker_class, mock_client_class, mock_prompt_builder_class):
+def test_check_grammar_success(
+    mock_db, mock_checker_class, mock_client_class, mock_prompt_builder_class
+):
     # Arrange
     test_sentence = "This are bad grammar."
     test_response = {"corrected": "This is bad grammar."}
