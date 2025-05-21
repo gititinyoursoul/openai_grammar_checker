@@ -20,19 +20,18 @@ class MongoDBHandler:
             self.client = MongoClient(self.uri)
             self.db= self.client[self.database_name]
             self.collection = self.db[self.collection_name]
-            logger.info(f"Connected to MongoDB: {self.database_name}/{self.collection_name}")
-        else:
-            logger.info("Already connected to MongoDB.")
+            logger.debug(f"Connected to MongoDB: {self.database_name}/{self.collection_name}")
+
             
     def disconnect(self):
         if self.client:
             self.client.close()
-            logger.info(f"Disconnected from MongoDB: {self.database_name}/{self.collection_name}.")
+            logger.debug(f"Disconnected from MongoDB: {self.database_name}/{self.collection_name}.")
             self.client = None
             self.database = None
             self.collection = None
         else:
-            logger.info(f"No active MongoDB connection to close: {self.database_name}/{self.collection_name}")
+            logger.debug(f"No active MongoDB connection to close: {self.database_name}/{self.collection_name}")
 
     def save_record(self, input_data, model_response, test_eval=None, metadata=None):
         record = {
@@ -50,7 +49,7 @@ class MongoDBHandler:
             return result.inserted_id
         except Exception as e:
             logger.error(f"Failed to save record: {e}")
-            raise
+            raise e
 
     # delete record
     def delete_record(self, record_id):
