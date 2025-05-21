@@ -7,10 +7,32 @@ logger = get_logger(__name__)
 
 class MongoDBHandler:
     def __init__(self, uri, database_name, collection_name):
-        self.client = MongoClient(uri)
-        self.database = self.client[database_name]
-        self.collection = self.database[collection_name]
-        logger.info(f"Connected to MongoDB: {database_name}/{collection_name}")
+        self.client = None
+        self.database = None
+        self.collection = None
+        self.uri = uri
+        self.database_name = database_name
+        self.collection_name = collection_name
+        
+
+    def connect(self):
+        if not self.client:
+            self.client = MongoClient(self.uri)
+            self.db= self.client[self.database_name]
+            self.collection = self.db[self.collection_name]
+            logger.info(f"Connected to MongoDB: {self.database_name}/{self.collection_name}")
+        else:
+            logger.info("Already connected to MongoDB.")
+            
+    def disconnect(self):
+        if self.client:
+            self.client.close()
+            logger.info(f"Disconnected from MongoDB: {self.database_name}/{self.collection_name}.")
+            self.client = None
+            self.database = None
+            self.collection = None
+        else:
+            logger.info(f"No active MongoDB connection to close: {self.database_name}/{self.collection_name}")
 
     def save_record(self, input_data, model_response, test_eval=None, metadata=None):
         record = {
@@ -41,3 +63,10 @@ class MongoDBHandler:
         except Exception as e:
             logger.error(f"Failed to delete record: {e}")
             raise
+        
+    def __enter__(self):
+        self.connect()
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.disconnect()
