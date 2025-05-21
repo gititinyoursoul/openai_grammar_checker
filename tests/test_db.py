@@ -20,13 +20,16 @@ def test_save_record_success(mock_mongo_handler):
     input_data = "He go to school."
     model_response = {"corrected_sentence": "He goes to school."}
 
-    record_id = mock_mongo_handler.save_record(input_data, model_response)
-    assert record_id is not None
+    with mock_mongo_handler as db:
+        # Save record
+        record_id = db.save_record(input_data, model_response)
+        assert record_id is not None
 
-    record = mock_mongo_handler.collection.find_one({"_id": record_id})
-    assert record["input"] == input_data
-    assert record["response"] == model_response
-    assert "timestamp" in record
+        # Check if the record is saved correctly
+        record = db.collection.find_one({"_id": record_id})
+        assert record["input"] == input_data
+        assert record["response"] == model_response
+        assert "timestamp" in record
 
 
 def test_save_record_with_metadata(mock_mongo_handler):
@@ -34,49 +37,66 @@ def test_save_record_with_metadata(mock_mongo_handler):
     model_response = {"corrected_sentence": "She doesn't like apples."}
     metadata = {"model": "gpt-4", "mode": "test"}
 
-    record_id = mock_mongo_handler.save_record(
-        input_data, model_response, metadata=metadata
-    )
-    record = mock_mongo_handler.collection.find_one({"_id": record_id})
+    with mock_mongo_handler as db:
+        # Save record with metadata
+        record_id = db.save_record(input_data, model_response, metadata=metadata)
+        record = db.collection.find_one({"_id": record_id})
 
-    assert "metadata" in record
-    assert record["metadata"]["model"] == "gpt-4"
+        assert "metadata" in record
+        assert record["metadata"]["model"] == "gpt-4"
+
+
+def test_save_record_with_test_eval(mock_mongo_handler):
+    input_data = "They is playing."
+    model_response = {"corrected_sentence": "They are playing."}
+    test_eval = {"accuracy": 0.95, "feedback": "Good correction"}
+
+    with mock_mongo_handler as db:
+        record_id = db.save_record(input_data, model_response, test_eval=test_eval)
+        record = db.collection.find_one({"_id": record_id})
+
+        assert "test_eval" in record
+        assert record["test_eval"]["accuracy"] == 0.95
+        assert record["test_eval"]["feedback"] == "Good correction"
 
 
 def test_save_record_failure(monkeypatch, caplog, mock_mongo_handler):
     def mock_insert_one_fail(*args, **kwargs):
         raise Exception("DB error")
 
-    # Apply monkeypatch to simulate failure in insert_one
-    monkeypatch.setattr(
-        mock_mongo_handler.collection, "insert_one", mock_insert_one_fail
-    )
+    with mock_mongo_handler as db:
+        # Apply monkeypatch to simulate failure in insert_one
+        monkeypatch.setattr(db.collection, "insert_one", mock_insert_one_fail)
 
-    with caplog.at_level(logging.ERROR):
-        with pytest.raises(Exception) as excinfo:
-            mock_mongo_handler.save_record("input", "response")
+        with caplog.at_level(logging.ERROR):
+            with pytest.raises(Exception) as excinfo:
+                db.save_record("input", "response")
 
-    assert "DB error" in str(excinfo.value)
-    assert "Failed to save record" in caplog.text
+        assert "DB error" in str(excinfo.value)
+        assert "Failed to save record" in caplog.text
 
 
 def test_delete_record_success(mock_mongo_handler):
-    # insert a dummy record to delete
-    inserted_id = mock_mongo_handler.save_record("test_input", "test_response")
-    # delete the record
-    mock_mongo_handler.delete_record(inserted_id)
-    # check if the record is deleted
-    deleted_record = mock_mongo_handler.collection.find_one({"_id": inserted_id})
-    assert deleted_record is None
+    with mock_mongo_handler:
+        # insert a dummy record to delete
+        inserted_id = mock_mongo_handler.save_record("test_input", "test_response")
+        # delete the record
+        mock_mongo_handler.delete_record(inserted_id)
+        # check if the record is deleted
+        deleted_record = mock_mongo_handler.collection.find_one({"_id": inserted_id})
+
+        assert deleted_record is None
 
 
 # caplog is a pytest fixture that captures log messages
 def test_delete_record_not_found(mock_mongo_handler, caplog):
     fake_id = ObjectId()  # generates a unique MongoDB-style ID
+
     # check if the log contains the warning
-    with caplog.at_level(logging.WARNING):
-        mock_mongo_handler.delete_record(fake_id)
-    assert "No record found" in caplog.text
+    with mock_mongo_handler:
+        with caplog.at_level(logging.WARNING):
+            mock_mongo_handler.delete_record(fake_id)
+        assert "No record found" in caplog.text
 
 
 def test_delete_record_failure(monkeypatch, caplog, mock_mongo_handler):
@@ -84,14 +104,13 @@ def test_delete_record_failure(monkeypatch, caplog, mock_mongo_handler):
     def mock_delete_one_fail(*args, **kwargs):
         raise Exception("Delete error")
 
-    # Apply monkeypatch to simulate failure
-    monkeypatch.setattr(
-        mock_mongo_handler.collection, "delete_one", mock_delete_one_fail
-    )
+    with mock_mongo_handler:
+        # Apply monkeypatch to simulate failure
+        monkeypatch.setattr(mock_mongo_handler.collection, "delete_one", mock_delete_one_fail)
 
-    with caplog.at_level(logging.ERROR):
-        with pytest.raises(Exception) as excinfo:
-            mock_mongo_handler.delete_record(ObjectId())
+        with caplog.at_level(logging.ERROR):
+            with pytest.raises(Exception) as excinfo:
+                mock_mongo_handler.delete_record(ObjectId())
 
-    assert "Delete error" in str(excinfo.value)
-    assert "Failed to delete record" in caplog.text
+        assert "Delete error" in str(excinfo.value)
+        assert "Failed to delete record" in caplog.text
