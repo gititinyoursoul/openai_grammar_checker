@@ -12,8 +12,36 @@ def mock_mongo_handler(monkeypatch):
     monkeypatch.setattr("grammar_checker.db.MongoClient", lambda uri: mock_client)
 
     # Create handler using mock
-    handler = MongoDBHandler("mock://localhost", "test_db", "test_collection")
+    handler = MongoDBHandler("mock_uri", "test_db", "test_collection")
     return handler
+
+
+def test_connect(mock_mongo_handler):
+    mock_mongo_handler.connect()
+
+    assert isinstance(mock_mongo_handler.client, mongomock.MongoClient)
+    assert mock_mongo_handler.db == mock_mongo_handler.client["test_db"]
+    assert mock_mongo_handler.collection == mock_mongo_handler.db["test_collection"]
+
+
+def test_disconnect(mock_mongo_handler):
+    mock_mongo_handler.connect()
+    mock_mongo_handler.disconnect()
+
+    assert mock_mongo_handler.client is None
+    assert mock_mongo_handler.database is None
+    assert mock_mongo_handler.collection is None
+
+
+def test_mongo_handler_context_manager(mock_mongo_handler):
+    with mock_mongo_handler:
+        assert isinstance(mock_mongo_handler.client, mongomock.MongoClient)
+        assert mock_mongo_handler.db == mock_mongo_handler.client["test_db"]
+        assert mock_mongo_handler.collection == mock_mongo_handler.db["test_collection"]
+
+    assert mock_mongo_handler.client is None
+    assert mock_mongo_handler.database is None
+    assert mock_mongo_handler.collection is None
 
 
 def test_save_record_success(mock_mongo_handler):
