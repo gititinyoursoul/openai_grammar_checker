@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from datetime import datetime
+from datetime import datetime, UTC
 from grammar_checker.logger import get_logger
 
 logger = get_logger(__name__)
@@ -37,7 +37,7 @@ class MongoDBHandler:
         record = {
             "input": input_data,
             "response": model_response,
-            "timestamp": datetime.utcnow(),
+            "timestamp": datetime.now(UTC),
         }
         if metadata:
             record["metadata"] = metadata
