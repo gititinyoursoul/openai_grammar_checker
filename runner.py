@@ -33,26 +33,18 @@ def validate_main_inputs(
         raise ValueError("prompt_template must be a non-empty string.")
 
     if output_destination == "save_to_db" and db_handler is None:
-        raise ValueError(
-            "db_handler is required when output_destination is 'save_to_db'."
-        )
+        raise ValueError("db_handler is required when output_destination is 'save_to_db'.")
 
 
 # test cases
-def run_tests(
-    test_cases: str, models: list, prompt_builder: PromptBuilder, client: OpenAIClient
-):
+def run_tests(test_cases: str, models: list, prompt_builder: PromptBuilder, client: OpenAIClient):
     results = []
     for model in models:
         for test_case in test_cases:
-            logger.info(
-                f"Begin grammar check of model: '{model}' and sentence: '{test_case['input']}'"
-            )
+            logger.info(f"Begin grammar check of model: '{model}' and sentence: '{test_case['input']}'")
             sentence = test_case["input"]
             try:
-                grammar_checker = GrammarChecker(
-                    prompt_builder, sentence, model, client
-                )
+                grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
                 response = grammar_checker.check_grammar()
                 is_match = evaluate_response(test_case, response)
                 results.append(
@@ -64,9 +56,7 @@ def run_tests(
                         "match": is_match,
                     }
                 )
-                logger.info(
-                    f"Sentence: {test_case['input']} => {'PASS' if is_match else 'FAIL'}"
-                )
+                logger.info(f"Sentence: {test_case['input']} => {'PASS' if is_match else 'FAIL'}")
             except Exception as e:
                 logger.critical(f"Unexpected error: {str(e)}", exc_info=True)
                 raise
@@ -93,14 +83,12 @@ def main(
     models: list,
     output_destination: str,
     prompt_template: str,
-    db_handler: MongoDBHandler,
+    mongo_handler: MongoDBHandler,
 ):
     logger.info("Starting Grammar Checker Tests.")
 
     # validate inputs
-    validate_main_inputs(
-        test_cases_file, models, output_destination, prompt_template, db_handler
-    )
+    validate_main_inputs(test_cases_file, models, output_destination, prompt_template, mongo_handler)
     logger.info("Input validation passed.")
 
     # set up the OpenAI client and prompt builder
@@ -116,20 +104,19 @@ def main(
     # save results
     if output_destination == "save_to_db":
         logger.info("Saving test results to MongoDB")
-        for result in results:
-            db_handler.save_record(
-                input_data=result["input"],
-                model_response=result["output"],
-                test_eval={"match": result["match"], "expected": result["expected"]},
-                metadata={"mode": "runner.py", "model": result["model"]},
-            )
+        with mongo_handler as db:
+            for result in results:
+                mongo_handler.save_record(
+                    input_data=result["input"],
+                    model_response=result["output"],
+                    test_eval={"match": result["match"], "expected": result["expected"]},
+                    metadata={"mode": "runner.py", "model": result["model"]},
+                )
     elif output_destination == "save_to_file":
         logger.info(f"Saving test results to {TEST_RESULTS_FILE}")
         save_test_results(TEST_RESULTS_FILE, results)
     else:
-        logger.error(
-            "Invalid output option. Please refer to the help documentation for valid options."
-        )
+        logger.error("Invalid output option. Please refer to the help documentation for valid options.")
 
 
 if __name__ == "__main__":
