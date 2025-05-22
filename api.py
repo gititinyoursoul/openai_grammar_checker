@@ -1,5 +1,6 @@
 # api.py
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Depends, HTTPException
+from contextlib import asynccontextmanager
 from pydantic import BaseModel, Field
 from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
@@ -16,10 +17,27 @@ from grammar_checker.config import (
 
 logger = get_logger(__name__)
 
-app = FastAPI(title="Grammar Checker API")
+# Create a global MongoDB handler
+mongo_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
 
-# MongoDB handler instance
-db = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
+
+def get_mongo_handler() -> MongoDBHandler:
+    return mongo_handler
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup logic
+    mongo_handler.connect()
+
+    yield  # ← This is where the app runs
+
+    # Shutdown logic
+    mongo_handler.disconnect()
+
+
+# Create the app with lifespan handler
+app = FastAPI(lifespan=lifespan, title="Grammar Checker API")
 
 
 class GrammarRequest(BaseModel):
@@ -29,21 +47,21 @@ class GrammarRequest(BaseModel):
 
 
 @app.post("/check-grammar/")
-def check_grammar(request: GrammarRequest):
+def check_grammar(request: GrammarRequest, mongo_handler: MongoDBHandler = Depends(get_mongo_handler)):
     logger.info(f"Received input: {request.sentence} | Model: {request.model}")
     try:
         prompt_builder = PromptBuilder(request.prompt_template)
         client = OpenAIClient()
-        grammar_checker = GrammarChecker(
-            prompt_builder, request.sentence, request.model, client
-        )
+        grammar_checker = GrammarChecker(prompt_builder, request.sentence, request.model, client)
         response = grammar_checker.check_grammar()
-        db.save_record(
+
+        mongo_handler.save_record(
             input_data=request.sentence,
             model_response=response,
             metadata={"model": request.model, "mode": "api.py"},
         )
         return response
+
     except Exception as e:
         logger.exception("Error during grammar check processing")
         raise HTTPException(status_code=500, detail=str(e))
