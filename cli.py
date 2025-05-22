@@ -37,12 +37,24 @@ def interactive():
 
 @app.command()
 def benchmarks(
-    test_cases_file: str = TEST_CASES_FILE_DEV,
+    test_cases_file: str = typer.Option(TEST_CASES_FILE_DEV, help="Path to the test cases JSON file"),
     models: List[str] = typer.Option(MODELS, help="List of OpenAI model names"),
-    prompt_template: str = PROMPT_TEMPLATE,
-    output_destination: str = "save_to_db",
+    prompt_template: str = typer.Option(PROMPT_TEMPLATE, help="Path to the prompt template file"),
+    output_destination: str = typer.Option("save_to_db")
 ):
+    """
+    Run grammar benchmarks on selected OpenAI models using test cases and a prompt template.
+
+    Args:
+        --test-cases-file: Path to test case file (default: dev test cases).
+        --models: One or more OpenAI model names to benchmark.
+        --prompt-template: Prompt template to use.
+        --output-destination: Where to send results ("save_to_db", "print", etc.).
+
+    Benchmarks are logged and may be saved to MongoDB.
+    """
     logger.info("Starting benchmark mode...")
+    logger.debug(f"Arguments received: {test_cases_file=}, {models=}, {prompt_template=}, {output_destination=}")
     mongo_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
     benchmarks_main(
         test_cases_file,
