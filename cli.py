@@ -14,6 +14,13 @@ logger = get_logger(__name__)
 
 
 @app.command()
+def run_api(host: str = "127.0.0.1", port: int = 8000):
+    """Run the FastAPI server."""
+    logger.info(f"Starting FastAPI server at {host}:{port}")
+    uvicorn.run("api:app", host=host, port=port, reload=True)
+
+
+@app.command()
 def interactive():
     """Run the interactive mode."""
     logger.info("Starting interactive mode...")
