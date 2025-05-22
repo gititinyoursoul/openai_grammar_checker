@@ -10,7 +10,7 @@ from grammar_checker.db import MongoDBHandler
 from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from grammar_checker.config import (
     MODELS,
-    TEST_CASES_FILE_REF,
+    TEST_CASES_FILE_DEV,
     PROMPT_TEMPLATE,
 )
 
@@ -58,7 +58,7 @@ def parse_arguments():
 
     parser.add_argument(
         "--test-cases",
-        default=TEST_CASES_FILE_REF,
+        default=TEST_CASES_FILE_DEV,
         help="Path to the test cases JSON file (default: from config).",
     )
 
@@ -97,7 +97,7 @@ def main():
             models=args.models,
             output_destination=args.output,
             prompt_template=args.prompt_template,
-            db_handler=db_handler,
+            mongo_handler=db_handler,
         )
         logger.info("run_tests completed.")
     elif args.mode == "api":
@@ -107,9 +107,7 @@ def main():
         start_interactive_mode(db_handler)
         logger.info("Interactive mode started.")
     else:
-        error_msg = (
-            "Invalid mode selected. Please choose 'interactive', 'api', or 'run_tests'."
-        )
+        error_msg = "Invalid mode selected. Please choose 'interactive', 'api', or 'run_tests'."
         logger.error(error_msg)
         raise ValueError(error_msg)
 
