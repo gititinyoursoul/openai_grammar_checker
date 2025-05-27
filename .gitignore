@@ -177,8 +177,8 @@ cython_debug/
 .vscode
 
 # Other
-learnings.md
 sandbox/
+learnings/
 TODO.md
 notes.md
 
