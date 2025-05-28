@@ -107,7 +107,7 @@ def mock_client():
 
 
 # test cases for run_tests
-def test_run_tests_multiple_models_and_cases(monkeypatch, mock_prompt_builder, mock_client):
+def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_client):
     models = ["gpt-3", "gpt-4"]
     templates = ["template1.txt", "template2.txt"]
     test_cases = [{"input": "This is a test."}, {"input": "Another one."}]
@@ -127,6 +127,7 @@ def test_run_tests_multiple_models_and_cases(monkeypatch, mock_prompt_builder, m
         assert len(results) == len(models) * len(templates) * len(test_cases)
         for result in results:
             assert result["model"] in models
+            assert result["template"] in templates
             assert result["input"] in [tc["input"] for tc in test_cases]
             assert result["output"] == "mocked_response"
             assert isinstance(result["match"], bool)
@@ -145,20 +146,25 @@ def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_clie
 # unittest summary_results
 def test_summary_results_multiple_models():
     results = [
-        {"model": "gpt-2", "input": "Another one.", "match": False},
-        {"model": "gpt-3", "input": "This is a test.", "match": True},
-        {"model": "gpt-3", "input": "Another one.", "match": False},
-        {"model": "gpt-4", "input": "This is a test.", "match": True},
+        {"template": "v1_test", "model": "gpt-2", "input": "Another one.", "match": False},
+        {"template": "v1_test", "model": "gpt-3", "input": "This is a test.", "match": True},
+        {"template": "v1_test", "model": "gpt-3", "input": "Another one.", "match": False},
+        {"template": "v1_test", "model": "gpt-4", "input": "This is a test.", "match": True},
+        {"template": "v2_test", "model": "gpt-3", "input": "Another one.", "match": False},
+        {"template": "v2_test", "model": "gpt-4", "input": "This is a test.", "match": True},
     ]
 
     summary = summary_results(results)
 
-    assert summary["gpt-2"]["total"] == 1
-    assert summary["gpt-2"]["passed"] == 0
-    assert summary["gpt-3"]["total"] == 2
-    assert summary["gpt-3"]["passed"] == 1
-    assert summary["gpt-4"]["total"] == 1
-    assert summary["gpt-4"]["passed"] == 1
+    assert summary["v1_test"]["gpt-2"]["total"] == 1
+    assert summary["v1_test"]["gpt-2"]["passed"] == 0
+    assert summary["v1_test"]["gpt-3"]["total"] == 2
+    assert summary["v1_test"]["gpt-3"]["passed"] == 1
+    assert summary["v1_test"]["gpt-4"]["total"] == 1
+    assert summary["v1_test"]["gpt-4"]["passed"] == 1
+    assert summary["v2_test"]["gpt-3"]["total"] == 1
+    assert summary["v2_test"]["gpt-3"]["passed"] == 0
+    assert len(summary["v2_test"]) == 2
 
 
 def test_summary_results_empty():

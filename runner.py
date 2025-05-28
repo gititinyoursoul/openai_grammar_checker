@@ -62,6 +62,7 @@ def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], c
                     is_match = evaluate_response(test_case, response)
                     results.append(
                         {
+                            "template": template,
                             "model": model,
                             "input": test_case["input"],
                             "output": response,
@@ -81,12 +82,16 @@ def summary_results(results: list):
 
     summary = {}
     for result in results:
+        template = result["template"]
+        if template not in summary:
+            summary[template] = {}
         model = result["model"]
-        if model not in summary:
-            summary[model] = {"total": 0, "passed": 0}
-        summary[model]["total"] += 1
+        if model not in summary[template]:
+            summary[template][model] = {"total": 0, "passed": 0}
+        
+        summary[template][model]["total"] += 1
         if result["match"]:
-            summary[model]["passed"] += 1
+            summary[template][model]["passed"] += 1
     logger.info(f"Model Matches: {summary}")
     return summary
 
