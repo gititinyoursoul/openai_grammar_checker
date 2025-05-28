@@ -1,39 +1,43 @@
 from unittest.mock import patch, MagicMock
 import pytest
 from runner import validate_main_inputs, run_tests, summary_results, main
+from grammar_checker.config import TEST_RESULTS_FILE, VALID_MODELS, DEFAULT_PROMPT_TEMPLATE
+
 
 
 class TestValidateMainInputs:
+    valid_test_cases_file = "cases.json"
+    valid_models = VALID_MODELS
+    valid_prompt_templates = [DEFAULT_PROMPT_TEMPLATE]
+
     # test cases for validate_main_inputs
     def test_valid_inputs_file(self):
         # Should not raise anything
         validate_main_inputs(
-            test_cases_file="cases.json",
-            models=["gpt-3"],
+            test_cases_file=self.valid_test_cases_file,
+            models=self.valid_models,
             output_destination="save_to_file",
-            prompt_template="Prompt",
+            prompt_templates=self.valid_prompt_templates,
             db_handler=None,
         )
 
     def test_invalid_inputs_db(self):
         validate_main_inputs(
-            test_cases_file="cases.json",
-            models=["gpt-3"],
+            test_cases_file=self.valid_test_cases_file,
+            models=self.valid_models,
             output_destination="save_to_db",
-            prompt_template="Prompt",
+            prompt_templates=self.valid_prompt_templates,
             db_handler=MagicMock(),
         )
 
     @pytest.mark.parametrize("invalid_file", ["", "   ", None])
     def test_invalid_test_cases_file(self, invalid_file):
-        with pytest.raises(
-            ValueError, match="test_cases_file must be a non-empty string"
-        ):
+        with pytest.raises(ValueError, match="test_cases_file must be a non-empty string"):
             validate_main_inputs(
                 test_cases_file=invalid_file,
-                models=["gpt-3"],
+                models=self.valid_models,
                 output_destination="save_to_file",
-                prompt_template="Prompt",
+                prompt_templates=self.valid_prompt_templates,
                 db_handler=None,
             )
 
@@ -41,46 +45,52 @@ class TestValidateMainInputs:
     def test_invalid_models(self, invalid_models):
         with pytest.raises(ValueError, match="models must be a non-empty list"):
             validate_main_inputs(
-                test_cases_file="cases.json",
+                test_cases_file=self.valid_test_cases_file,
                 models=invalid_models,
                 output_destination="save_to_file",
-                prompt_template="Prompt",
+                prompt_templates=self.valid_prompt_templates,
                 db_handler=None,
             )
 
     @pytest.mark.parametrize("invalid_output", ["", "  ", None])
     def test_invalid_output_destination(self, invalid_output):
-        with pytest.raises(
-            ValueError, match="output_destination must be non-empty string."
-        ):
+        with pytest.raises(ValueError, match="output_destination must be non-empty string."):
             validate_main_inputs(
-                test_cases_file="cases.json",
-                models=["gpt-3"],
+                test_cases_file=self.valid_test_cases_file,
+                models=self.valid_models,
                 output_destination=invalid_output,
-                prompt_template="Prompt",
+                prompt_templates=self.valid_prompt_templates,
                 db_handler=None,
             )
 
-    @pytest.mark.parametrize("invalid_prompt", ["", "   ", None])
-    def test_invalid_prompt_template(self, invalid_prompt):
-        with pytest.raises(
-            ValueError, match="prompt_template must be a non-empty string"
-        ):
+    @pytest.mark.parametrize(
+        "invalid_prompt, expected_msg",
+        [
+            ([], "prompt_template must be a non-empty list of prompt templates"),
+            ("invalid_prompt.txt", "prompt_template must be a non-empty list of prompt templates"),
+            (None, "prompt_template must be a non-empty list of prompt templates"),
+            ([""], "Each prompt template must be a string"),
+            (["   "], "Each prompt template must be a string"),
+            (["invalid_prompt.txt"], "Prompt template 'invalid_prompt.txt' does not exist."),
+        ],
+    )
+    def test_invalid_prompt_template(self, invalid_prompt, expected_msg):
+        with pytest.raises(ValueError, match=expected_msg):
             validate_main_inputs(
-                test_cases_file="cases.json",
-                models=["gpt-3"],
+                test_cases_file=self.valid_test_cases_file,
+                models=self.valid_models,
                 output_destination="save_to_file",
-                prompt_template=invalid_prompt,
+                prompt_templates=invalid_prompt,
                 db_handler=None,
             )
 
     def test_db_handler_required_for_db(self):
         with pytest.raises(ValueError, match="db_handler is required"):
             validate_main_inputs(
-                test_cases_file="cases.json",
-                models=["gpt-3"],
+                test_cases_file=self.valid_test_cases_file,
+                models=self.valid_models,
                 output_destination="save_to_db",
-                prompt_template="Prompt",
+                prompt_templates=self.valid_prompt_templates,
                 db_handler=None,
             )
 
@@ -97,22 +107,24 @@ def mock_client():
 
 
 # test cases for run_tests
-def test_run_tests_multiple_models_and_cases(
-    monkeypatch, mock_prompt_builder, mock_client
-):
-    test_cases = [{"input": "This is a test."}, {"input": "Another one."}]
+def test_run_tests_multiple_models_and_cases(monkeypatch, mock_prompt_builder, mock_client):
     models = ["gpt-3", "gpt-4"]
+    templates = ["template1.txt", "template2.txt"]
+    test_cases = [{"input": "This is a test."}, {"input": "Another one."}]
 
     # monkeypatch evaluate_response() to always return True
     monkeypatch.setattr("runner.evaluate_response", lambda *args, **kwargs: True)
 
-    with patch("runner.GrammarChecker") as mock_grammar_checker:
+    with (
+        patch("runner.GrammarChecker") as mock_grammar_checker,
+        patch("runner.PromptBuilder", return_value=mock_prompt_builder),
+    ):
         mock_instance = mock_grammar_checker()
         mock_instance.check_grammar.return_value = "mocked_response"
 
-        results = run_tests(test_cases, models, mock_prompt_builder, mock_client)
+        results = run_tests(test_cases, models, templates, mock_client)
 
-        assert len(results) == len(models) * len(test_cases)
+        assert len(results) == len(models) * len(templates) * len(test_cases)
         for result in results:
             assert result["model"] in models
             assert result["input"] in [tc["input"] for tc in test_cases]
@@ -120,13 +132,9 @@ def test_run_tests_multiple_models_and_cases(
             assert isinstance(result["match"], bool)
 
 
-def test_run_tests_handles_exception(
-    monkeypatch, mock_prompt_builder, mock_client, caplog
-):
+def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_client, caplog):
     test_cases = [{"input": "Bad sentence"}]
-    monkeypatch.setattr(
-        "runner.GrammarChecker", MagicMock(side_effect=Exception("error"))
-    )
+    monkeypatch.setattr("runner.GrammarChecker", MagicMock(side_effect=Exception("error")))
     monkeypatch.setattr("runner.logger", MagicMock())
 
     with pytest.raises(Exception):
@@ -189,11 +197,10 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
     ]
 
     with (
+        patch("runner.validate_main_inputs"),
         patch("runner.PromptBuilder") as mock_prompt_builder,
         patch("runner.OpenAIClient") as mock_client,
-        patch(
-            "runner.load_test_cases", return_value=dummy_test_cases
-        ) as mock_load_test_cases,
+        patch("runner.load_test_cases", return_value=dummy_test_cases) as mock_load_test_cases,
         patch("runner.run_tests", return_value=dummy_results) as mock_run_tests,
         patch("runner.summary_results") as mock_summary,
         patch("runner.save_test_results") as mock_save_test_results,

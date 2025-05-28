@@ -39,7 +39,7 @@ def test_benchmarks_command(mock_db_handler_class, mock_main):
         "benchmarks",
         "--test-cases-file", "my_test_cases.json",
         "--models=gpt-4", "--models=gpt-3.5-turbo", 
-        "--prompt-template", "Correct: {test_sentence}",
+        "--prompt-templates", "Correct: {test_sentence}",
         "--output-destination", "print"
     ])
 
@@ -49,6 +49,6 @@ def test_benchmarks_command(mock_db_handler_class, mock_main):
         "my_test_cases.json",
         ["gpt-4", "gpt-3.5-turbo"],
         "print",
-        "Correct: {test_sentence}",
+        ["Correct: {test_sentence}"],
         mock_handler
     )
