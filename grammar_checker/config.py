@@ -17,7 +17,7 @@ MONGO_DB = os.getenv("MONGO_DB")
 MONGO_COLLECTION = os.getenv("MONGO_COLLECTION")
 
 # Models
-MODELS = [
+VALID_MODELS = [
     "gpt-3.5-turbo",
     # "gpt-4",
     # "gpt-4.1"
@@ -25,7 +25,8 @@ MODELS = [
 DEFAULT_MODEL = "gpt-3.5-turbo"  # default model to use if none is specified
 
 # prompt template configuration
-PROMPT_TEMPLATE = "prompts/grammar_prompt.txt"
+PROMPTS_DIR = "prompts"
+DEFAULT_PROMPT_TEMPLATE = "grammar_prompt.txt"
 
 # Test Cases configuration
 TEST_CASES_FILE = "tests/test_cases.json"
