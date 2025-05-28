@@ -1,4 +1,6 @@
+import os
 from grammar_checker.logger import get_logger
+from grammar_checker.config import PROMPTS_DIR
 
 logger = get_logger(__name__)
 
@@ -18,8 +20,8 @@ class PromptBuilder:
             Constructs a prompt by replacing the placeholder in the template with the provided sentence.
     """
 
-    def __init__(self, prompt_template_path: str):
-        self.template_path = prompt_template_path
+    def __init__(self, prompt_template: str, prompt_dir: str = PROMPTS_DIR):
+        self.template_path = os.path.join(prompt_dir, prompt_template) 
         self.template = self._load_template()
 
     def _load_template(self):

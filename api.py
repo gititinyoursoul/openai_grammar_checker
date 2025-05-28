@@ -12,7 +12,7 @@ from grammar_checker.config import (
     MONGO_DB,
     MONGO_COLLECTION,
     DEFAULT_MODEL,
-    PROMPT_TEMPLATE,
+    DEFAULT_PROMPT_TEMPLATE,
 )
 
 logger = get_logger(__name__)
@@ -42,7 +42,7 @@ app = FastAPI(lifespan=lifespan, title="Grammar Checker API")
 
 class GrammarRequest(BaseModel):
     sentence: str = Field(..., min_length=1)
-    prompt_template: str = PROMPT_TEMPLATE
+    prompt_template: str = DEFAULT_PROMPT_TEMPLATE
     model: str = DEFAULT_MODEL
 
 

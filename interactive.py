@@ -3,7 +3,7 @@ from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
 from grammar_checker.grammar_checker import GrammarChecker
 from grammar_checker.db import MongoDBHandler
-from grammar_checker.config import PROMPT_TEMPLATE, DEFAULT_MODEL
+from grammar_checker.config import DEFAULT_PROMPT_TEMPLATE, DEFAULT_MODEL
 
 
 def get_cli_input(prompt: str, logger) -> str:
@@ -32,7 +32,7 @@ def main(
         logger.warning("No sentence provided. Exiting program.")
         return
 
-    prompt_builder = prompt_builder or PromptBuilder(PROMPT_TEMPLATE)
+    prompt_builder = prompt_builder or PromptBuilder(DEFAULT_PROMPT_TEMPLATE)
     client = client or OpenAIClient()
 
     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
