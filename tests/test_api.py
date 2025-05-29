@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from contextlib import asynccontextmanager
 from fastapi.testclient import TestClient
+from contextlib import asynccontextmanager
 from unittest.mock import MagicMock, patch
 from api import app, get_mongo_handler
 
@@ -37,7 +37,6 @@ def test_check_grammar_success(
     test_request.mode = "api"
 
     test_response = {"corrected": "This is bad grammar."}
-    
 
     mock_checker = MagicMock()
     mock_checker.check_grammar.return_value = test_response
@@ -47,8 +46,6 @@ def test_check_grammar_success(
     mock_handler = MagicMock()
     app.dependency_overrides[get_mongo_handler] = lambda: mock_handler
 
-    print(test_request)
-
     # Act
     response = client.post(
         "/check-grammar/",
@@ -56,10 +53,11 @@ def test_check_grammar_success(
             "sentence": test_request.sentence,
             "prompt_version": test_request.prompt_version,
             "model": test_request.model,
-            "mode": test_request.mode
+            "mode": test_request.mode,
         },
     )
 
+    # Assert
     assert response.status_code == 200
     assert response.json() == test_response
     mock_prompt_builder_class.assert_called_once_with(test_request.prompt_version)
@@ -68,6 +66,20 @@ def test_check_grammar_success(
     mock_handler.save_record.assert_called_once()
 
     app.dependency_overrides = {}
+
+
+def test_check_grammar_validation_error_from_request_sentence():
+    # Invalid: 'sentence' is too short (min_length=1)
+    response = client.post("/check-grammar/", json={"sentence": ""})
+    assert response.status_code == 422
+    assert "string_too_short" in response.text
+    
+    
+def test_check_grammar_validation_error_from_request_mode():
+    # Invalid: 'mode' is not one of the allowed values
+    response = client.post("/check-grammar/", json={"sentence": "Hello world", "mode": "invalid_mode"})
+    assert response.status_code == 422
+    assert "literal_error" in response.text
 
 
 @patch("api.GrammarChecker", side_effect=Exception("Something went wrong"))
