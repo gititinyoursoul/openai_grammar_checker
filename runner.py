@@ -100,22 +100,21 @@ def main(
     test_cases_file: str,
     models: List[str],
     output_destination: str,
-    prompt_template: List[str],
+    prompt_templates: List[str],
     mongo_handler: MongoDBHandler,
 ):
     logger.info("Starting Grammar Checker Tests.")
 
     # validate inputs
-    validate_main_inputs(test_cases_file, models, output_destination, prompt_template, mongo_handler)
+    validate_main_inputs(test_cases_file, models, output_destination, prompt_templates, mongo_handler)
     logger.info("Input validation passed.")
 
     # set up the OpenAI client and prompt builder
-    prompt_builder = PromptBuilder(prompt_template)
     client = OpenAIClient()
 
     # run the tests
     test_cases = load_test_cases(test_cases_file)
-    results = run_tests(test_cases, models, prompt_builder, client)
+    results = run_tests(test_cases, models, prompt_templates, client)
 
     summary_results(results)
 

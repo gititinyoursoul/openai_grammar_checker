@@ -188,7 +188,7 @@ def test_summary_results_empty():
 def test_main(output_destination, expect_db_call, expect_file_call, expected_log_msg):
     test_cases_file = "dummy_cases.json"
     models = ["gpt-3"]
-    prompt_template = "template"
+    prompt_templates = ["template"]
     mock_db_handler = MagicMock()
 
     dummy_test_cases = [{"input": "This is a test."}]
@@ -204,7 +204,6 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
 
     with (
         patch("runner.validate_main_inputs"),
-        patch("runner.PromptBuilder") as mock_prompt_builder,
         patch("runner.OpenAIClient") as mock_client,
         patch("runner.load_test_cases", return_value=dummy_test_cases) as mock_load_test_cases,
         patch("runner.run_tests", return_value=dummy_results) as mock_run_tests,
@@ -217,18 +216,17 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
             test_cases_file,
             models,
             output_destination,
-            prompt_template,
+            prompt_templates,
             mock_db_handler,
         )
 
         # --- Control Flow ---
-        mock_prompt_builder.assert_called_once_with(prompt_template)
         mock_client.assert_called_once()
         mock_load_test_cases.assert_called_once_with(test_cases_file)
         mock_run_tests.assert_called_once_with(
             dummy_test_cases,
             models,
-            mock_prompt_builder.return_value,
+            prompt_templates,
             mock_client.return_value,
         )
         mock_summary.assert_called_once_with(dummy_results)
