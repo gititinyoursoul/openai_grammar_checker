@@ -126,11 +126,11 @@ def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_
 
         assert len(results) == len(models) * len(templates) * len(test_cases)
         for result in results:
-            assert result["model"] in models
-            assert result["template"] in templates
-            assert result["input"] in [tc["input"] for tc in test_cases]
-            assert result["output"] == "mocked_response"
-            assert isinstance(result["match"], bool)
+            assert result["request"]["model"] in models
+            assert result["request"]["prompt_version"] in templates
+            assert result["request"]["sentence"] in [tc["input"] for tc in test_cases]
+            assert result["response"] == "mocked_response"
+            assert isinstance(result["evaluation"]["match"], bool)
 
 
 def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_client, caplog):
@@ -146,12 +146,12 @@ def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_clie
 # unittest summary_results
 def test_summary_results_multiple_models():
     results = [
-        {"template": "v1_test", "model": "gpt-2", "input": "Another one.", "match": False},
-        {"template": "v1_test", "model": "gpt-3", "input": "This is a test.", "match": True},
-        {"template": "v1_test", "model": "gpt-3", "input": "Another one.", "match": False},
-        {"template": "v1_test", "model": "gpt-4", "input": "This is a test.", "match": True},
-        {"template": "v2_test", "model": "gpt-3", "input": "Another one.", "match": False},
-        {"template": "v2_test", "model": "gpt-4", "input": "This is a test.", "match": True},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-2", "sentence": "Another one."}, "evaluation": {"match": False}},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "This is a test."}, "evaluation": {"match": True}},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "Another one."}, "evaluation": {"match": False}},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-4", "sentence": "This is a test."}, "evaluation": {"match": True}},
+        {"request": {"prompt_version": "v2_test", "model": "gpt-3", "sentence": "Another one."}, "evaluation": {"match": False}},
+        {"request": {"prompt_version": "v2_test", "model": "gpt-4", "sentence": "This is a test."}, "evaluation": {"match": True}},
     ]
 
     summary = summary_results(results)
@@ -194,12 +194,16 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
     dummy_test_cases = [{"input": "This is a test."}]
     dummy_results = [
         {
-            "model": "gpt-3",
-            "input": "This is a test.",
-            "output": "output",
-            "expected": {"input": "This is a test."},
-            "match": True,
-        }
+            "request": {
+                "sentence": "This is a test.",
+                "prompt_version": prompt_templates[0],
+                "model": models[0]
+                },
+            "response": "mock_response",
+            "evaluation": {
+                "match": True,
+                "expected": {"input": "This is a test."}
+        }}
     ]
 
     with (

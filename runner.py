@@ -62,15 +62,17 @@ def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], c
                     is_match = evaluate_response(test_case, response)
                     results.append(
                         {
-                            "template": template,
-                            "model": model,
-                            "input": test_case["input"],
-                            "output": response,
-                            "expected": test_case,
-                            "match": is_match,
+                            "request": {
+                                "sentence": sentence,
+                                "prompt_version": template,
+                                "model": model,
+                                "mode": "benchmark",
+                            },
+                            "response": response,
+                            "evaluation": {"match": is_match, "expected": test_case},
                         }
                     )
-                    logger.info(f"Sentence: {test_case['input']} => {'PASS' if is_match else 'FAIL'}")
+                    logger.info(f"Sentence: {sentence} => {'PASS' if is_match else 'FAIL'}")
                 except Exception as e:
                     logger.critical(f"Unexpected error: {str(e)}", exc_info=True)
                     raise
@@ -82,16 +84,16 @@ def summary_results(results: list):
 
     summary = {}
     for result in results:
-        template = result["template"]
-        if template not in summary:
-            summary[template] = {}
-        model = result["model"]
-        if model not in summary[template]:
-            summary[template][model] = {"total": 0, "passed": 0}
-        
-        summary[template][model]["total"] += 1
-        if result["match"]:
-            summary[template][model]["passed"] += 1
+        prompt_version = result["request"]["prompt_version"]
+        if prompt_version not in summary:
+            summary[prompt_version] = {}
+        model = result["request"]["model"]
+        if model not in summary[prompt_version]:
+            summary[prompt_version][model] = {"total": 0, "passed": 0}
+
+        summary[prompt_version][model]["total"] += 1
+        if result["evaluation"]["match"]:
+            summary[prompt_version][model]["passed"] += 1
     logger.info(f"Model Matches: {summary}")
     return summary
 
@@ -124,10 +126,9 @@ def main(
         with mongo_handler as db:
             for result in results:
                 mongo_handler.save_record(
-                    input_data=result["input"],
-                    model_response=result["output"],
-                    test_eval={"match": result["match"], "expected": result["expected"]},
-                    metadata={"mode": "runner.py", "model": result["model"]},
+                    request=result["request"],
+                    response=result["response"],
+                    test_eval=result["evaluation"],
                 )
     elif output_destination == "save_to_file":
         logger.info(f"Saving test results to {TEST_RESULTS_FILE}")

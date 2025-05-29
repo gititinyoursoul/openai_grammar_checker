@@ -55,23 +55,9 @@ def test_save_record_success(mock_mongo_handler):
 
         # Check if the record is saved correctly
         record = db.collection.find_one({"_id": record_id})
-        assert record["input"] == input_data
+        assert record["request"] == input_data
         assert record["response"] == model_response
         assert "timestamp" in record
-
-
-def test_save_record_with_metadata(mock_mongo_handler):
-    input_data = "She don't like apples."
-    model_response = {"corrected_sentence": "She doesn't like apples."}
-    metadata = {"model": "gpt-4", "mode": "test"}
-
-    with mock_mongo_handler as db:
-        # Save record with metadata
-        record_id = db.save_record(input_data, model_response, metadata=metadata)
-        record = db.collection.find_one({"_id": record_id})
-
-        assert "metadata" in record
-        assert record["metadata"]["model"] == "gpt-4"
 
 
 def test_save_record_with_test_eval(mock_mongo_handler):
@@ -83,9 +69,9 @@ def test_save_record_with_test_eval(mock_mongo_handler):
         record_id = db.save_record(input_data, model_response, test_eval=test_eval)
         record = db.collection.find_one({"_id": record_id})
 
-        assert "test_eval" in record
-        assert record["test_eval"]["accuracy"] == 0.95
-        assert record["test_eval"]["feedback"] == "Good correction"
+        assert "evaluation" in record
+        assert record["evaluation"]["accuracy"] == 0.95
+        assert record["evaluation"]["feedback"] == "Good correction"
 
 
 def test_save_record_failure(monkeypatch, caplog, mock_mongo_handler):
