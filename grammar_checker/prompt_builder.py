@@ -21,6 +21,7 @@ class PromptBuilder:
     """
 
     def __init__(self, prompt_template: str, prompt_dir: str = PROMPTS_DIR):
+        self.prompt_template = prompt_template
         self.template_path = os.path.join(prompt_dir, prompt_template) 
         self.template = self._load_template()
 

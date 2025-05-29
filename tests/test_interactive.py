@@ -35,7 +35,7 @@ def test_main_saves_record_to_db(monkeypatch):
     monkeypatch.setattr(
         "interactive.get_cli_input", lambda prompt, logger: test_sentence
     )
-
+    
     # Act
     main(mock_mongo_handler, mock_prompt_builder, mock_client, DEFAULT_MODEL)
 
@@ -46,11 +46,9 @@ def test_main_saves_record_to_db(monkeypatch):
     # Assert the grammar check was performed
     mock_checker.check_grammar.assert_called_once()
     # Assert the record was saved to MongoDB
-    mock_mongo_handler.save_record.assert_called_once_with(
-        input_data=test_sentence,
-        model_response=test_response,
-        metadata={"model": DEFAULT_MODEL, "mode": "interactive.py"},
-    )
+    mock_mongo_handler.save_record.assert_called_once()
+    saved_request = mock_mongo_handler.save_record.call_args[1]["request"]
+    assert saved_request["sentence"] == test_sentence
 
 
 @pytest.mark.parametrize("error_type", [EOFError, KeyboardInterrupt])

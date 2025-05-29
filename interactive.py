@@ -37,12 +37,18 @@ def main(
 
     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
     response = grammar_checker.check_grammar()
+    
+    request = {
+        "sentence": sentence,
+        "prompt_version": prompt_builder.prompt_template,
+        "model": model,
+        "mode": "interactive",
+    }
 
     with mongo_handler:
         mongo_handler.save_record(
-            input_data=sentence,
-            model_response=response,
-            metadata={"model": model, "mode": "interactive.py"},
+            request=request,
+            response=response
         )
 
 
