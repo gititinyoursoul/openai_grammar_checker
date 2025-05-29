@@ -69,9 +69,9 @@ def test_save_record_with_test_eval(mock_mongo_handler):
         record_id = db.save_record(input_data, model_response, test_eval=test_eval)
         record = db.collection.find_one({"_id": record_id})
 
-        assert "evaluation" in record
-        assert record["evaluation"]["accuracy"] == 0.95
-        assert record["evaluation"]["feedback"] == "Good correction"
+        assert "expected" in record
+        assert record["expected"]["accuracy"] == 0.95
+        assert record["expected"]["feedback"] == "Good correction"
 
 
 def test_save_record_failure(monkeypatch, caplog, mock_mongo_handler):

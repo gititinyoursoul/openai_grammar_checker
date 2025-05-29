@@ -1,89 +1,89 @@
 [
     {
         "input": "She quickly ran to the store.",
-        "expected_mistakes": [],
-        "expected_corrected_sentence": "She quickly ran to the store."
+        "mistakes": [],
+        "corrected_sentence": "She quickly ran to the store."
     },
     {
         "input": "She go to school every day.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "VerbTenseMistake",
                 "original": "go",
                 "corrected": "goes"
             }
         ],
-        "expected_corrected_sentence": "She goes to school every day."
+        "corrected_sentence": "She goes to school every day."
     },
     {
         "input": "I bought eggs milk and bread.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "PunctuationMistake",
                 "original": "eggs milk",
                 "corrected": "eggs, milk"
             }
         ],
-        "expected_corrected_sentence": "I bought eggs, milk, and bread."
+        "corrected_sentence": "I bought eggs, milk, and bread."
     },
     {
         "input": "I have went to the store.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "VerbTenseMistake",
                 "original": "went",
                 "corrected": "gone"
             }
         ],
-        "expected_corrected_sentence": "I have gone to the store."
+        "corrected_sentence": "I have gone to the store."
     },
     {
         "input": "The cat is more faster than the dog.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "ComparativeFormMistake",
                 "original": "more faster",
                 "corrected": "faster"
             }
         ],
-        "expected_corrected_sentence": "The cat is faster than the dog."
+        "corrected_sentence": "The cat is faster than the dog."
     },
     {
         "input": "She don't like apples.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "VerbTenseMistake",
                 "original": "don't",
                 "corrected": "doesn't"
             }
         ],
-        "expected_corrected_sentence": "She doesn't like apples."
+        "corrected_sentence": "She doesn't like apples."
     },
     {
         "input": "He is taller then his brother.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "WrongWordMistake",
                 "original": "then",
                 "corrected": "than"
             }
         ],
-        "expected_corrected_sentence": "He is taller than his brother."
+        "corrected_sentence": "He is taller than his brother."
     },
     {
         "input": "He entered to the room silently.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "WrongPrepositionMistake",
                 "original": "entered to",
                 "corrected": "entered"
             }
         ],
-        "expected_corrected_sentence": "He entered the room silently."
+        "corrected_sentence": "He entered the room silently."
     },
     {
         "input": "The informations are accurate.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "NounFormMistake",
                 "original": "informations",
@@ -95,44 +95,44 @@
                 "corrected": "is"
             }
         ],
-        "expected_corrected_sentence": "The information is accurate."
+        "corrected_sentence": "The information is accurate."
     },
     {
         "input": "I have an dog.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "WrongArticleMistake",
                 "original": "an dog",
                 "corrected": "a dog"
             }
         ],
-        "expected_corrected_sentence": "I have a dog."
+        "corrected_sentence": "I have a dog."
     },
     {
         "input": "He speaks English good.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "AdverbMistake",
                 "original": "good",
                 "corrected": "well"
             }
         ],
-        "expected_corrected_sentence": "He speaks English well."
+        "corrected_sentence": "He speaks English well."
     },
     {
         "input": "Where you are going?",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "WordOrderMistake",
                 "original": "Where you are going",
                 "corrected": "Where are you going"
             }
         ],
-        "expected_corrected_sentence": "Where are you going?"
+        "corrected_sentence": "Where are you going?"
     },
     {
         "input": "She have a big dog and a car red.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "VerbTenseMistake",
                 "original": "have",
@@ -144,11 +144,11 @@
                 "corrected": "a red car"
             }
         ],
-        "expected_corrected_sentence": "She has a big dog and a red car."
+        "corrected_sentence": "She has a big dog and a red car."
     },
     {
         "input": "They was playing soccer yesterday but they dont won.",
-        "expected_mistakes": [
+        "mistakes": [
             {
                 "type": "VerbTenseMistake",
                 "original": "was",
@@ -165,6 +165,6 @@
                 "corrected": "win"
             }
         ],
-        "expected_corrected_sentence": "They were playing soccer yesterday but they didn't win."
+        "corrected_sentence": "They were playing soccer yesterday but they didn't win."
     }
 ]

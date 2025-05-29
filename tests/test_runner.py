@@ -130,7 +130,7 @@ def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_
             assert result["request"]["prompt_version"] in templates
             assert result["request"]["sentence"] in [tc["input"] for tc in test_cases]
             assert result["response"] == "mocked_response"
-            assert isinstance(result["evaluation"]["match"], bool)
+            assert isinstance(result["expected"]["match"], bool)
 
 
 def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_client, caplog):
@@ -146,12 +146,12 @@ def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_clie
 # unittest summary_results
 def test_summary_results_multiple_models():
     results = [
-        {"request": {"prompt_version": "v1_test", "model": "gpt-2", "sentence": "Another one."}, "evaluation": {"match": False}},
-        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "This is a test."}, "evaluation": {"match": True}},
-        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "Another one."}, "evaluation": {"match": False}},
-        {"request": {"prompt_version": "v1_test", "model": "gpt-4", "sentence": "This is a test."}, "evaluation": {"match": True}},
-        {"request": {"prompt_version": "v2_test", "model": "gpt-3", "sentence": "Another one."}, "evaluation": {"match": False}},
-        {"request": {"prompt_version": "v2_test", "model": "gpt-4", "sentence": "This is a test."}, "evaluation": {"match": True}},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-2", "sentence": "Another one."}, "expected": {"match": False}},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "This is a test."}, "expected": {"match": True}},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "Another one."}, "expected": {"match": False}},
+        {"request": {"prompt_version": "v1_test", "model": "gpt-4", "sentence": "This is a test."}, "expected": {"match": True}},
+        {"request": {"prompt_version": "v2_test", "model": "gpt-3", "sentence": "Another one."}, "expected": {"match": False}},
+        {"request": {"prompt_version": "v2_test", "model": "gpt-4", "sentence": "This is a test."}, "expected": {"match": True}},
     ]
 
     summary = summary_results(results)
@@ -200,7 +200,7 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
                 "model": models[0]
                 },
             "response": "mock_response",
-            "evaluation": {
+            "expected": {
                 "match": True,
                 "expected": {"input": "This is a test."}
         }}

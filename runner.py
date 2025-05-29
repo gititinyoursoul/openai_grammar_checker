@@ -60,6 +60,7 @@ def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], c
                     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
                     response = grammar_checker.check_grammar()
                     is_match = evaluate_response(test_case, response)
+                    test_case["match"] = is_match
                     results.append(
                         {
                             "request": {
@@ -69,7 +70,7 @@ def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], c
                                 "mode": "benchmark",
                             },
                             "response": response,
-                            "evaluation": {"match": is_match, "expected": test_case},
+                            "expected": test_case
                         }
                     )
                     logger.info(f"Sentence: {sentence} => {'PASS' if is_match else 'FAIL'}")
@@ -92,7 +93,7 @@ def summary_results(results: list):
             summary[prompt_version][model] = {"total": 0, "passed": 0}
 
         summary[prompt_version][model]["total"] += 1
-        if result["evaluation"]["match"]:
+        if result["expected"]["match"]:
             summary[prompt_version][model]["passed"] += 1
     logger.info(f"Model Matches: {summary}")
     return summary
@@ -128,7 +129,7 @@ def main(
                 mongo_handler.save_record(
                     request=result["request"],
                     response=result["response"],
-                    test_eval=result["evaluation"],
+                    test_eval=result["expected"],
                 )
     elif output_destination == "save_to_file":
         logger.info(f"Saving test results to {TEST_RESULTS_FILE}")

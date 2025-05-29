@@ -38,7 +38,7 @@ class MongoDBHandler:
             "timestamp": datetime.now(UTC),
         }
         if test_eval:
-            record["evaluation"] = test_eval
+            record["expected"] = test_eval
         try:
             result = self.collection.insert_one(record)
             logger.debug(f"Record inserted with ID: {result.inserted_id}")
