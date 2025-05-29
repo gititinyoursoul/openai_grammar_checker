@@ -29,14 +29,14 @@ def test_interactive_command(mock_db_handler_class, mock_main):
     mock_main.assert_called_once_with(mongo_handler=mock_handler)
     
     
-@patch("cli.benchmarks_main")
+@patch("cli.benchmark_main")
 @patch("cli.MongoDBHandler")
-def test_benchmarks_command(mock_db_handler_class, mock_main):
+def test_benchmark_command(mock_db_handler_class, mock_main):
     mock_handler = MagicMock()
     mock_db_handler_class.return_value = mock_handler
 
     result = runner.invoke(app, [
-        "benchmarks",
+        "benchmark",
         "--test-cases-file", "my_test_cases.json",
         "--models=gpt-4", "--models=gpt-3.5-turbo", 
         "--prompt-templates", "Correct: {test_sentence}",

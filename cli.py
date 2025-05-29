@@ -7,7 +7,7 @@ from grammar_checker.logger import get_logger
 from grammar_checker.db import MongoDBHandler
 from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from interactive import main as interactive_main
-from runner import main as benchmarks_main
+from runner import main as benchmark_main
 from grammar_checker.config import (
     VALID_MODELS,
     TEST_CASES_FILE_DEV,
@@ -36,7 +36,7 @@ def interactive():
 
 
 @app.command()
-def benchmarks(
+def benchmark(
     test_cases_file: str = typer.Option(TEST_CASES_FILE_DEV, help="Path to the test cases JSON file"),
     models: List[str] = typer.Option(VALID_MODELS, help="List of OpenAI model names"),
     prompt_templates: List[str] = typer.Option([DEFAULT_PROMPT_TEMPLATE], help="List of prompt template files"),
@@ -56,7 +56,7 @@ def benchmarks(
     logger.info("Starting benchmark mode...")
     logger.debug(f"Arguments received: {test_cases_file=}, {models=}, {prompt_templates=}, {output_destination=}")
     mongo_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
-    benchmarks_main(test_cases_file, models, output_destination, prompt_templates, mongo_handler)
+    benchmark_main(test_cases_file, models, output_destination, prompt_templates, mongo_handler)
 
 
 if __name__ == "__main__":
