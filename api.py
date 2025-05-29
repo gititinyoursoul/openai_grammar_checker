@@ -1,7 +1,7 @@
 # api.py
 from fastapi import FastAPI, Depends, HTTPException
 from contextlib import asynccontextmanager
-from pydantic import BaseModel, Field
+from models.request import GrammarRequest
 from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
@@ -11,8 +11,6 @@ from grammar_checker.config import (
     MONGO_URI,
     MONGO_DB,
     MONGO_COLLECTION,
-    DEFAULT_MODEL,
-    DEFAULT_PROMPT_TEMPLATE,
 )
 
 logger = get_logger(__name__)
@@ -40,25 +38,18 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan, title="Grammar Checker API")
 
 
-class GrammarRequest(BaseModel):
-    sentence: str = Field(..., min_length=1)
-    prompt_template: str = DEFAULT_PROMPT_TEMPLATE
-    model: str = DEFAULT_MODEL
-
-
 @app.post("/check-grammar/")
 def check_grammar(request: GrammarRequest, mongo_handler: MongoDBHandler = Depends(get_mongo_handler)):
     logger.info(f"Received input: {request.sentence} | Model: {request.model}")
     try:
-        prompt_builder = PromptBuilder(request.prompt_template)
+        prompt_builder = PromptBuilder(request.prompt_version)
         client = OpenAIClient()
         grammar_checker = GrammarChecker(prompt_builder, request.sentence, request.model, client)
         response = grammar_checker.check_grammar()
 
         mongo_handler.save_record(
-            input_data=request.sentence,
-            model_response=response,
-            metadata={"model": request.model, "mode": "api.py"},
+            request=request.model_dump(),
+            response=response
         )
         return response
 
