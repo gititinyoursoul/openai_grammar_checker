@@ -1,6 +1,4 @@
 import typer
-import subprocess
-import os
 import uvicorn
 from typing import List
 from grammar_checker.logger import get_logger
