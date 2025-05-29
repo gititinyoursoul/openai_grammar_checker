@@ -26,7 +26,7 @@ DEFAULT_MODEL = "gpt-3.5-turbo"  # default model to use if none is specified
 
 # prompt template configuration
 PROMPTS_DIR = "prompts"
-DEFAULT_PROMPT_TEMPLATE = "grammar_prompt.txt"
+DEFAULT_PROMPT_TEMPLATE = "v1_original.txt"
 
 # Test Cases configuration
 TEST_CASES_FILE = "tests/test_cases.json"
