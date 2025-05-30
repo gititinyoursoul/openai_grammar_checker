@@ -23,12 +23,8 @@ class OpenAIClient:
         return api_key
 
     # get model reponse / error handling
-    def get_model_response(
-        self, model: str, prompt: str, template_path: str, sentence: str
-    ):
-        logger.info(
-            f"Sending request to model: {model} with template '{template_path}' and sentence '{sentence}'"
-        )
+    def get_model_response(self, model: str, prompt: str) -> dict:
+
         try:
             response = self.client.chat.completions.create(
                 model=model,

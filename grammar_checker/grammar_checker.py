@@ -19,15 +19,14 @@ class GrammarChecker:
         self.model = model
         self.client = client
 
-        logger.info(
-            f"GrammarChecker initialized with model: {model}, sentence: {sentence}"
-        )
+        logger.info(f"GrammarChecker initialized with model: {self.model}, sentence: {self.sentence}")
 
     def check_grammar(self) -> GrammarResponse:
         prompt = self.prompt_builder.build_prompt(self.sentence)
         try:
-            response = self.client.get_model_response(
-                self.model, prompt #, self.prompt_builder.template_path, self.sentence
+            response = self.client.get_model_response(self.model, prompt)
+            logger.debug(
+                f"GrammarChecker request: '{self.model}' with template '{self.prompt_builder.prompt_template}' and sentence '{self.sentence}'"
             )
             if response:
                 return GrammarResponse(**response)
