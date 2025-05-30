@@ -1,4 +1,3 @@
-import os
 import pytest
 import json
 from unittest.mock import patch, MagicMock
@@ -35,7 +34,7 @@ def test_get_model_response_returns_json(monkeypatch):
         mock_openai.return_value = mock_client
         client = OpenAIClient()
         result = client.get_model_response(
-            "gpt-3", "test prompt", "template.txt", "sentence"
+            "gpt-3", "test prompt"
         )
         assert result == {"result": "ok"}
         mock_client.chat.completions.create.assert_called_once()
@@ -53,7 +52,7 @@ def test_get_model_response_invalid_json(monkeypatch):
         client = OpenAIClient()
         with pytest.raises(json.JSONDecodeError):
             client.get_model_response(
-                "gpt-3", "test prompt", "template.txt", "sentence"
+                "gpt-3", "test prompt"
             )
 
 
