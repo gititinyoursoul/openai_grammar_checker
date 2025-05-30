@@ -1,6 +1,7 @@
 from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
+from models.response import GrammarResponse
 
 logger = get_logger(__name__)
 
@@ -22,14 +23,14 @@ class GrammarChecker:
             f"GrammarChecker initialized with model: {model}, sentence: {sentence}"
         )
 
-    def check_grammar(self):
+    def check_grammar(self) -> GrammarResponse:
         prompt = self.prompt_builder.build_prompt(self.sentence)
         try:
             response = self.client.get_model_response(
-                self.model, prompt, self.prompt_builder.template_path, self.sentence
+                self.model, prompt #, self.prompt_builder.template_path, self.sentence
             )
             if response:
-                return response
+                return GrammarResponse(**response)
             else:
                 logger.error("Received empty response from the model.")
                 raise ValueError

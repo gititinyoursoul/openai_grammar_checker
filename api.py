@@ -2,6 +2,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from contextlib import asynccontextmanager
 from models.request import GrammarRequest
+from models.response import GrammarResponse
 from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
 from grammar_checker.openai_client import OpenAIClient
@@ -49,9 +50,9 @@ def check_grammar(request: GrammarRequest, mongo_handler: MongoDBHandler = Depen
 
         mongo_handler.save_record(
             request=request.model_dump(),
-            response=response
+            response=response.model_dump()
         )
-        return response
+        return response.model_dump()
 
     except Exception as e:
         logger.exception("Error during grammar check processing")

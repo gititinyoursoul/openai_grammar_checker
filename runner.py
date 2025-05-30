@@ -59,7 +59,9 @@ def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], c
                     prompt_builder = PromptBuilder(template)
                     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
                     response = grammar_checker.check_grammar()
-                    is_match = evaluate_response(test_case, response)
+                    
+                    response_dict = response.model_dump()
+                    is_match = evaluate_response(test_case, response_dict)
                     test_case["match"] = is_match
                     results.append(
                         {
@@ -69,7 +71,7 @@ def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], c
                                 "model": model,
                                 "mode": "benchmark",
                             },
-                            "response": response,
+                            "response": response_dict,
                             "expected": test_case
                         }
                     )
