@@ -1,7 +1,8 @@
 from unittest.mock import patch, MagicMock
 import pytest
+from models.response import GrammarResponse
 from runner import validate_main_inputs, run_tests, summary_results, main
-from grammar_checker.config import TEST_RESULTS_FILE, VALID_MODELS, DEFAULT_PROMPT_TEMPLATE
+from grammar_checker.config import VALID_MODELS, DEFAULT_PROMPT_TEMPLATE
 
 
 
@@ -120,8 +121,13 @@ def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_
         patch("runner.PromptBuilder", return_value=mock_prompt_builder),
     ):
         mock_instance = mock_grammar_checker()
-        mock_instance.check_grammar.return_value = "mocked_response"
-
+        mock_instance.check_grammar.return_value = GrammarResponse(
+            input="This is a test.",
+            mistakes=[],
+            corrected_sentence="This is a test.",
+        )
+        
+        test_response_json = mock_instance.check_grammar.return_value.model_dump()
         results = run_tests(test_cases, models, templates, mock_client)
 
         assert len(results) == len(models) * len(templates) * len(test_cases)
@@ -129,7 +135,7 @@ def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_
             assert result["request"]["model"] in models
             assert result["request"]["prompt_version"] in templates
             assert result["request"]["sentence"] in [tc["input"] for tc in test_cases]
-            assert result["response"] == "mocked_response"
+            assert result["response"] == test_response_json
             assert isinstance(result["expected"]["match"], bool)
 
 
