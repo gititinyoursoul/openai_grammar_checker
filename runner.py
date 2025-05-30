@@ -48,12 +48,13 @@ def validate_main_inputs(
 
 
 # test cases
-def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], client: OpenAIClient):
+def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[str], client: OpenAIClient):
+    logger.info("Starting benchmark tests.")
     results = []
     for model in models:
         for template in prompt_templates:
             for test_case in test_cases:
-                logger.info(f"Begin grammar check of model: '{model}' and sentence: '{test_case['input']}'")
+                logger.debug(f"test_id {test_case['test_id']} | model: '{model}' | prompt_version: '{template}'")
                 sentence = test_case["input"]
                 try:
                     prompt_builder = PromptBuilder(template)
@@ -75,10 +76,11 @@ def run_tests(test_cases: str, models: List[str], prompt_templates: List[str], c
                             "expected": test_case
                         }
                     )
-                    logger.info(f"Sentence: {sentence} => {'PASS' if is_match else 'FAIL'}")
                 except Exception as e:
                     logger.critical(f"Unexpected error: {str(e)}", exc_info=True)
                     raise
+    logger.info("Benchmark tests completed.")
+    logger.info(f"Total test cases run: {len(results)}")
     return results
 
 
