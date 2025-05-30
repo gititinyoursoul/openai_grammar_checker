@@ -1,5 +1,5 @@
-from pydantic import BaseModel, Field, constr
-from typing import List, Literal, Optional
+from pydantic import BaseModel, Field
+from typing import List, Literal
 
 # Represents one individual mistake entry in the response
 class Mistake(BaseModel):
@@ -18,6 +18,6 @@ class Mistake(BaseModel):
     
 # Base schema used by API and interactive responses
 class GrammarResponse(BaseModel):
-    input: constr(min_length=1)
+    input: str = Field(..., min_length=1)
     mistakes: List[Mistake]
-    corrected_sentence: constr(min_length=1)
+    corrected_sentence: str =  Field(..., min_length=1)
