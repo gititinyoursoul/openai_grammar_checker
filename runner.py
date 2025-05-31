@@ -1,5 +1,6 @@
 # This script runs the grammar checker tests using the OpenAI API.
 import os
+import uuid
 from typing import List
 from grammar_checker.logger import get_logger
 from grammar_checker.prompt_builder import PromptBuilder
@@ -46,10 +47,14 @@ def validate_main_inputs(
     if output_destination == "save_to_db" and db_handler is None:
         raise ValueError("db_handler is required when output_destination is 'save_to_db'.")
 
+def get_run_id():
+    """Generate a unique ID for this test run."""
+    return str(uuid.uuid4())
 
 # test cases
 def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[str], client: OpenAIClient):
-    logger.info("Starting benchmark tests.")
+    run_id = get_run_id()
+    logger.info(f"Starting benchmark tests {run_id}.")
     results = []
     for model in models:
         for template in prompt_templates:
@@ -64,6 +69,7 @@ def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[s
                     response_dict = response.model_dump()
                     is_match = evaluate_response(test_case, response_dict)
                     test_case["match"] = is_match
+                    test_case["run_id"] = run_id
                     results.append(
                         {
                             "request": {
@@ -79,8 +85,7 @@ def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[s
                 except Exception as e:
                     logger.critical(f"Unexpected error: {str(e)}", exc_info=True)
                     raise
-    logger.info("Benchmark tests completed.")
-    logger.info(f"Total test cases run: {len(results)}")
+    logger.info(f"Benchmark tests for {run_id} completed.")
     return results
 
 
