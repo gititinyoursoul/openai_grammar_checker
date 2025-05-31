@@ -47,9 +47,11 @@ def validate_main_inputs(
     if output_destination == "save_to_db" and db_handler is None:
         raise ValueError("db_handler is required when output_destination is 'save_to_db'.")
 
+
 def get_run_id():
     """Generate a unique ID for this test run."""
     return str(uuid.uuid4())
+
 
 # test cases
 def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[str], client: OpenAIClient):
@@ -65,7 +67,7 @@ def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[s
                     prompt_builder = PromptBuilder(template)
                     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
                     response = grammar_checker.check_grammar()
-                    
+
                     response_dict = response.model_dump()
                     is_match = evaluate_response(test_case, response_dict)
                     test_case["match"] = is_match
@@ -79,7 +81,7 @@ def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[s
                                 "mode": "benchmark",
                             },
                             "response": response_dict,
-                            "expected": test_case
+                            "benchmark_eval": test_case,
                         }
                     )
                 except Exception as e:
@@ -102,7 +104,7 @@ def summary_results(results: list):
             summary[prompt_version][model] = {"total": 0, "passed": 0}
 
         summary[prompt_version][model]["total"] += 1
-        if result["expected"]["match"]:
+        if result["benchmark_eval"]["match"]:
             summary[prompt_version][model]["passed"] += 1
     logger.info(f"Model Matches: {summary}")
     return summary
@@ -138,7 +140,7 @@ def main(
                 mongo_handler.save_record(
                     request=result["request"],
                     response=result["response"],
-                    test_eval=result["expected"],
+                    benchmark_eval=result["benchmark_eval"],
                 )
     elif output_destination == "save_to_file":
         logger.info(f"Saving test results to {TEST_RESULTS_FILE}")

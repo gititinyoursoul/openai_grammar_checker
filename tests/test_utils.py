@@ -7,7 +7,7 @@ from grammar_checker.utils import save_test_results
 
 def test_load_test_cases_valid_json(tmp_path):
     # Arrange
-    test_data = [{"input": "This is a test.", "expected": "This is a test."}]
+    test_data = [{"input": "This is a test.", "benchmark_eval": "This is a test."}]
     file_path = tmp_path / "test_cases.json"
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(test_data, f)

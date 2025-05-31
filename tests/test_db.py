@@ -60,18 +60,18 @@ def test_save_record_success(mock_mongo_handler):
         assert "timestamp" in record
 
 
-def test_save_record_with_test_eval(mock_mongo_handler):
+def test_save_record_with_benchmark_eval(mock_mongo_handler):
     input_data = "They is playing."
     model_response = {"corrected_sentence": "They are playing."}
-    test_eval = {"accuracy": 0.95, "feedback": "Good correction"}
+    benchmark_eval = {"accuracy": 0.95, "feedback": "Good correction"}
 
     with mock_mongo_handler as db:
-        record_id = db.save_record(input_data, model_response, test_eval=test_eval)
+        record_id = db.save_record(input_data, model_response, benchmark_eval=benchmark_eval)
         record = db.collection.find_one({"_id": record_id})
 
-        assert "expected" in record
-        assert record["expected"]["accuracy"] == 0.95
-        assert record["expected"]["feedback"] == "Good correction"
+        assert "benchmark_eval" in record
+        assert record["benchmark_eval"]["accuracy"] == 0.95
+        assert record["benchmark_eval"]["feedback"] == "Good correction"
 
 
 def test_save_record_failure(monkeypatch, caplog, mock_mongo_handler):

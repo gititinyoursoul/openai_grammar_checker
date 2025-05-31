@@ -31,14 +31,14 @@ class MongoDBHandler:
         else:
             logger.debug(f"No active MongoDB connection to close: {self.database_name}/{self.collection_name}")
 
-    def save_record(self, request, response, test_eval=None):
+    def save_record(self, request, response, benchmark_eval=None):
         record = {
             "request": request,
             "response": response,
             "timestamp": datetime.now(UTC),
         }
-        if test_eval:
-            record["expected"] = test_eval
+        if benchmark_eval:
+            record["benchmark_eval"] = benchmark_eval
         try:
             result = self.collection.insert_one(record)
             logger.debug(f"Record inserted with ID: {result.inserted_id}")
