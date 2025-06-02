@@ -1,5 +1,7 @@
 import typer
 import uvicorn
+from dotenv import load_dotenv
+load_dotenv()
 from typing import List
 from grammar_checker.logger import get_logger
 from grammar_checker.db import MongoDBHandler
@@ -8,6 +10,7 @@ from interactive import main as interactive_main
 from runner import main as benchmark_main
 from grammar_checker.config import (
     VALID_MODELS,
+    TEST_CASES_FILE,
     TEST_CASES_FILE_DEV,
     DEFAULT_PROMPT_TEMPLATE,
 )
@@ -35,7 +38,7 @@ def interactive():
 
 @app.command()
 def benchmark(
-    test_cases_file: str = typer.Option(TEST_CASES_FILE_DEV, help="Path to the test cases JSON file"),
+    test_cases_file: str = typer.Option(TEST_CASES_FILE, help="Path to the test cases JSON file"),
     models: List[str] = typer.Option(VALID_MODELS, help="List of OpenAI model names"),
     prompt_templates: List[str] = typer.Option([DEFAULT_PROMPT_TEMPLATE], help="List of prompt template files"),
     output_destination: str = typer.Option("save_to_db"),
