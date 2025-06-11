@@ -1,6 +1,9 @@
 from pymongo import MongoClient
 from datetime import datetime, UTC
 from grammar_checker.logger import get_logger
+from models.request import GrammarRequest
+from models.response import GrammarResponse
+
 
 logger = get_logger(__name__)
 
@@ -31,10 +34,10 @@ class MongoDBHandler:
         else:
             logger.debug(f"No active MongoDB connection to close: {self.database_name}/{self.collection_name}")
 
-    def save_record(self, request, response, benchmark_eval=None):
+    def save_record(self, request: GrammarRequest, response: GrammarResponse, benchmark_eval=None):
         record = {
-            "request": request,
-            "response": response,
+            "request": request.model_dump(),
+            "response": response.model_dump(),
             "timestamp": datetime.now(UTC),
         }
         if benchmark_eval:

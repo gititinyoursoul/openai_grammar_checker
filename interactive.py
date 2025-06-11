@@ -4,6 +4,7 @@ from grammar_checker.openai_client import OpenAIClient
 from grammar_checker.grammar_checker import GrammarChecker
 from grammar_checker.db import MongoDBHandler
 from grammar_checker.config import DEFAULT_PROMPT_TEMPLATE, DEFAULT_MODEL
+from models.request import GrammarRequest
 
 
 def get_cli_input(prompt: str, logger) -> str:
@@ -37,19 +38,16 @@ def main(
 
     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
     response = grammar_checker.check_grammar()
-    
-    request = {
-        "sentence": sentence,
-        "prompt_version": prompt_builder.prompt_template,
-        "model": model,
-        "mode": "interactive",
-    }
+
+    request = GrammarRequest(
+        sentence=sentence, 
+        prompt_version=prompt_builder.prompt_template, 
+        model=model, 
+        mode="interactive"
+    )
 
     with mongo_handler:
-        mongo_handler.save_record(
-            request=request,
-            response=response
-        )
+        mongo_handler.save_record(request=request, response=response)
 
 
 if __name__ == "__main__":

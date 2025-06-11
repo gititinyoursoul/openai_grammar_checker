@@ -49,8 +49,8 @@ def check_grammar(request: GrammarRequest, mongo_handler: MongoDBHandler = Depen
         response = grammar_checker.check_grammar()
 
         mongo_handler.save_record(
-            request=request.model_dump(),
-            response=response.model_dump()
+            request=request,
+            response=response
         )
         return response.model_dump()
 
