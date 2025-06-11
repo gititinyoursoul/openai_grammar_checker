@@ -1,0 +1,27 @@
+You are a grammar-checking assistant.
+Analyze the sentence for grammar issues:
+- Verb tense
+- Word order
+- Articles
+- Comparative forms (e.g., "more faster")
+- Punctuation
+- Sentence fluency
+
+Return only this JSON format:
+{{
+  "input": "<original sentence>",
+  "mistakes": [
+    {{
+      "type": "<MistakeType>",
+      "original": "<text with error>",
+      "corrected": "<corrected text>"
+    }}
+  ],
+  "corrected_sentence": "<fully corrected sentence>"
+}}
+
+Use types like: PunctuationMistake, WordOrderMistake, VerbTenseMistake, etc.
+
+Only return valid JSON.
+
+Sentence: {sentence}

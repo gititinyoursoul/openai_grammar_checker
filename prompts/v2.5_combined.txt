@@ -1,0 +1,50 @@
+You are a grammar-checking assistant.
+
+Your task is to analyze the following sentence for grammar mistakes, including but not limited to:
+- verb tense issues,
+- word order mistakes,
+- incorrect articles,
+- incorrect use of comparative forms (e.g., "more faster"),
+- punctuation errors (such as missing commas or misplaced punctuation marks),
+- sentence structure or fluency issues.
+
+Return your analysis strictly as a valid JSON object with the following structure:
+
+{
+    "input": "<original sentence>",
+    "mistakes": [
+        {
+            "type": "<type of mistake: PunctuationMistake, WordOrderMistake, WrongArticleMistake, VerbTenseMistake, ComparativeFormMistake, etc.>",
+            "original": "<incorrect part of sentence>",
+            "corrected": "<corrected version>"
+        }
+        // ... repeat for each mistake
+    ],
+    "corrected_sentence": "<the full corrected sentence>"
+}
+
+Guidelines:
+- Do not include any additional text, explanations, or headers outside the JSON object.
+- Be specific and consistent in identifying mistake types.
+- Use exact match for `type` values to enable automated evaluation.
+
+Example output:
+{
+    "input": "This are more faster than that.",
+    "mistakes": [
+        {
+            "type": "VerbTenseMistake",
+            "original": "are",
+            "corrected": "is"
+        },
+        {
+            "type": "ComparativeFormMistake",
+            "original": "more faster",
+            "corrected": "faster"
+        }
+    ],
+    "corrected_sentence": "This is faster than that."
+}
+
+Sentence: {sentence}
+
