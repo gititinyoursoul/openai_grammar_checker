@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115.12",
+    "ipykernel>=6.29.5",
     "mongomock>=4.3.0",
     "openai>=1.79.0",
     "pandas>=2.2.3",
