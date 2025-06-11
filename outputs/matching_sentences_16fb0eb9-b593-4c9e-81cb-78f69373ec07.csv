@@ -1,0 +1,169 @@
+run_id,test_id,model,prompt_version,actual_sentence,expected_sentence,is_match
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-3.5-turbo,v1_original.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-3.5-turbo,v1_original.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-3.5-turbo,v1_original.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-3.5-turbo,v1_original.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-3.5-turbo,v1_original.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-3.5-turbo,v1_original.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-3.5-turbo,v1_original.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-3.5-turbo,v1_original.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-3.5-turbo,v1_original.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-3.5-turbo,v1_original.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-3.5-turbo,v1_original.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-3.5-turbo,v1_original.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-3.5-turbo,v1_original.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-3.5-turbo,v1_original.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-3.5-turbo,v2.1_with_example.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-3.5-turbo,v2.1_with_example.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-3.5-turbo,v2.1_with_example.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-3.5-turbo,v2.1_with_example.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-3.5-turbo,v2.1_with_example.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-3.5-turbo,v2.1_with_example.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-3.5-turbo,v2.1_with_example.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-3.5-turbo,v2.1_with_example.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-3.5-turbo,v2.1_with_example.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-3.5-turbo,v2.1_with_example.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-3.5-turbo,v2.1_with_example.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-3.5-turbo,v2.1_with_example.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-3.5-turbo,v2.1_with_example.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-3.5-turbo,v2.1_with_example.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-3.5-turbo,v2.4_less_verbose.txt,You are a grammar-checking assistant.,She quickly ran to the store.,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-3.5-turbo,v2.4_less_verbose.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-3.5-turbo,v2.4_less_verbose.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-3.5-turbo,v2.4_less_verbose.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-3.5-turbo,v2.4_less_verbose.txt,You are a grammar-checking assistant.,The cat is faster than the dog.,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-3.5-turbo,v2.4_less_verbose.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-3.5-turbo,v2.4_less_verbose.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-3.5-turbo,v2.4_less_verbose.txt,He entered into the room silently.,He entered the room silently.,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-3.5-turbo,v2.4_less_verbose.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-3.5-turbo,v2.4_less_verbose.txt,You are a grammar checking assistant.,I have a dog.,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-3.5-turbo,v2.4_less_verbose.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-3.5-turbo,v2.4_less_verbose.txt,Where are you going,Where are you going?,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-3.5-turbo,v2.4_less_verbose.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-3.5-turbo,v2.4_less_verbose.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-3.5-turbo,v2.5_combined.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-3.5-turbo,v2.5_combined.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-3.5-turbo,v2.5_combined.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-3.5-turbo,v2.5_combined.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-3.5-turbo,v2.5_combined.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-3.5-turbo,v2.5_combined.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-3.5-turbo,v2.5_combined.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-3.5-turbo,v2.5_combined.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-3.5-turbo,v2.5_combined.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-3.5-turbo,v2.5_combined.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-3.5-turbo,v2.5_combined.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-3.5-turbo,v2.5_combined.txt,Where are you going,Where are you going?,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-3.5-turbo,v2.5_combined.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-3.5-turbo,v2.5_combined.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4,v1_original.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4,v1_original.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4,v1_original.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4,v1_original.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4,v1_original.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4,v1_original.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4,v1_original.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4,v1_original.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4,v1_original.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4,v1_original.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4,v1_original.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4,v1_original.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4,v1_original.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4,v1_original.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4,v2.1_with_example.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4,v2.1_with_example.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4,v2.1_with_example.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4,v2.1_with_example.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4,v2.1_with_example.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4,v2.1_with_example.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4,v2.1_with_example.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4,v2.1_with_example.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4,v2.1_with_example.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4,v2.1_with_example.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4,v2.1_with_example.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4,v2.1_with_example.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4,v2.1_with_example.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4,v2.1_with_example.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4,v2.4_less_verbose.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4,v2.4_less_verbose.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4,v2.4_less_verbose.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4,v2.4_less_verbose.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4,v2.4_less_verbose.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4,v2.4_less_verbose.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4,v2.4_less_verbose.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4,v2.4_less_verbose.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4,v2.4_less_verbose.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4,v2.4_less_verbose.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4,v2.4_less_verbose.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4,v2.4_less_verbose.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4,v2.4_less_verbose.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4,v2.4_less_verbose.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4,v2.5_combined.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4,v2.5_combined.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4,v2.5_combined.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4,v2.5_combined.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4,v2.5_combined.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4,v2.5_combined.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4,v2.5_combined.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4,v2.5_combined.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4,v2.5_combined.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4,v2.5_combined.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4,v2.5_combined.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4,v2.5_combined.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4,v2.5_combined.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4,v2.5_combined.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4.1,v1_original.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4.1,v1_original.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4.1,v1_original.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4.1,v1_original.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4.1,v1_original.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4.1,v1_original.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4.1,v1_original.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4.1,v1_original.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4.1,v1_original.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4.1,v1_original.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4.1,v1_original.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4.1,v1_original.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4.1,v1_original.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4.1,v1_original.txt,"They were playing soccer yesterday, but they didn't win.",They were playing soccer yesterday but they didn't win.,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4.1,v2.1_with_example.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4.1,v2.1_with_example.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4.1,v2.1_with_example.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4.1,v2.1_with_example.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4.1,v2.1_with_example.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4.1,v2.1_with_example.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4.1,v2.1_with_example.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4.1,v2.1_with_example.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4.1,v2.1_with_example.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4.1,v2.1_with_example.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4.1,v2.1_with_example.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4.1,v2.1_with_example.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4.1,v2.1_with_example.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4.1,v2.1_with_example.txt,"They were playing soccer yesterday, but they didn't win.",They were playing soccer yesterday but they didn't win.,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4.1,v2.4_less_verbose.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4.1,v2.4_less_verbose.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4.1,v2.4_less_verbose.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4.1,v2.4_less_verbose.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4.1,v2.4_less_verbose.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4.1,v2.4_less_verbose.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4.1,v2.4_less_verbose.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4.1,v2.4_less_verbose.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4.1,v2.4_less_verbose.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4.1,v2.4_less_verbose.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4.1,v2.4_less_verbose.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4.1,v2.4_less_verbose.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4.1,v2.4_less_verbose.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4.1,v2.4_less_verbose.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,1,gpt-4.1,v2.5_combined.txt,She quickly ran to the store.,She quickly ran to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,gpt-4.1,v2.5_combined.txt,She goes to school every day.,She goes to school every day.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,gpt-4.1,v2.5_combined.txt,"I bought eggs, milk, and bread.","I bought eggs, milk, and bread.",True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,gpt-4.1,v2.5_combined.txt,I have gone to the store.,I have gone to the store.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,gpt-4.1,v2.5_combined.txt,The cat is faster than the dog.,The cat is faster than the dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,gpt-4.1,v2.5_combined.txt,She doesn't like apples.,She doesn't like apples.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,gpt-4.1,v2.5_combined.txt,He is taller than his brother.,He is taller than his brother.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,gpt-4.1,v2.5_combined.txt,He entered the room silently.,He entered the room silently.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,gpt-4.1,v2.5_combined.txt,The information is accurate.,The information is accurate.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,gpt-4.1,v2.5_combined.txt,I have a dog.,I have a dog.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,gpt-4.1,v2.5_combined.txt,He speaks English well.,He speaks English well.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,gpt-4.1,v2.5_combined.txt,Where are you going?,Where are you going?,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,gpt-4.1,v2.5_combined.txt,She has a big dog and a red car.,She has a big dog and a red car.,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,gpt-4.1,v2.5_combined.txt,They were playing soccer yesterday but they didn't win.,They were playing soccer yesterday but they didn't win.,True

@@ -1,0 +1,886 @@
+run_id,test_id,prompt_version,model,source_index,target_index,key,source_value,target_value,fuzzy_score,is_match
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-3.5-turbo,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-3.5-turbo,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,PunctuationMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-3.5-turbo,0,0,original,eggs milk,eggs milk,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-3.5-turbo,0,0,corrected,"eggs, milk","eggs, milk",1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-3.5-turbo,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-3.5-turbo,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-3.5-turbo,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-3.5-turbo,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-3.5-turbo,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-3.5-turbo,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-3.5-turbo,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-3.5-turbo,0,0,type,ComparativeFormMistake,WrongWordMistake,0.5263157894736842,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-3.5-turbo,0,0,original,taller then,then,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-3.5-turbo,0,0,corrected,taller than,than,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-3.5-turbo,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-3.5-turbo,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-3.5-turbo,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-3.5-turbo,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-3.5-turbo,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-3.5-turbo,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-3.5-turbo,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-3.5-turbo,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-3.5-turbo,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-3.5-turbo,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-3.5-turbo,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,AdverbMistake,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-3.5-turbo,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-3.5-turbo,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-3.5-turbo,0,0,original,Where you are,Where you are going,0.8125,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-3.5-turbo,0,0,corrected,Where are you,Where are you going,0.8125,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-3.5-turbo,1,0,type,PunctuationMistake,WordOrderMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-3.5-turbo,1,0,original,?,Where you are going,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-3.5-turbo,1,0,corrected,?,Where are you going,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,1,0,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,1,0,original,a,have,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,1,0,corrected,a,has,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,1,1,type,WrongArticleMistake,WordOrderMistake,0.6285714285714286,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,1,1,original,a,a car red,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,1,1,corrected,a,a red car,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,2,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,2,0,original,car red,have,0.36363636363636365,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,2,0,corrected,red car,has,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,2,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,2,1,original,car red,a car red,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-3.5-turbo,2,1,corrected,red car,a red car,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,0,original,was,was,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,0,corrected,were,were,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,1,original,was,dont,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,1,corrected,were,didn't,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,2,original,was,won,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,0,2,corrected,were,win,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,0,original,dont,was,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,0,corrected,didn't,were,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,1,original,dont,dont,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,1,corrected,didn't,didn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,2,original,dont,won,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-3.5-turbo,1,2,corrected,didn't,win,0.4444444444444444,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,PunctuationMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,eggs milk,eggs milk,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,"eggs, milk","eggs, milk",1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,ComparativeFormMistake,WrongWordMistake,0.5263157894736842,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,taller then,then,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,taller than,than,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,informations,informations,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,information,information,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-3.5-turbo,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-3.5-turbo,0,1,original,informations,are,0.13333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-3.5-turbo,0,1,corrected,information,is,0.15384615384615385,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,AdverbMistake,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,Where you,Where you are going,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,Where are you,Where are you going,0.8125,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-3.5-turbo,1,0,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-3.5-turbo,1,0,original,are going,Where you are going,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-3.5-turbo,1,0,corrected,are you going,Where are you going,0.8125,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,1,0,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,1,0,original,a,have,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,1,0,corrected,a,has,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,1,1,type,WrongArticleMistake,WordOrderMistake,0.6285714285714286,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,1,1,original,a,a car red,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,1,1,corrected,a,a red car,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,2,0,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,2,0,original,a,have,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,2,0,corrected,a,has,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,2,1,type,WrongArticleMistake,WordOrderMistake,0.6285714285714286,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,2,1,original,a,a car red,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,2,1,corrected,a,a red car,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,3,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,3,0,original,car red,have,0.36363636363636365,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,3,0,corrected,red car,has,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,3,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,3,1,original,car red,a car red,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-3.5-turbo,3,1,corrected,red car,a red car,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,0,original,was,was,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,0,corrected,were,were,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,1,original,was,dont,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,1,corrected,were,didn't,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,2,original,was,won,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,0,2,corrected,were,win,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,0,original,dont,was,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,0,corrected,didn't,were,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,1,original,dont,dont,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,1,corrected,didn't,didn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,2,original,dont,won,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,1,2,corrected,didn't,win,0.4444444444444444,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,0,original,won,was,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,0,corrected,win,were,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,1,original,won,dont,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,1,corrected,win,didn't,0.4444444444444444,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,2,original,won,won,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-3.5-turbo,2,2,corrected,win,win,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,PunctuationMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,eggs milk,eggs milk,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,"eggs, milk","eggs, milk",1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,ComparativeFormMistake,0.47368421052631576,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,faster more,faster,0.7058823529411765,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,ComparativeFormMistake,WrongWordMistake,0.5263157894736842,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,taller then,then,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,taller than,than,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,entered to,entered to,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,entered into,entered,0.7368421052631579,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,ArticleMistake,NounFormMistake,0.5517241379310345,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,type,ArticleMistake,VerbTenseMistake,0.6,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WrongArticleMistake,0.6285714285714286,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,a grammar-checking,an dog,0.25,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,a grammar checking,a dog,0.2608695652173913,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,AdverbMistake,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,Where you are,Where you are going,0.8125,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,Where are you,Where are you going,0.8125,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,type,PunctuationMistake,WordOrderMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,original,?,Where you are going,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,corrected,,Where are you going,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-3.5-turbo,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,original,was,was,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,0,corrected,were,were,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,original,was,dont,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,1,corrected,were,didn't,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,2,original,was,won,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,0,2,corrected,were,win,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,original,dont,was,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,0,corrected,didn't,were,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,1,original,dont,dont,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,1,corrected,didn't,didn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,2,original,dont,won,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-3.5-turbo,1,2,corrected,didn't,win,0.4444444444444444,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,PunctuationMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,eggs milk,eggs milk,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,"eggs, milk","eggs, milk",1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,ComparativeFormMistake,WrongWordMistake,0.5263157894736842,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,taller then,then,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,taller than,than,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-3.5-turbo,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-3.5-turbo,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-3.5-turbo,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,AdverbMistake,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,Where you are going,Where you are going,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,Where are you going,Where are you going,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-3.5-turbo,1,0,type,PunctuationMistake,WordOrderMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-3.5-turbo,1,0,original,?,Where you are going,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-3.5-turbo,1,0,corrected,,Where are you going,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,1,0,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,1,0,original,a,have,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,1,0,corrected,a,has,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,1,1,type,WrongArticleMistake,WordOrderMistake,0.6285714285714286,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,1,1,original,a,a car red,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,1,1,corrected,a,a red car,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,2,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,2,0,original,car red,have,0.36363636363636365,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,2,0,corrected,red car,has,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,2,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,2,1,original,car red,a car red,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-3.5-turbo,2,1,corrected,red car,a red car,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,0,original,was,was,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,0,corrected,were,were,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,1,original,was,dont,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,1,corrected,were,didn't,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,2,original,was,won,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,0,2,corrected,were,win,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,0,original,dont,was,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,0,corrected,didn't,were,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,1,original,dont,dont,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,1,corrected,didn't,didn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,2,original,dont,won,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,1,2,corrected,didn't,win,0.4444444444444444,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,0,original,won,was,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,0,corrected,win,were,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,1,original,won,dont,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,1,corrected,win,didn't,0.4444444444444444,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,2,original,won,won,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-3.5-turbo,2,2,corrected,win,win,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-4,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-4,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-4,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-4,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-4,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-4,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-4,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-4,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-4,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-4,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-4,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-4,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-4,0,0,type,WordOrderMistake,WrongWordMistake,0.6875,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-4,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-4,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-4,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-4,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-4,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,1,0,type,VerbTenseMistake,NounFormMistake,0.5161290322580645,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,1,0,original,are accurate,informations,0.25,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,1,0,corrected,is accurate,information,0.36363636363636365,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,1,1,original,are accurate,are,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4,1,1,corrected,is accurate,is,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-4,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-4,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-4,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-4,0,0,type,AdverbMistake,AdverbMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-4,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-4,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-4,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-4,0,0,original,Where you are going?,Where you are going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-4,0,0,corrected,Where are you going?,Where are you going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,0,original,They was playing,was,0.3157894736842105,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,0,corrected,They were playing,were,0.38095238095238093,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,1,original,They was playing,dont,0.1,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,1,corrected,They were playing,didn't,0.17391304347826086,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,2,original,They was playing,won,0.21052631578947367,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,0,2,corrected,They were playing,win,0.3,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,0,original,they dont won,was,0.125,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,0,corrected,they didn't win,were,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,1,original,they dont won,dont,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,1,corrected,they didn't win,didn't,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,2,original,they dont won,won,0.375,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4,1,2,corrected,they didn't win,win,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-4,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-4,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-4,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-4,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-4,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-4,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-4,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-4,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-4,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-4,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-4,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-4,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-4,0,0,type,WordOrderMistake,WrongWordMistake,0.6875,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-4,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-4,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-4,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-4,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-4,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-4,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-4,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-4,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-4,0,0,type,AdverbMistake,AdverbMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-4,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-4,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-4,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-4,0,0,original,Where you are going,Where you are going,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-4,0,0,corrected,Where are you going,Where are you going,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,0,original,was playing,was,0.42857142857142855,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,0,corrected,were playing,were,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,1,original,was playing,dont,0.13333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,1,corrected,were playing,didn't,0.2222222222222222,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,2,original,was playing,won,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,0,2,corrected,were playing,win,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,0,original,dont won,was,0.18181818181818182,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,0,corrected,didn't win,were,0.14285714285714285,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,1,original,dont won,dont,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,1,corrected,didn't win,didn't,0.75,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,2,original,dont won,won,0.5454545454545454,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4,1,2,corrected,didn't win,win,0.46153846153846156,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-4,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-4,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-4,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-4,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-4,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-4,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-4,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-4,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-4,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-4,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-4,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-4,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-4,0,0,type,WordChoiceMistake,WrongWordMistake,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-4,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-4,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-4,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-4,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-4,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4,0,0,type,WordChoiceMistake,NounFormMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4,0,0,original,informations,informations,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4,0,0,corrected,information,information,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4,0,1,type,WordChoiceMistake,VerbTenseMistake,0.5454545454545454,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4,0,1,original,informations,are,0.13333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4,0,1,corrected,information,is,0.15384615384615385,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-4,0,0,type,ArticleMistake,WrongArticleMistake,0.8484848484848485,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-4,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-4,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-4,0,0,type,AdverbMistake,AdverbMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-4,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-4,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-4,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-4,0,0,original,Where you are going?,Where you are going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-4,0,0,corrected,Where are you going?,Where are you going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,0,original,They was playing,was,0.3157894736842105,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,0,corrected,They were playing,were,0.38095238095238093,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,1,original,They was playing,dont,0.1,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,1,corrected,They were playing,didn't,0.17391304347826086,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,2,original,They was playing,won,0.21052631578947367,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,0,2,corrected,They were playing,win,0.3,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,0,original,they dont won,was,0.125,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,0,corrected,they didn't win,were,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,1,original,they dont won,dont,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,1,corrected,they didn't win,didn't,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,2,original,they dont won,won,0.375,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4,1,2,corrected,they didn't win,win,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-4,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-4,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-4,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-4,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-4,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-4,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-4,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-4,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-4,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-4,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-4,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-4,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-4,0,0,type,WordOrderMistake,WrongWordMistake,0.6875,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-4,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-4,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-4,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-4,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-4,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,1,0,type,VerbTenseMistake,NounFormMistake,0.5161290322580645,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,1,0,original,are,informations,0.13333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,1,0,corrected,is,information,0.15384615384615385,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,1,1,original,are,are,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4,1,1,corrected,is,is,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-4,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-4,0,0,original,an,an dog,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-4,0,0,corrected,a,a dog,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-4,0,0,type,AdverbMistake,AdverbMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-4,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-4,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-4,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-4,0,0,original,Where you are going,Where you are going,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-4,0,0,corrected,Where are you going,Where are you going,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,0,original,was,was,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,0,corrected,were,were,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,1,original,was,dont,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,1,corrected,were,didn't,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,2,original,was,won,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,0,2,corrected,were,win,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,0,original,dont won,was,0.18181818181818182,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,0,corrected,didn't win,were,0.14285714285714285,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,1,original,dont won,dont,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,1,corrected,didn't win,didn't,0.75,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,2,original,dont won,won,0.5454545454545454,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4,1,2,corrected,didn't win,win,0.46153846153846156,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-4.1,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v1_original.txt,gpt-4.1,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-4.1,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-4.1,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v1_original.txt,gpt-4.1,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-4.1,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v1_original.txt,gpt-4.1,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-4.1,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-4.1,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v1_original.txt,gpt-4.1,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-4.1,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v1_original.txt,gpt-4.1,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-4.1,0,0,type,WrongWordMistake,WrongWordMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-4.1,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v1_original.txt,gpt-4.1,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-4.1,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-4.1,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v1_original.txt,gpt-4.1,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4.1,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4.1,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4.1,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4.1,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4.1,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v1_original.txt,gpt-4.1,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-4.1,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-4.1,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v1_original.txt,gpt-4.1,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-4.1,0,0,type,SentenceStructureMistake,AdverbMistake,0.4864864864864865,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-4.1,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v1_original.txt,gpt-4.1,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-4.1,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-4.1,0,0,original,Where you are going?,Where you are going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v1_original.txt,gpt-4.1,0,0,corrected,Where are you going?,Where are you going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v1_original.txt,gpt-4.1,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,0,original,was playing,was,0.42857142857142855,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,0,corrected,were playing,were,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,1,original,was playing,dont,0.13333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,1,corrected,were playing,didn't,0.2222222222222222,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,2,original,was playing,won,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,0,2,corrected,were playing,win,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,0,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,0,original,yesterday but,was,0.125,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,0,corrected,"yesterday, but",were,0.2222222222222222,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,1,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,1,original,yesterday but,dont,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,1,corrected,"yesterday, but",didn't,0.1,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,2,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,2,original,yesterday but,won,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,1,2,corrected,"yesterday, but",win,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,0,original,dont won,was,0.18181818181818182,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,0,corrected,didn't win,were,0.14285714285714285,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,1,original,dont won,dont,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,1,corrected,didn't win,didn't,0.75,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,2,original,dont won,won,0.5454545454545454,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v1_original.txt,gpt-4.1,2,2,corrected,didn't win,win,0.46153846153846156,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-4.1,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.1_with_example.txt,gpt-4.1,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-4.1,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-4.1,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.1_with_example.txt,gpt-4.1,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-4.1,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.1_with_example.txt,gpt-4.1,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-4.1,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-4.1,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.1_with_example.txt,gpt-4.1,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-4.1,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.1_with_example.txt,gpt-4.1,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-4.1,0,0,type,WrongWordMistake,WrongWordMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-4.1,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.1_with_example.txt,gpt-4.1,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-4.1,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-4.1,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.1_with_example.txt,gpt-4.1,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4.1,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4.1,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4.1,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4.1,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4.1,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.1_with_example.txt,gpt-4.1,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-4.1,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-4.1,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.1_with_example.txt,gpt-4.1,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-4.1,0,0,type,WordOrderMistake,AdverbMistake,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-4.1,0,0,original,English good,good,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.1_with_example.txt,gpt-4.1,0,0,corrected,English well,well,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-4.1,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-4.1,0,0,original,Where you are going?,Where you are going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.1_with_example.txt,gpt-4.1,0,0,corrected,Where are you going?,Where are you going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.1_with_example.txt,gpt-4.1,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,0,original,was playing,was,0.42857142857142855,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,0,corrected,were playing,were,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,1,original,was playing,dont,0.13333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,1,corrected,were playing,didn't,0.2222222222222222,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,2,original,was playing,won,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,0,2,corrected,were playing,win,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,0,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,0,original,yesterday but,was,0.125,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,0,corrected,"yesterday, but",were,0.2222222222222222,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,1,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,1,original,yesterday but,dont,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,1,corrected,"yesterday, but",didn't,0.1,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,2,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,2,original,yesterday but,won,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,1,2,corrected,"yesterday, but",win,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,0,original,dont won,was,0.18181818181818182,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,0,corrected,didn't win,were,0.14285714285714285,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,1,original,dont won,dont,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,1,corrected,didn't win,didn't,0.75,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,2,original,dont won,won,0.5454545454545454,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.1_with_example.txt,gpt-4.1,2,2,corrected,didn't win,win,0.46153846153846156,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-4.1,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-4.1,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-4.1,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-4.1,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-4.1,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-4.1,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-4.1,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-4.1,0,0,type,WordChoiceMistake,WrongWordMistake,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-4.1,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-4.1,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-4.1,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4.1,0,0,type,ArticlesMistake,NounFormMistake,0.5333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4.1,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4.1,0,1,type,ArticlesMistake,VerbTenseMistake,0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4.1,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.4_less_verbose.txt,gpt-4.1,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-4.1,0,0,type,ArticlesMistake,WrongArticleMistake,0.8235294117647058,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-4.1,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-4.1,0,0,type,WordOrderMistake,AdverbMistake,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-4.1,0,0,original,English good,good,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,English well,well,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-4.1,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-4.1,0,0,original,Where you are going?,Where you are going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,Where are you going?,Where are you going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,0,0,original,She have,have,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,She has,has,0.6,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,0,1,original,She have,a car red,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,0,1,corrected,She has,a red car,0.375,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,1,0,original,a car red,have,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,1,0,corrected,a red car,has,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,1,1,original,a car red,a car red,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.4_less_verbose.txt,gpt-4.1,1,1,corrected,a red car,a red car,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,0,original,They was playing,was,0.3157894736842105,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,0,corrected,They were playing,were,0.38095238095238093,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,1,original,They was playing,dont,0.1,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,1,corrected,They were playing,didn't,0.17391304347826086,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,2,original,They was playing,won,0.21052631578947367,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,0,2,corrected,They were playing,win,0.3,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,0,original,they dont won,was,0.125,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,0,corrected,they didn't win,were,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,1,original,they dont won,dont,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,1,corrected,they didn't win,didn't,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,2,original,they dont won,won,0.375,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,1,2,corrected,they didn't win,win,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,0,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,0,original,won.,was,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,0,corrected,win.,were,0.25,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,1,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,1,original,won.,dont,0.5,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,1,corrected,win.,didn't,0.4,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,2,type,PunctuationMistake,VerbTenseMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,2,original,won.,won,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.4_less_verbose.txt,gpt-4.1,2,2,corrected,win.,win,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-4.1,0,0,original,go,go,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,2,v2.5_combined.txt,gpt-4.1,0,0,corrected,goes,goes,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-4.1,0,0,type,PunctuationMistake,PunctuationMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-4.1,0,0,original,eggs milk and bread,eggs milk,0.6428571428571429,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,3,v2.5_combined.txt,gpt-4.1,0,0,corrected,"eggs, milk, and bread","eggs, milk",0.6451612903225806,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-4.1,0,0,original,have went,went,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,4,v2.5_combined.txt,gpt-4.1,0,0,corrected,have gone,gone,0.6153846153846154,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-4.1,0,0,type,ComparativeFormMistake,ComparativeFormMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-4.1,0,0,original,more faster,more faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,5,v2.5_combined.txt,gpt-4.1,0,0,corrected,faster,faster,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-4.1,0,0,original,don't,don't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,6,v2.5_combined.txt,gpt-4.1,0,0,corrected,doesn't,doesn't,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-4.1,0,0,type,WordOrderMistake,WrongWordMistake,0.6875,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-4.1,0,0,original,then,then,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,7,v2.5_combined.txt,gpt-4.1,0,0,corrected,than,than,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-4.1,0,0,type,WordOrderMistake,WrongPrepositionMistake,0.5641025641025641,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-4.1,0,0,original,entered to the room,entered to,0.6896551724137931,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,8,v2.5_combined.txt,gpt-4.1,0,0,corrected,entered the room,entered,0.6086956521739131,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4.1,0,0,type,WrongArticleMistake,NounFormMistake,0.47058823529411764,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4.1,0,0,original,The informations,informations,0.8571428571428571,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4.1,0,0,corrected,The information,information,0.8461538461538461,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4.1,0,1,type,WrongArticleMistake,VerbTenseMistake,0.5714285714285714,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4.1,0,1,original,The informations,are,0.10526315789473684,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,9,v2.5_combined.txt,gpt-4.1,0,1,corrected,The information,is,0.11764705882352941,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-4.1,0,0,type,WrongArticleMistake,WrongArticleMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-4.1,0,0,original,an dog,an dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,10,v2.5_combined.txt,gpt-4.1,0,0,corrected,a dog,a dog,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-4.1,0,0,type,SentenceStructureMistake,AdverbMistake,0.4864864864864865,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-4.1,0,0,original,good,good,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,11,v2.5_combined.txt,gpt-4.1,0,0,corrected,well,well,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-4.1,0,0,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-4.1,0,0,original,Where you are going?,Where you are going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,12,v2.5_combined.txt,gpt-4.1,0,0,corrected,Where are you going?,Where are you going,0.9743589743589743,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,0,0,original,have,have,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,0,0,corrected,has,has,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,0,1,type,VerbTenseMistake,WordOrderMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,0,1,original,have,a car red,0.3076923076923077,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,0,1,corrected,has,a red car,0.16666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,1,0,type,WordOrderMistake,VerbTenseMistake,0.5625,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,1,0,original,car red,have,0.36363636363636365,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,1,0,corrected,red car,has,0.2,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,1,1,type,WordOrderMistake,WordOrderMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,1,1,original,car red,a car red,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,13,v2.5_combined.txt,gpt-4.1,1,1,corrected,red car,a red car,0.875,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,0,original,was,was,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,0,corrected,were,were,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,1,original,was,dont,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,1,corrected,were,didn't,0.0,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,2,original,was,won,0.3333333333333333,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,0,2,corrected,were,win,0.2857142857142857,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,0,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,0,original,dont won,was,0.18181818181818182,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,0,corrected,didn't win,were,0.14285714285714285,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,1,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,1,original,dont won,dont,0.6666666666666666,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,1,corrected,didn't win,didn't,0.75,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,2,type,VerbTenseMistake,VerbTenseMistake,1.0,True
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,2,original,dont won,won,0.5454545454545454,False
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,14,v2.5_combined.txt,gpt-4.1,1,2,corrected,didn't win,win,0.46153846153846156,False

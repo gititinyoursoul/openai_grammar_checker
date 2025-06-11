@@ -1,0 +1,13 @@
+run_id,model,prompt_version,match,not_match
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-3.5-turbo,v1_original.txt,14,0
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-3.5-turbo,v2.1_with_example.txt,14,0
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-3.5-turbo,v2.4_less_verbose.txt,9,5
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-3.5-turbo,v2.5_combined.txt,13,1
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4,v1_original.txt,14,0
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4,v2.1_with_example.txt,14,0
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4,v2.4_less_verbose.txt,14,0
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4,v2.5_combined.txt,14,0
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4.1,v1_original.txt,13,1
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4.1,v2.1_with_example.txt,13,1
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4.1,v2.4_less_verbose.txt,14,0
+16fb0eb9-b593-4c9e-81cb-78f69373ec07,gpt-4.1,v2.5_combined.txt,14,0
