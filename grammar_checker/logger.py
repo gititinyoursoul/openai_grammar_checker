@@ -2,8 +2,10 @@
 
 import os
 import logging
+from pathlib import Path
 from logging.handlers import RotatingFileHandler
 from grammar_checker.config import LOG_FILE, MAX_LOG_SIZE, BACKUP_COUNT
+from grammar_checker.config import PROJECT_ROOT
 
 
 def get_logger(name: str) -> logging.Logger:
@@ -20,14 +22,10 @@ def get_logger(name: str) -> logging.Logger:
     if not logger.handlers:
 
         # Formatter
-        formatter = logging.Formatter(
-            "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
-        )
+        formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(message)s")
 
         # Rotating file handler
-        file_handler = RotatingFileHandler(
-            LOG_FILE, maxBytes=MAX_LOG_SIZE, backupCount=BACKUP_COUNT
-        )
+        file_handler = RotatingFileHandler(LOG_FILE, maxBytes=MAX_LOG_SIZE, backupCount=BACKUP_COUNT)
         file_handler.setFormatter(formatter)
 
         # Stream (console) handler
@@ -39,3 +37,10 @@ def get_logger(name: str) -> logging.Logger:
         logger.addHandler(stream_handler)
 
     return logger
+
+
+def format_path(path: Path, root: Path = PROJECT_ROOT) -> str:
+    try:
+        return str(path.relative_to(root))
+    except ValueError:
+        return str(path)  # fallback to absolute path
