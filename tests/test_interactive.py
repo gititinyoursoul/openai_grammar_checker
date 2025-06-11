@@ -23,6 +23,7 @@ def test_main_saves_record_to_db(monkeypatch):
 
     mock_mongo_handler = MagicMock()
     mock_prompt_builder = MagicMock()
+    mock_prompt_builder.prompt_template = "mock-template"
     mock_client = MagicMock()
 
     mock_checker = MagicMock()
@@ -48,7 +49,7 @@ def test_main_saves_record_to_db(monkeypatch):
     # Assert the record was saved to MongoDB
     mock_mongo_handler.save_record.assert_called_once()
     saved_request = mock_mongo_handler.save_record.call_args[1]["request"]
-    assert saved_request["sentence"] == test_sentence
+    assert saved_request.sentence == test_sentence
 
 
 @pytest.mark.parametrize("error_type", [EOFError, KeyboardInterrupt])
