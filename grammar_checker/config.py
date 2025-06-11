@@ -29,7 +29,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent # resolve converts into an
 
 # Prompt version config
 PROMPTS_DIR = PROJECT_ROOT / "prompts"
-DEFAULT_PROMPT_TEMPLATE = PROMPTS_DIR / "v1_original.txt"
+DEFAULT_PROMPT_TEMPLATE = "v1_original.txt"
 
 # Benchmark Cases config
 BENCHMARKS_DIR = PROJECT_ROOT / "benchmarks"
