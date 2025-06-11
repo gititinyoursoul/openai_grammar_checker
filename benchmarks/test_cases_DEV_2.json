@@ -1,0 +1,27 @@
+[
+    {
+        "test_id": 1,
+        "test_desc": "no_mistake_simple_sentence",
+        "input": "She quickly ran to the store.",
+        "mistakes": [],
+        "corrected_sentence": "She quickly ran to the store."
+    },
+    {
+        "test_id": 2,
+        "test_desc": "verb_tense_goes",
+        "input": "She go to school every day.",
+        "mistakes": [
+            {"type": "VerbTenseMistake", "original": "go", "corrected": "goes"}
+        ],
+        "corrected_sentence": "She goes to school every day."
+    },
+    {
+        "test_id": 3,
+        "test_desc": "punctuation_missing_commas",
+        "input": "I bought eggs milk and bread.",
+        "mistakes": [
+            {"type": "PunctuationMistake", "original": "eggs milk", "corrected": "eggs, milk"}
+        ],
+        "corrected_sentence": "I bought eggs, milk, and bread."
+    }
+]

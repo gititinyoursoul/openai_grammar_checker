@@ -1,0 +1,130 @@
+[
+    {
+        "test_id": 1,
+        "test_desc": "no_mistake_simple_sentence",
+        "input": "She quickly ran to the store.",
+        "mistakes": [],
+        "corrected_sentence": "She quickly ran to the store."
+    },
+    {
+        "test_id": 2,
+        "test_desc": "verb_tense_goes",
+        "input": "She go to school every day.",
+        "mistakes": [
+            {"type": "VerbTenseMistake", "original": "go", "corrected": "goes"}
+        ],
+        "corrected_sentence": "She goes to school every day."
+    },
+    {
+        "test_id": 3,
+        "test_desc": "punctuation_missing_commas",
+        "input": "I bought eggs milk and bread.",
+        "mistakes": [
+            {"type": "PunctuationMistake", "original": "eggs milk", "corrected": "eggs, milk"}
+        ],
+        "corrected_sentence": "I bought eggs, milk, and bread."
+    },
+    {
+        "test_id": 4,
+        "test_desc": "verb_tense_have_gone",
+        "input": "I have went to the store.",
+        "mistakes": [
+            {"type": "VerbTenseMistake", "original": "went", "corrected": "gone"}
+        ],
+        "corrected_sentence": "I have gone to the store."
+    },
+    {
+        "test_id": 5,
+        "test_desc": "comparative_more_faster",
+        "input": "The cat is more faster than the dog.",
+        "mistakes": [
+            {"type": "ComparativeFormMistake", "original": "more faster", "corrected": "faster"}
+        ],
+        "corrected_sentence": "The cat is faster than the dog."
+    },
+    {
+        "test_id": 6,
+        "test_desc": "verb_tense_doesnt",
+        "input": "She don't like apples.",
+        "mistakes": [
+            {"type": "VerbTenseMistake", "original": "don't", "corrected": "doesn't"}
+        ],
+        "corrected_sentence": "She doesn't like apples."
+    },
+    {
+        "test_id": 7,
+        "test_desc": "wrong_word_then_than",
+        "input": "He is taller then his brother.",
+        "mistakes": [
+            {"type": "WrongWordMistake", "original": "then", "corrected": "than"}
+        ],
+        "corrected_sentence": "He is taller than his brother."
+    },
+    {
+        "test_id": 8,
+        "test_desc": "wrong_preposition_entered_to",
+        "input": "He entered to the room silently.",
+        "mistakes": [
+            {"type": "WrongPrepositionMistake", "original": "entered to the room", "corrected": "entered the room"}
+        ],
+        "corrected_sentence": "He entered the room silently."
+    },
+    {
+        "test_id": 9,
+        "test_desc": "noun_and_verb_form_informations_are",
+        "input": "The informations are accurate.",
+        "mistakes": [
+            {"type": "NounFormMistake", "original": "informations", "corrected": "information"},
+            {"type": "VerbTenseMistake", "original": "are", "corrected": "is"}
+        ],
+        "corrected_sentence": "The information is accurate."
+    },
+    {
+        "test_id": 10,
+        "test_desc": "wrong_article_an_dog",
+        "input": "I have an dog.",
+        "mistakes": [
+            {"type": "WrongArticleMistake", "original": "an dog", "corrected": "a dog"}
+        ],
+        "corrected_sentence": "I have a dog."
+    },
+    {
+        "test_id": 11,
+        "test_desc": "adverb_good_vs_well",
+        "input": "He speaks English good.",
+        "mistakes": [
+            {"type": "WordFormMistake", "original": "good", "corrected": "well"}
+        ],
+        "corrected_sentence": "He speaks English well."
+    },
+    {
+        "test_id": 12,
+        "test_desc": "word_order_where_are_you",
+        "input": "Where you are going?",
+        "mistakes": [
+            {"type": "WordOrderMistake", "original": "Where you are going", "corrected": "Where are you going"}
+        ],
+        "corrected_sentence": "Where are you going?"
+    },
+    {
+        "test_id": 13,
+        "test_desc": "multiple_mistakes_have_red_car",
+        "input": "She have a big dog and a car red.",
+        "mistakes": [
+            {"type": "VerbTenseMistake", "original": "have", "corrected": "has"},
+            {"type": "WordOrderMistake", "original": "a car red", "corrected": "a red car"}
+        ],
+        "corrected_sentence": "She has a big dog and a red car."
+    },
+    {
+        "test_id": 14,
+        "test_desc": "multiple_verb_tense_errors_soccer",
+        "input": "They was playing soccer yesterday, but they dont won.",
+        "mistakes": [
+            {"type": "VerbTenseMistake", "original": "was", "corrected": "were"},
+            {"type": "VerbTenseMistake", "original": "dont", "corrected": "didn't"},
+            {"type": "VerbTenseMistake", "original": "won", "corrected": "win"}
+        ],
+        "corrected_sentence": "They were playing soccer yesterday, but they didn't win."
+    }
+]
