@@ -100,10 +100,10 @@ def summary_results(results: list):
 
     summary = {}
     for result in results:
-        prompt_version = result["request"]["prompt_version"]
+        prompt_version = result["request"].prompt_version
         if prompt_version not in summary:
             summary[prompt_version] = {}
-        model = result["request"]["model"]
+        model = result["request"].model
         if model not in summary[prompt_version]:
             summary[prompt_version][model] = {"total": 0, "passed": 0}
 
