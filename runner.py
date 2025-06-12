@@ -10,6 +10,7 @@ from grammar_checker.evaluator import evaluate_response
 from grammar_checker.utils import load_test_cases, save_test_results
 from grammar_checker.db import MongoDBHandler
 from grammar_checker.config import TEST_RESULTS_FILE, VALID_MODELS, PROMPTS_DIR
+from models.request import GrammarRequest
 
 
 # initialize logger
@@ -68,19 +69,22 @@ def run_tests(test_cases: List[str], models: List[str], prompt_templates: List[s
                     grammar_checker = GrammarChecker(prompt_builder, sentence, model, client)
                     response = grammar_checker.check_grammar()
 
-                    response_dict = response.model_dump()
-                    is_match = evaluate_response(test_case, response_dict)
+                    is_match = evaluate_response(test_case, response)
                     test_case["match"] = is_match
                     test_case["run_id"] = run_id
+
+                    # build GrammarRequest
+                    request = GrammarRequest(
+                        sentence=sentence,
+                        prompt_version=template,
+                        model=model,
+                        mode="benchmark",
+                    )
+
                     results.append(
                         {
-                            "request": {
-                                "sentence": sentence,
-                                "prompt_version": template,
-                                "model": model,
-                                "mode": "benchmark",
-                            },
-                            "response": response_dict,
+                            "request": request,
+                            "response": response,
                             "benchmark_eval": test_case,
                         }
                     )
@@ -137,7 +141,7 @@ def main(
         logger.info("Saving test results to MongoDB")
         with mongo_handler as db:
             for result in results:
-                mongo_handler.save_record(
+                db.save_record(
                     request=result["request"],
                     response=result["response"],
                     benchmark_eval=result["benchmark_eval"],
