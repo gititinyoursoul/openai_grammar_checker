@@ -146,9 +146,9 @@ def main(
                     response=result["response"],
                     benchmark_eval=result["benchmark_eval"],
                 )
-    elif output_destination == "save_to_file":
-        logger.info(f"Saving test results to {TEST_RESULTS_FILE}")
-        save_test_results(TEST_RESULTS_FILE, results)
+    # elif output_destination == "save_to_file":
+    #     logger.info(f"Saving test results to {TEST_RESULTS_FILE}")
+    #     save_test_results(TEST_RESULTS_FILE, results)
     else:
         logger.error("Invalid output option. Please refer to the help documentation for valid options.")
 

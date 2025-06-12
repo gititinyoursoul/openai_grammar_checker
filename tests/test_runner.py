@@ -1,9 +1,12 @@
-from unittest.mock import patch, MagicMock
 import pytest
+from unittest.mock import patch, MagicMock
+import mongomock
+import json
+from types import SimpleNamespace
+from grammar_checker.db import MongoDBHandler
 from models.response import GrammarResponse
 from runner import validate_main_inputs, run_tests, summary_results, main
 from grammar_checker.config import VALID_MODELS, DEFAULT_PROMPT_TEMPLATE
-
 
 
 class TestValidateMainInputs:
@@ -107,6 +110,42 @@ def mock_client():
     return MagicMock()
 
 
+@pytest.fixture
+def mock_mongo_handler():
+    # Use mongomock directly, no URI needed
+    client = mongomock.MongoClient()
+    db = client["test_db"]
+    collection = db["test_collection"]
+
+    handler = MongoDBHandler(uri="mock_uri", database_name="test_db", collection_name="test_collection")
+    handler.client = client
+    handler.database = db
+    handler.collection = collection
+    
+    # Mock the connect method to assign the mock client, db, and collection
+    def mock_connect():
+        handler.client = client
+        handler.database = db
+        handler.collection = collection
+        return handler
+
+    # Mock the disconnect method
+    handler.disconnect = MagicMock()
+
+    # Patch connect to mock behavior
+    handler.connect = mock_connect
+
+    # Simulate context manager behavior
+    handler.__enter__ = lambda self=handler: handler.connect()
+    handler.__exit__ = lambda self, exc_type, exc_val, exc_tb: handler.disconnect()
+
+    yield handler
+
+
+def fake_grammar_request(prompt_version, model, sentence):
+    return SimpleNamespace(prompt_version=prompt_version, model=model, sentence=sentence)
+
+
 # test cases for run_tests
 def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_client):
     models = ["gpt-3", "gpt-4"]
@@ -126,15 +165,15 @@ def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_
             mistakes=[],
             corrected_sentence="This is a test.",
         )
-        
-        test_response_json = mock_instance.check_grammar.return_value.model_dump()
+
+        test_response_json = mock_instance.check_grammar.return_value
         results = run_tests(test_cases, models, templates, mock_client)
 
         assert len(results) == len(models) * len(templates) * len(test_cases)
         for result in results:
-            assert result["request"]["model"] in models
-            assert result["request"]["prompt_version"] in templates
-            assert result["request"]["sentence"] in [tc["input"] for tc in test_cases]
+            assert result["request"].model in models
+            assert result["request"].prompt_version in templates
+            assert result["request"].sentence in [tc["input"] for tc in test_cases]
             assert result["response"] == test_response_json
             assert isinstance(result["benchmark_eval"]["match"], bool)
 
@@ -152,12 +191,12 @@ def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_clie
 # unittest summary_results
 def test_summary_results_multiple_models():
     results = [
-        {"request": {"prompt_version": "v1_test", "model": "gpt-2", "sentence": "Another one."}, "benchmark_eval": {"match": False}},
-        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "This is a test."}, "benchmark_eval": {"match": True}},
-        {"request": {"prompt_version": "v1_test", "model": "gpt-3", "sentence": "Another one."}, "benchmark_eval": {"match": False}},
-        {"request": {"prompt_version": "v1_test", "model": "gpt-4", "sentence": "This is a test."}, "benchmark_eval": {"match": True}},
-        {"request": {"prompt_version": "v2_test", "model": "gpt-3", "sentence": "Another one."}, "benchmark_eval": {"match": False}},
-        {"request": {"prompt_version": "v2_test", "model": "gpt-4", "sentence": "This is a test."}, "benchmark_eval": {"match": True}},
+        {"request": fake_grammar_request("v1_test", "gpt-2", "Another one."), "benchmark_eval": {"match": False}},
+        {"request": fake_grammar_request("v1_test", "gpt-3", "This is a test."), "benchmark_eval": {"match": True}},
+        {"request": fake_grammar_request("v1_test", "gpt-3", "Another one."), "benchmark_eval": {"match": False}},
+        {"request": fake_grammar_request("v1_test", "gpt-4", "This is a test."), "benchmark_eval": {"match": True}},
+        {"request": fake_grammar_request("v2_test", "gpt-3", "Another one."), "benchmark_eval": {"match": False}},
+        {"request": fake_grammar_request("v2_test", "gpt-4", "This is a test."), "benchmark_eval": {"match": True}},
     ]
 
     summary = summary_results(results)
@@ -196,20 +235,15 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
     models = ["gpt-3"]
     prompt_templates = ["template"]
     mock_db_handler = MagicMock()
+    mock_db_handler.__enter__.return_value = mock_db_handler  # return value of context manager
 
     dummy_test_cases = [{"input": "This is a test."}]
     dummy_results = [
         {
-            "request": {
-                "sentence": "This is a test.",
-                "prompt_version": prompt_templates[0],
-                "model": models[0]
-                },
+            "request": {"sentence": "This is a test.", "prompt_version": prompt_templates[0], "model": models[0]},
             "response": "mock_response",
-            "benchmark_eval": {
-                "match": True,
-                "benchmark_eval": {"input": "This is a test."}
-        }}
+            "benchmark_eval": {"match": True, "benchmark_eval": {"input": "This is a test."}},
+        }
     ]
 
     with (
@@ -246,11 +280,83 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
             mock_db_handler.save_record.assert_called_once()
             mock_save_test_results.assert_not_called()
             mock_logger.info.assert_any_call(expected_log_msg)
-        if expect_file_call:
-            mock_save_test_results.assert_called_once()
-            mock_db_handler.save_record.assert_not_called()
-            mock_logger.info.assert_any_call(expected_log_msg)
+        # if expect_file_call:
+        #     mock_save_test_results.assert_called_once()
+        #     mock_db_handler.save_record.assert_not_called()
+        #     mock_logger.info.assert_any_call(expected_log_msg)
         if not expect_db_call and not expect_file_call:
             mock_db_handler.save_record.assert_not_called()
             mock_save_test_results.assert_not_called()
+            mock_logger.error.assert_any_call(expected_log_msg)
+
+
+@pytest.mark.parametrize(
+    "output_destination, expect_db_call, expect_file_call, expected_log_msg",
+    [
+        ("save_to_db", True, False, "Saving test results to MongoDB"),
+        # ("save_to_file", False, True, "Saving test results to dummy_results.json"),
+        (
+            "invalid_option",
+            False,
+            False,
+            "Invalid output option. Please refer to the help documentation for valid options.",
+        ),
+    ],
+)
+def test_main_integration(
+    output_destination, expect_db_call, expect_file_call, expected_log_msg, tmp_path, mock_mongo_handler
+):
+    # Setup: write dummy test case file
+    test_cases = [
+        {
+            "test_id": "test_001",
+            "input": "This is a test.",
+            "mistakes": [],
+            "corrected_sentence": "This is a test.",
+        }
+    ]
+    test_cases_file = tmp_path / "dummy_cases.json"
+    test_cases_file.write_text(json.dumps(test_cases, indent=2))
+
+    models = ["gpt-4"]
+    prompt_templates = ["v1_original.txt"]
+
+    with (
+        patch("runner.OpenAIClient") as MockClientClass,
+        patch("runner.MongoDBHandler", return_value=mock_mongo_handler),
+        patch("runner.logger") as mock_logger,
+        patch("runner.TEST_RESULTS_FILE", str(tmp_path / "dummy_results.json")),
+    ):
+        # Return a dummy client with mocked .check() if needed
+        test_response = {
+            "input": "test_input", 
+            "mistakes": [{"type": "test_mistake"}], 
+            "corrected_sentence": "test_corr"}
+        mock_client = MagicMock()
+        MockClientClass.return_value = mock_client
+        mock_client.get_model_response.return_value = test_response
+
+        main(
+            str(test_cases_file),
+            models,
+            output_destination,
+            prompt_templates,
+            mock_mongo_handler,
+        )
+
+        # Assertions
+        if expect_db_call:
+            assert mock_mongo_handler.collection is not None
+            saved_docs = list(mock_mongo_handler.collection.find({}))
+            assert len(saved_docs) == 1
+            assert saved_docs[0]["request"]["sentence"] == "This is a test."
+            mock_logger.info.assert_any_call(expected_log_msg)
+
+        # elif expect_file_call:
+        #     result_file = tmp_path / "dummy_results.json"
+        #     assert result_file.exists()
+        #     assert "This is a test." in result_file.read_text()
+        #     mock_logger.info.assert_any_call(expected_log_msg)
+
+        else:
             mock_logger.error.assert_any_call(expected_log_msg)
