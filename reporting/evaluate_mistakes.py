@@ -2,7 +2,8 @@ import pandas as pd
 from difflib import SequenceMatcher
 from grammar_checker.logger import get_logger
 from reporting.data_access import query_benchmark_data
-from reporting.utils import save_dataframe_as_csv
+from reporting.base_reporter import BenchmarkReporter
+from reporting.csv_reporter import CSVReporter 
 
 
 logger = get_logger(__name__)
@@ -131,25 +132,27 @@ def generate_mistakes_summary(df):
     return summaries
 
 
-def generate_mistakes_report(raw_data):
+def generate_mistakes_report(raw_data, reporter: BenchmarkReporter):
     df = generate_mistakes_comparison_data(raw_data)
 
     # detailed report
     for run_id in df["run_id"].unique():
         # save detailed view as a CSV file
         df_run = df[df["run_id"] == run_id]
-        file_name = f"matching_mistakes_details_{run_id}.csv"
-        save_dataframe_as_csv(df_run, file_name)
+        file_name = f"matching_mistakes_details_{run_id}"
+        reporter.report(file_name, df_run)
 
     # summary report
     summary_dict = generate_mistakes_summary(df)
 
-    for run_id, summary_df in summary_dict.items():
-        file_name = f"matching_mistakes_summary_{run_id}.csv"
-        save_dataframe_as_csv(summary_df, file_name)
+    for run_id, df in summary_dict.items():
+        file_name = f"matching_mistakes_summary_{run_id}"
+        reporter.report(file_name, df)
+
 
 
 if __name__ == "__main__":
     run_ids = ["16fb0eb9-b593-4c9e-81cb-78f69373ec07"]  # TODO: pass as args
     raw_data = query_benchmark_data(run_ids)
-    generate_mistakes_report(raw_data)
+    reporter = CSVReporter() # TODO: pass as args
+    generate_mistakes_report(raw_data, reporter)
