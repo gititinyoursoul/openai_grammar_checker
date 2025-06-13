@@ -18,6 +18,6 @@ class CSVReporter(BenchmarkReporter):
 
         if isinstance(data, pd.DataFrame):
             data.to_csv(file_path, index=False)
-            logger.info(f"Report {file_name} saved in '{log_path(REPORTS_DIR)}'.")
+            logger.info(f"Report {file_name}.csv saved in '{log_path(REPORTS_DIR)}'.")
         else:
             raise TypeError(f"CSVReporter cannot handle data type: {type(data)}")
