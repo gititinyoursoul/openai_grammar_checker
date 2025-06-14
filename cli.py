@@ -7,7 +7,7 @@ from grammar_checker.logger import get_logger
 from grammar_checker.db import MongoDBHandler
 from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from interactive import main as interactive_main
-from runner import main as benchmark_main
+from benchmark import main as benchmark_main
 from grammar_checker.config import (
     VALID_MODELS,
     TEST_CASES_FILE,

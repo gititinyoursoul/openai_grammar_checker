@@ -5,7 +5,7 @@ import json
 from types import SimpleNamespace
 from grammar_checker.db import MongoDBHandler
 from models.response import GrammarResponse
-from runner import validate_main_inputs, run_tests, summary_results, main
+from benchmark import validate_main_inputs, run_tests, summary_results, main
 from grammar_checker.config import VALID_MODELS, DEFAULT_PROMPT_TEMPLATE
 
 
@@ -153,11 +153,11 @@ def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_
     test_cases = [{"test_id": 1, "input": "This is a test."}, {"test_id": 2, "input": "Another one."}]
 
     # monkeypatch evaluate_response() to always return True
-    monkeypatch.setattr("runner.evaluate_response", lambda *args, **kwargs: True)
+    monkeypatch.setattr("benchmark.evaluate_response", lambda *args, **kwargs: True)
 
     with (
-        patch("runner.GrammarChecker") as mock_grammar_checker,
-        patch("runner.PromptBuilder", return_value=mock_prompt_builder),
+        patch("benchmark.GrammarChecker") as mock_grammar_checker,
+        patch("benchmark.PromptBuilder", return_value=mock_prompt_builder),
     ):
         mock_instance = mock_grammar_checker()
         mock_instance.check_grammar.return_value = GrammarResponse(
@@ -180,8 +180,8 @@ def test_run_tests_multiple_combinations(monkeypatch, mock_prompt_builder, mock_
 
 def test_run_tests_handles_exception(monkeypatch, mock_prompt_builder, mock_client, caplog):
     test_cases = [{"input": "Bad sentence"}]
-    monkeypatch.setattr("runner.GrammarChecker", MagicMock(side_effect=Exception("error")))
-    monkeypatch.setattr("runner.logger", MagicMock())
+    monkeypatch.setattr("benchmark.GrammarChecker", MagicMock(side_effect=Exception("error")))
+    monkeypatch.setattr("benchmark.logger", MagicMock())
 
     with pytest.raises(Exception):
         run_tests(test_cases, ["gpt-3"], mock_prompt_builder, mock_client)
@@ -247,14 +247,14 @@ def test_main(output_destination, expect_db_call, expect_file_call, expected_log
     ]
 
     with (
-        patch("runner.validate_main_inputs"),
-        patch("runner.OpenAIClient") as mock_client,
-        patch("runner.load_test_cases", return_value=dummy_test_cases) as mock_load_test_cases,
-        patch("runner.run_tests", return_value=dummy_results) as mock_run_tests,
-        patch("runner.summary_results") as mock_summary,
-        patch("runner.save_test_results") as mock_save_test_results,
-        patch("runner.TEST_RESULTS_FILE", "dummy_results.json"),
-        patch("runner.logger") as mock_logger,
+        patch("benchmark.validate_main_inputs"),
+        patch("benchmark.OpenAIClient") as mock_client,
+        patch("benchmark.load_test_cases", return_value=dummy_test_cases) as mock_load_test_cases,
+        patch("benchmark.run_tests", return_value=dummy_results) as mock_run_tests,
+        patch("benchmark.summary_results") as mock_summary,
+        patch("benchmark.save_test_results") as mock_save_test_results,
+        patch("benchmark.TEST_RESULTS_FILE", "dummy_results.json"),
+        patch("benchmark.logger") as mock_logger,
     ):
         main(
             test_cases_file,
@@ -322,10 +322,10 @@ def test_main_integration(
     prompt_templates = ["v1_original.txt"]
 
     with (
-        patch("runner.OpenAIClient") as MockClientClass,
-        patch("runner.MongoDBHandler", return_value=mock_mongo_handler),
-        patch("runner.logger") as mock_logger,
-        patch("runner.TEST_RESULTS_FILE", str(tmp_path / "dummy_results.json")),
+        patch("benchmark.OpenAIClient") as MockClientClass,
+        patch("benchmark.MongoDBHandler", return_value=mock_mongo_handler),
+        patch("benchmark.logger") as mock_logger,
+        patch("benchmark.TEST_RESULTS_FILE", str(tmp_path / "dummy_results.json")),
     ):
         # Return a dummy client with mocked .check() if needed
         test_response = {
