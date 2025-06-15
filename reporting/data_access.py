@@ -1,3 +1,4 @@
+from typing import List, Dict
 from pymongo import MongoClient
 from grammar_checker.logger import get_logger
 from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
@@ -5,23 +6,21 @@ from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 logger = get_logger(__name__)
 
 
-def query_benchmark_data(run_ids: list[str]) -> dict:
+def query_benchmark_data(run_ids: List[str]) -> List[Dict]:
     """
-    Query the database for a specific run ID.
-
+    Queries the database for documents matching the provided list of run IDs.
+    
     Args:
-        run_id (str): The run ID to query.
-
+        run_ids (List[str]): A list of run IDs to query in the database.
     Returns:
-        dict: The document corresponding to the run ID.
+        List[Dict]: A list of documents containing the fields for each matching run ID.
     """
-    client = MongoClient(MONGO_URI)
-    db = client[MONGO_DB]
-    collection = db[MONGO_COLLECTION]
-
     query = {"benchmark_eval.run_id": {"$in": run_ids}}
     projection = {"_id": 0, "request": 1, "response": 1, "benchmark_eval": 1, "timestamp": 1}
-
-    raw_data = collection.find(query, projection)
+    
+    with MongoClient(MONGO_URI) as client:
+        db = client[MONGO_DB]
+        collection = db[MONGO_COLLECTION]
+        raw_data = list(collection.find(query, projection))
 
     return raw_data
