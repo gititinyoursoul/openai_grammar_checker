@@ -187,14 +187,14 @@ def generate_mistakes_report(raw_data: List[Dict], reporter: BenchmarkReporter) 
     for run_id in df["run_id"].unique():
         # save detailed view as a CSV file
         df_run = df[df["run_id"] == run_id]
-        file_name = f"matching_mistakes_details_{run_id}"
+        file_name = f"mistakes_details_{run_id}"
         reporter.report(file_name, df_run)
 
     # summary report
     summary_dict = generate_summary(df)
 
     for run_id, df in summary_dict.items():
-        file_name = f"matching_mistakes_summary_{run_id}"
+        file_name = f"mistakes_summary_{run_id}"
         reporter.report(file_name, df)
 
 

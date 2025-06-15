@@ -54,14 +54,14 @@ def generate_sentence_report(raw_data, reporter: BenchmarkReporter):
     # save detailed view as a CSV file
     for run_id in df["run_id"].unique():
         df_run = df[df["run_id"] == run_id]
-        file_name = f"matching_sentences_details_{run_id}"
+        file_name = f"sentences_details_{run_id}"
         reporter.report(file_name, df_run)
 
     # sentences summary View
     summary_dict = generate_summary(df)
 
     for run_id, df in summary_dict.items():
-        file_name = f"matching_sentences_summary_{run_id}"
+        file_name = f"sentences_summary_{run_id}"
         reporter.report(file_name, df)
 
 
