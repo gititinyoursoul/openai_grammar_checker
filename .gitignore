@@ -179,8 +179,7 @@ cython_debug/
 # Other
 sandbox/
 learnings/
-TODO.md
-notes.md
+outputs/
 
 # mongoDB
 mongo/data
