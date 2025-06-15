@@ -37,10 +37,10 @@ def test_benchmark_command(mock_db_handler_class, mock_main):
 
     result = runner.invoke(app, [
         "benchmark",
-        "--test-cases-file", "my_test_cases.json",
+        "--test-cases", "my_test_cases.json",
         "--models=gpt-4", "--models=gpt-3.5-turbo", 
-        "--prompt-templates", "Correct: {test_sentence}",
-        "--output-destination", "print"
+        "--prompt-version", "Correct: {test_sentence}",
+        "--save-to", "print"
     ])
 
     assert result.exit_code == 0

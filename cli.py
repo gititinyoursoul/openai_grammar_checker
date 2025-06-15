@@ -1,6 +1,7 @@
 import typer
 import uvicorn
 from dotenv import load_dotenv
+
 load_dotenv()
 from typing import List
 from grammar_checker.logger import get_logger
@@ -40,10 +41,10 @@ def interactive():
 
 @app.command()
 def benchmark(
-    test_cases_file: str = typer.Option(TEST_CASES_FILE, help="Path to the test cases JSON file"),
+    test_cases: str = typer.Option(TEST_CASES_FILE, help="Path to the test cases JSON file"),
     models: List[str] = typer.Option(VALID_MODELS, help="List of OpenAI model names"),
-    prompt_templates: List[str] = typer.Option([DEFAULT_PROMPT_TEMPLATE], help="List of prompt template files"),
-    output_destination: str = typer.Option("save_to_db"),
+    prompt_version: List[str] = typer.Option([DEFAULT_PROMPT_TEMPLATE], help="List of prompt template files"),
+    save_to: str = typer.Option("save_to_db"),
 ):
     """
     Run grammar benchmarks on selected OpenAI models using test cases and a prompt template.
@@ -52,35 +53,40 @@ def benchmark(
         --test-cases-file: Path to test case file (default: dev test cases).
         --models: One or more OpenAI model names to benchmark.
         --prompt-template: Prompt template to use.
-        --output-destination: Where to send results ("save_to_db", "print", etc.).
+        --output-destination: Where to send results ("save_to_db").
 
     Benchmarks are logged and may be saved to MongoDB.
     """
     logger.info("Run benchmark mode...")
-    logger.debug(f"Arguments received: {test_cases_file=}, {models=}, {prompt_templates=}, {output_destination=}")
+    logger.debug(f"Arguments received: {test_cases=}, {models=}, {prompt_version=}, {save_to=}")
     mongo_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
-    benchmark_main(test_cases_file, models, output_destination, prompt_templates, mongo_handler)
+    benchmark_main(test_cases, models, save_to, prompt_version, mongo_handler)
 
 
 @app.command()
-def report(run_ids: List[str],
-           reports: List[ReportType] = typer.Option(default=list(ReportType), case_sensitive=False, help="Choose reports to run"),
-           reporter_type: ReporterType = typer.Option(default=ReporterType.CSV, case_sensitive=False, help="Choose reporter type")
-           ):
+def report(
+    run_ids: List[str] = typer.Argument(..., help="List of run UUIDs"),
+    reports: List[ReportType] = typer.Option(
+        list(ReportType), "--reports", case_sensitive=False, help="Choose reports to run"
+    ),
+    reporter_type: ReporterType = typer.Option(
+        ReporterType.CSV, "--reporter", case_sensitive=False, help="Choose reporter type"
+    ),
+):
     """
     Run benchmark reports for specified run IDs.
-    
+
     Args:
         run_ids (List[str]): List of run IDs (UUID) to generate reports for.
-        reports (List[ReportType], optional): List of report types to generate. 
-            Defaults to all available report types. 
+        reports (List[ReportType], optional): List of report types to generate.
+            Defaults to all available report types.
             Use --reports to specify one or more report types.
-        reporter_type (ReporterType, optional): Output format for the report. 
-            Defaults to 'CSV'. 
+        reporter_type (ReporterType, optional): Output format for the report.
+            Defaults to 'CSV'.
             Use --reporter-type to select the format.
-    
+
     Examples:
-        cli.py report RUN_ID1 RUN_ID2 --reports sentences --reports mistakes --reporter-type csv
+        python cli.py report RUN_ID1 --reports sentences --reports mistakes --reporter-type csv
     """
     logger.info("Run benchmark report mode...")
     logger.debug(f"Arguments received: {run_ids=}, {reports=}, {reporter_type=}")
