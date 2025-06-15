@@ -7,7 +7,7 @@ from reporting.csv_reporter import CSVReporter
 logger = get_logger(__name__)
 
 
-def extract_sentence_comparison_data(raw_data):
+def transform_data(raw_data):
     rows = []
 
     for doc in raw_data:
@@ -29,7 +29,7 @@ def add_sentence_match_column(df):
     return df
 
 
-def generate_sentence_summary(df):
+def generate_summary(df):
     summaries = {}
 
     for run_id in df["run_id"].unique():
@@ -48,7 +48,7 @@ def generate_sentence_summary(df):
 
 
 def generate_sentence_report(raw_data, reporter: BenchmarkReporter):
-    df = extract_sentence_comparison_data(raw_data)
+    df = transform_data(raw_data)
     df = add_sentence_match_column(df)
 
     # save detailed view as a CSV file
@@ -58,7 +58,7 @@ def generate_sentence_report(raw_data, reporter: BenchmarkReporter):
         reporter.report(file_name, df_run)
 
     # sentences summary View
-    summary_dict = generate_sentence_summary(df)
+    summary_dict = generate_summary(df)
 
     for run_id, df in summary_dict.items():
         file_name = f"matching_sentences_summary_{run_id}"

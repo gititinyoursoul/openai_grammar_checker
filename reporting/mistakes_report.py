@@ -77,7 +77,7 @@ def evaluate_mistakes(actual: list, expected: list, threshold: float):
     return detailed_results
 
 
-def generate_mistakes_comparison_data(raw_data: List[Dict], treshhold: float = 0.8) -> pd.DataFrame:
+def transform_data(raw_data: List[Dict], treshhold: float = 0.8) -> pd.DataFrame:
     """
     Generates a DataFrame comparing actual and expected mistakes from evaluation data.
     Args:
@@ -125,7 +125,7 @@ def generate_mistakes_comparison_data(raw_data: List[Dict], treshhold: float = 0
     return pd.DataFrame(rows, columns=cols)
 
 
-def generate_mistakes_summary(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
+def generate_summary(df: pd.DataFrame) -> Dict[str, pd.DataFrame]:
     """
     Generates a summary of match rates for each run in the given DataFrame.
     For each unique 'run_id', computes the mean 'is_match' rate grouped by
@@ -182,7 +182,7 @@ def generate_mistakes_report(raw_data: List[Dict], reporter: BenchmarkReporter) 
     Returns:
         None
     """
-    df = generate_mistakes_comparison_data(raw_data)
+    df = transform_data(raw_data)
     # detailed report
     for run_id in df["run_id"].unique():
         # save detailed view as a CSV file
@@ -191,7 +191,7 @@ def generate_mistakes_report(raw_data: List[Dict], reporter: BenchmarkReporter) 
         reporter.report(file_name, df_run)
 
     # summary report
-    summary_dict = generate_mistakes_summary(df)
+    summary_dict = generate_summary(df)
 
     for run_id, df in summary_dict.items():
         file_name = f"matching_mistakes_summary_{run_id}"
