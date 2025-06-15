@@ -14,6 +14,8 @@ from grammar_checker.config import (
     TEST_CASES_FILE_DEV,
     DEFAULT_PROMPT_TEMPLATE,
 )
+from reporting.report_runner import run_reports
+from reporting.factory import ReporterType, ReportType
 
 
 app = typer.Typer(help="CLI for managing MongoDB and running the grammar checker.")
@@ -54,10 +56,20 @@ def benchmark(
 
     Benchmarks are logged and may be saved to MongoDB.
     """
-    logger.info("Starting benchmark mode...")
+    logger.info("Run benchmark mode...")
     logger.debug(f"Arguments received: {test_cases_file=}, {models=}, {prompt_templates=}, {output_destination=}")
     mongo_handler = MongoDBHandler(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
     benchmark_main(test_cases_file, models, output_destination, prompt_templates, mongo_handler)
+
+
+@app.command()
+def report(run_ids: List[str],
+           reports: List[ReportType] = typer.Option(default=list(ReportType), case_sensitive=False, help="Choose reports to run"),
+           reporter_type: ReporterType = typer.Option(default=ReporterType.CSV, case_sensitive=False, help="Choose reporter type")
+           ):
+    logger.info("Run benchmark report mode...")
+    logger.debug(f"Arguments received: {run_ids=}, {reports=}, {reporter_type=}")
+    run_reports(run_ids, reports, reporter_type)
 
 
 if __name__ == "__main__":
