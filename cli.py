@@ -67,6 +67,21 @@ def report(run_ids: List[str],
            reports: List[ReportType] = typer.Option(default=list(ReportType), case_sensitive=False, help="Choose reports to run"),
            reporter_type: ReporterType = typer.Option(default=ReporterType.CSV, case_sensitive=False, help="Choose reporter type")
            ):
+    """
+    Run benchmark reports for specified run IDs.
+    
+    Args:
+        run_ids (List[str]): List of run IDs (UUID) to generate reports for.
+        reports (List[ReportType], optional): List of report types to generate. 
+            Defaults to all available report types. 
+            Use --reports to specify one or more report types.
+        reporter_type (ReporterType, optional): Output format for the report. 
+            Defaults to 'CSV'. 
+            Use --reporter-type to select the format.
+    
+    Examples:
+        cli.py report RUN_ID1 RUN_ID2 --reports sentences --reports mistakes --reporter-type csv
+    """
     logger.info("Run benchmark report mode...")
     logger.debug(f"Arguments received: {run_ids=}, {reports=}, {reporter_type=}")
     run_reports(run_ids, reports, reporter_type)
