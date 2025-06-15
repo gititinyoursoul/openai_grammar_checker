@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 import pandas as pd
 from difflib import SequenceMatcher
 from grammar_checker.logger import get_logger
@@ -134,7 +136,6 @@ def generate_mistakes_summary(df):
 
 def generate_mistakes_report(raw_data, reporter: BenchmarkReporter):
     df = generate_mistakes_comparison_data(raw_data)
-
     # detailed report
     for run_id in df["run_id"].unique():
         # save detailed view as a CSV file
