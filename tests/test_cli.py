@@ -11,6 +11,7 @@ from reporting.factory import ReporterType, ReportType
 runner = CliRunner()
 
 
+## Run API Command ##
 @patch("cli.uvicorn.run")
 def test_run_api_calls_uvicorn(mock_uvicorn):
     result = runner.invoke(app, ["run-api", "--host", "0.0.0.0", "--port", "8080"])
@@ -19,6 +20,7 @@ def test_run_api_calls_uvicorn(mock_uvicorn):
     mock_uvicorn.assert_called_once_with("api:app", host="0.0.0.0", port=8080, reload=True)
 
 
+## Interactive Command ##
 @patch("cli.interactive_main")
 @patch("cli.MongoDBHandler")
 def test_interactive_command(mock_db_handler_class, mock_main):
@@ -30,6 +32,14 @@ def test_interactive_command(mock_db_handler_class, mock_main):
     assert result.exit_code == 0
     mock_db_handler_class.assert_called_once_with(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
     mock_main.assert_called_once_with(mongo_handler=mock_handler)
+
+
+@patch("cli.interactive_main")
+@patch("cli.MongoDBHandler")
+def test_interactive_logging(mock_db_handler_class, mock_main, caplog):
+    with caplog.at_level(logging.INFO):
+        runner.invoke(app, ["interactive"])
+        assert "Starting interactive" in caplog.text
 
 
 ## Benchmark Command ##
@@ -77,7 +87,11 @@ def test_benchmark_list_inputs(mock_db_handler_class, mock_main):
     assert result.exit_code == 0
     mock_db_handler_class.assert_called_once()
     mock_main.assert_called_once_with(
-        Path("my_test_cases.json"), ["gpt-4", "gpt-3.5-turbo"], "print", ["Prompt V1: {test_sentence}", "Prompt V2: {test_sentence}"], mock_handler
+        Path("my_test_cases.json"),
+        ["gpt-4", "gpt-3.5-turbo"],
+        "print",
+        ["Prompt V1: {test_sentence}", "Prompt V2: {test_sentence}"],
+        mock_handler,
     )
 
 
@@ -87,7 +101,7 @@ def test_benchmark_logging(mock_db_handler_class, mock_main, caplog):
     with caplog.at_level(logging.INFO):
         runner.invoke(app, ["benchmark"])
         assert "Run benchmark" in caplog.text
-        
+
     with caplog.at_level(logging.DEBUG):
         runner.invoke(app, ["benchmark"])
         assert "Arguments received:" in caplog.text
