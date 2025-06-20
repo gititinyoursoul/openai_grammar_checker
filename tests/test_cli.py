@@ -3,7 +3,9 @@ from cli import app
 from typer.testing import CliRunner
 from unittest.mock import patch, MagicMock
 import logging
+from pathlib import Path
 from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
+from grammar_checker.config import TEST_CASES_FILE, DEFAULT_MODEL, DEFAULT_PROMPT_TEMPLATE
 from reporting.factory import ReporterType, ReportType
 
 runner = CliRunner()
@@ -30,9 +32,30 @@ def test_interactive_command(mock_db_handler_class, mock_main):
     mock_main.assert_called_once_with(mongo_handler=mock_handler)
 
 
+## Benchmark Command ##
 @patch("cli.benchmark_main")
 @patch("cli.MongoDBHandler")
-def test_benchmark_command(mock_db_handler_class, mock_main):
+def test_benchmark_default_inputs(mock_db_handler_class, mock_main):
+    mock_handler = MagicMock()
+    mock_db_handler_class.return_value = mock_handler
+
+    result = runner.invoke(
+        app,
+        [
+            "benchmark",
+        ],
+    )
+
+    assert result.exit_code == 0
+    mock_db_handler_class.assert_called_once()
+    mock_main.assert_called_once_with(
+        TEST_CASES_FILE, [DEFAULT_MODEL], "save_to_db", [DEFAULT_PROMPT_TEMPLATE], mock_handler
+    )
+
+
+@patch("cli.benchmark_main")
+@patch("cli.MongoDBHandler")
+def test_benchmark_list_inputs(mock_db_handler_class, mock_main):
     mock_handler = MagicMock()
     mock_db_handler_class.return_value = mock_handler
 
@@ -44,8 +67,8 @@ def test_benchmark_command(mock_db_handler_class, mock_main):
             "my_test_cases.json",
             "--models=gpt-4",
             "--models=gpt-3.5-turbo",
-            "--prompt-version",
-            "Correct: {test_sentence}",
+            "--prompt-version=Prompt V1: {test_sentence}",
+            "--prompt-version=Prompt V2: {test_sentence}",
             "--save-to",
             "print",
         ],
@@ -54,10 +77,11 @@ def test_benchmark_command(mock_db_handler_class, mock_main):
     assert result.exit_code == 0
     mock_db_handler_class.assert_called_once()
     mock_main.assert_called_once_with(
-        "my_test_cases.json", ["gpt-4", "gpt-3.5-turbo"], "print", ["Correct: {test_sentence}"], mock_handler
+        Path("my_test_cases.json"), ["gpt-4", "gpt-3.5-turbo"], "print", ["Prompt V1: {test_sentence}", "Prompt V2: {test_sentence}"], mock_handler
     )
 
 
+## Report Command ##
 @patch("cli.run_reports")
 def test_report_valid_single_input(mock_run_reports):
     result = runner.invoke(app, ["report", "test_uuid", "--reports", "sentences", "--reporter", "csv"])
