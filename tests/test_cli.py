@@ -81,6 +81,19 @@ def test_benchmark_list_inputs(mock_db_handler_class, mock_main):
     )
 
 
+@patch("cli.benchmark_main")
+@patch("cli.MongoDBHandler")
+def test_benchmark_logging(mock_db_handler_class, mock_main, caplog):
+    with caplog.at_level(logging.INFO):
+        runner.invoke(app, ["benchmark"])
+        assert "Run benchmark" in caplog.text
+        
+    with caplog.at_level(logging.DEBUG):
+        runner.invoke(app, ["benchmark"])
+        assert "Arguments received:" in caplog.text
+        assert DEFAULT_MODEL in caplog.text
+
+
 ## Report Command ##
 @patch("cli.run_reports")
 def test_report_valid_single_input(mock_run_reports):
