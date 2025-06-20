@@ -1,5 +1,5 @@
 import os
-from grammar_checker.logger import get_logger, log_path
+from grammar_checker.logger import get_logger, get_display_path
 from grammar_checker.config import PROMPTS_DIR
 
 logger = get_logger(__name__)
@@ -22,7 +22,7 @@ class PromptBuilder:
 
     def __init__(self, prompt_template: str, prompts_dir: str = PROMPTS_DIR):
         self.prompt_template = prompt_template
-        self.template_path = prompts_dir / prompt_template 
+        self.template_path = prompts_dir / prompt_template
         self.template = self._load_template()
 
     def _load_template(self):
@@ -39,10 +39,10 @@ class PromptBuilder:
         try:
             with open(self.template_path, "r", encoding="utf-8") as file:
                 template = file.read().strip()
-            logger.info(f"Loaded prompt template from '{log_path(self.template_path)}'")
+            logger.info(f"Loaded prompt template from '{get_display_path(self.template_path)}'")
             return template
         except FileNotFoundError:
-            logger.error(f"Prompt template file not found: '{log_path(self.template_path)}'")
+            logger.error(f"Prompt template file not found: '{get_display_path(self.template_path)}'")
             raise
         except Exception as e:
             logger.error(f"Error loading prompt template: {e}")
@@ -64,7 +64,7 @@ class PromptBuilder:
 
         truncated_sentence = sentence[:20] + "..." if len(sentence) > 20 else sentence
         logger.info(
-            f"Building prompt using template '{log_path(self.template_path)}' with sentence: '{truncated_sentence}'"
+            f"Building prompt using template '{get_display_path(self.template_path)}' with sentence: '{truncated_sentence}'"
         )
 
         return prompt

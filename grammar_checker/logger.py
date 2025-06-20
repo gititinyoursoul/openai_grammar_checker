@@ -39,7 +39,11 @@ def get_logger(name: str) -> logging.Logger:
     return logger
 
 
-def format_path(path: Path, root: Path = PROJECT_ROOT) -> str:
+def get_display_path(path: Path, root: Path = PROJECT_ROOT) -> str:
+    """
+    Returns the path relative to the project root for clean display.
+    Falls back to absolute path if not under the root.
+    """
     try:
         return str(path.relative_to(root))
     except ValueError:
