@@ -4,13 +4,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 from typing import List
+from pathlib import Path
 from grammar_checker.logger import get_logger
 from grammar_checker.db import MongoDBHandler
 from grammar_checker.config import MONGO_URI, MONGO_DB, MONGO_COLLECTION
 from interactive import main as interactive_main
 from benchmark import main as benchmark_main
 from grammar_checker.config import (
-    VALID_MODELS,
+    DEFAULT_MODEL,
     TEST_CASES_FILE,
     TEST_CASES_FILE_DEV,
     DEFAULT_PROMPT_TEMPLATE,
@@ -41,8 +42,8 @@ def interactive():
 
 @app.command()
 def benchmark(
-    test_cases: str = typer.Option(TEST_CASES_FILE, help="Path to the test cases JSON file"),
-    models: List[str] = typer.Option(VALID_MODELS, help="List of OpenAI model names"),
+    test_cases: Path = typer.Option(TEST_CASES_FILE, help="Path to the test cases JSON file"),
+    models: List[str] = typer.Option([DEFAULT_MODEL], help="List of OpenAI model names"),
     prompt_version: List[str] = typer.Option([DEFAULT_PROMPT_TEMPLATE], help="List of prompt template files"),
     save_to: str = typer.Option("save_to_db"),
 ):
