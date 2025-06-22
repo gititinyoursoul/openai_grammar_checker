@@ -1,16 +1,18 @@
+from pathlib import Path
 import pandas as pd
 from reporting.base_reporter import BenchmarkReporter
 from grammar_checker.logger import get_logger, get_display_path
+from grammar_checker.config import REPORTS_DIR
 
 
 logger = get_logger(__name__)
 
 
 class CSVReporter(BenchmarkReporter):
-    extension = "csv"
+    extension: str = "csv"
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, output_dir: Path = REPORTS_DIR):
+        super().__init__(output_dir=output_dir)
 
     def report(self, file_name: str, data: pd.DataFrame):
         file_path = self._make_file_path(file_name)
