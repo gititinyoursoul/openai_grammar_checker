@@ -30,9 +30,9 @@ def test_make_file_path_format(mock_dt):
 
         file_path = reporter_instance._make_file_path(file_name="test_file")
 
-        expected_prefix = "20240101123045_test_file.txt"
+        expected_file_name = "20240101123045_test_file.txt"
 
-        assert file_path.name == expected_prefix
+        assert file_path.name == expected_file_name
         assert file_path.parent == output_path
 
 
