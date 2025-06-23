@@ -18,10 +18,8 @@ class ReportType(str, Enum):
             ReportType.SENTENCES: generate_sentence_report,
             ReportType.MISTAKES: generate_mistakes_report,
         }
+
         fn = mapping.get(self)
-        if not fn:
-            logger.error(f"Unknown report type requested: {self}")
-            raise ValueError(f"Unknown report type: {self}")
         return fn(data, reporter)
 
 
@@ -32,8 +30,6 @@ class ReporterType(str, Enum):
         mapping = {
             ReporterType.CSV: CSVReporter,
         }
+
         cls = mapping.get(self)
-        if not cls:
-            logger.error(f"Unknown reporter type requested: {self}")
-            raise ValueError(f"Unknown reporter type: {self}")
         return cls()
