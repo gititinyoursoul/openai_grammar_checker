@@ -19,6 +19,11 @@ def run_reports(run_ids: List[str], reports: List[ReportType], reporter_type: Re
     reporter = reporter_type.build()
     raw_data = query_benchmark_data(run_ids)
 
+    # Check for empty list or all empty dicts
+    if not raw_data or all(not d for d in raw_data):
+        logger.warning(f"No benchmark data found for {run_ids}. Skipping report generation.")
+        return
+    
     for report in reports:
         try:
             report.run(raw_data, reporter)
