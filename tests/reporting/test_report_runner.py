@@ -38,7 +38,7 @@ test_data = [
 
 @pytest.mark.parametrize("run_ids", [["run_1"], ["run_1", "run_2"]], ids=["single_run", "multi_run"])
 @pytest.mark.parametrize("reports", [[ReportType["SENTENCES"]], list(ReportType)], ids=["single_report", "all_reports"])
-def test_run_reports_integration(run_ids: list[str], reports: list[ReportType], tmp_path: Path, caplog: pytest.LogCaptureFixture):
+def test_run_reports_CSVReporter_integration(run_ids: list[str], reports: list[ReportType], tmp_path: Path, caplog: pytest.LogCaptureFixture):
     reporter_type = ReporterType.CSV
 
     with (

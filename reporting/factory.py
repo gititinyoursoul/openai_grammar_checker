@@ -1,5 +1,6 @@
 # reporting/factory.py
 from enum import Enum
+from pathlib import Path
 from grammar_checker.logger import get_logger
 from reporting.sentences_report import generate_sentence_report
 from reporting.mistakes_report import generate_mistakes_report
@@ -26,10 +27,10 @@ class ReportType(str, Enum):
 class ReporterType(str, Enum):
     CSV = "csv"
 
-    def build(self):
+    def build(self, output_dir: Path | None = None):
         mapping = {
             ReporterType.CSV: CSVReporter,
         }
 
         cls = mapping.get(self)
-        return cls()
+        return cls(output_dir) if output_dir else cls()
