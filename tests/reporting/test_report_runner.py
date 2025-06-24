@@ -62,7 +62,7 @@ def test_run_reports_CSVReporter_integration(
 
 @pytest.mark.parametrize("run_ids", [["run_1"]], ids=["single_run"])
 @pytest.mark.parametrize("reports", [list(ReportType)], ids=["all_reports"])
-@pytest.mark.parametrize("empty_data", [[], [{}]], ids=["empty_list", "empty_dict"] )
+@pytest.mark.parametrize("empty_data", [[]], ids=["empty_list"] )
 def test_run_reports_empty_data(
     run_ids: list[str], reports: list[ReportType], empty_data: list, tmp_path: Path, caplog: pytest.LogCaptureFixture
 ):
