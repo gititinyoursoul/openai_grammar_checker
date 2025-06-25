@@ -13,20 +13,15 @@ from reporting.csv_reporter import CSVReporter
 logger = get_logger(__name__)
 
 
-def fuzzy_match_score(v1, v2):
+def score_string_similarity(val1: str, val2: str) -> float:
     """
-    Calculates a fuzzy match score between two values.
-    Returns a float between 0.0 and 1.0 indicating the similarity between v1 and v2.
-    Supports numeric and string comparisons; uses SequenceMatcher for strings.
+    Calculates a fuzzy match score between two string values.
+    Returns a float between 0.0 and 1.0 indicating similarity.
+    Non-string inputs return 0.0.
     """
-    if not v1 or not v2:
-        return 0.0
-    if isinstance(v1, (int, float)) and isinstance(v2, (int, float)):
-        return 1.0 if abs(v1 - v2) < 0.01 else 0.0
-    if isinstance(v1, str) and isinstance(v2, str):
-        return SequenceMatcher(None, v1, v2).ratio()
-
-    return 1.0 if v1 == v2 else 0.0
+    if isinstance(val1, str) and isinstance(val2, str):
+        return SequenceMatcher(None, val1, val2).ratio()
+    return 0.0
 
 
 def compare_dicts_keys(
@@ -50,7 +45,7 @@ def compare_dicts_keys(
         if key in target_item:
             val_a = source_item[key]
             val_b = target_item[key]
-            score = fuzzy_match_score(val_a, val_b)
+            score = score_string_similarity(val_a, val_b)
             is_match = score >= threshold
             result.append((source_index, target_index, key, val_a, val_b, score, is_match))
         else:
