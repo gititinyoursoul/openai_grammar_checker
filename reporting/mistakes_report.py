@@ -58,9 +58,9 @@ def compare_dicts_keys(
     return result
 
 
-def evaluate_mistakes(actual: list, expected: list, threshold: float):
+def evaluate_mistakes(actual: List[Dict], expected: List[Dict], threshold: float) -> List[tuple]:
     """Compares actual and expected lists of mistakes using fuzzy matching."""
-    if not isinstance(actual, list) or not isinstance(expected, list):
+    if not isinstance(actual, List) or not isinstance(expected, List):
         raise ValueError("Both actual and expected should be lists.")
 
     detailed_results = []
