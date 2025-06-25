@@ -1,7 +1,8 @@
 import pytest
-from reporting.mistakes_report import score_string_similarity
+from unittest.mock import patch
+from reporting.mistakes_report import score_string_similarity, compare_dicts_keys
 
-
+# score_string_similarity
 @pytest.mark.parametrize(
     "val1,val2,condition",
     [
@@ -31,3 +32,41 @@ def test_score_string_similarity_success(val1, val2, condition):
 def test_score_string_similarity_non_strings(val1, val2):
     score = score_string_similarity(val1, val2)
     assert score == 0.0, f"Score {score} did not satisfy condition for input: {val1!r} vs {val2!r}"
+
+
+# compare_dicts_keys
+@pytest.mark.parametrize(
+    "source_index, source_item, target_index, target_item, threshold, similarity_score, expected",
+    [
+        # --- key in both, score > threshold ---
+        (0, {"name": "Alice"}, 1, {"name": "Alicia"}, 0.7, 0.9, [(0, 1, "name", "Alice", "Alicia", 0.9, True)]),
+        # --- key in both, score == threshold ---
+        (0, {"name": "Alice"}, 1, {"name": "Alicia"}, 0.8, 0.8, [(0, 1, "name", "Alice", "Alicia", 0.8, True)]),
+        # --- key in both, score < threshold ---
+        (0, {"name": "Alice"}, 1, {"name": "Bob"}, 0.8, 0.3, [(0, 1, "name", "Alice", "Bob", 0.3, False)]),
+        # --- key only in source ---
+        (0, {"city": "Berlin"}, 1, {}, 0.5, None, [(0, 1, "city", "Berlin", None, 0.0, False)]),
+        # --- key only in target ---
+        (0, {}, 1, {"country": "Germany"}, 0.5, None, [(0, 1, "country", None, "Germany", 0.0, False)]),
+    ],
+    ids=[
+        "match_above_threshold",
+        "match_equal_threshold",
+        "match_below_threshold",
+        "only_in_source",
+        "only_in_target",
+    ],
+)
+@patch("reporting.mistakes_report.score_string_similarity")
+def test_compare_dicts_keys_success(
+    mock_score, source_index, source_item, target_index, target_item, threshold, similarity_score, expected
+):
+    if similarity_score is not None:
+        mock_score.return_value = similarity_score
+    result = compare_dicts_keys(source_index, source_item, target_index, target_item, threshold)
+    assert result == expected
+
+
+def test_compare_dicts_keys_empty_dicts():
+    result = compare_dicts_keys(0, {}, 1, {}, 0.5)
+    assert result == []
