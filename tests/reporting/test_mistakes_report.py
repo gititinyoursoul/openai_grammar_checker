@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import patch
-from reporting.mistakes_report import score_string_similarity, compare_dicts_keys
+from reporting.mistakes_report import score_string_similarity, compare_dicts_keys, evaluate_mistakes
+
 
 # score_string_similarity
 @pytest.mark.parametrize(
@@ -70,3 +71,43 @@ def test_compare_dicts_keys_success(
 def test_compare_dicts_keys_empty_dicts():
     result = compare_dicts_keys(0, {}, 1, {}, 0.5)
     assert result == []
+
+
+# evaluate_mistakes
+@patch("reporting.mistakes_report.compare_dicts_keys")
+def test_evaluate_mistakes_sucess(mock_compare):
+    test_actual = [{"key1": "val1"}, {"key2": "val2"}]
+    test_expected = [{"key1": "val1"}, {"key2": "val3"}]
+
+    mock_compare.side_effect = [[(True,)], [(False,)], [(False,)], [(False,)]]
+
+    result = evaluate_mistakes(test_actual, test_expected, 0.8)
+
+    assert result == [(True,), (False,), (False,), (False,)]
+    assert mock_compare.call_count == 4
+
+
+@pytest.mark.parametrize(
+    "test_actual,test_expected",
+    [([{"key1": "val1"}, {"key2": "val2"}], []), ([], [{"key1": "val1"}, {"key2": "val2"}]), ([], [])],
+)
+def test_evaluate_mistakes_empty_list_inputs(test_actual, test_expected):
+
+    result = evaluate_mistakes(test_actual, test_expected, 0.8)
+
+    assert result == []
+
+
+@pytest.mark.parametrize(
+    "test_actual,test_expected",
+    [
+        ("no_list", [{"key": "value"}]),
+        ([{"key": "value"}], "no_list"),
+    ],
+)
+@patch("reporting.mistakes_report.compare_dicts_keys")
+def test_evaluate_mistakes_invalid_inputs_raises_error(mock_compare, test_actual, test_expected):
+    with pytest.raises(ValueError):
+        evaluate_mistakes(test_actual, test_expected, 0.8)
+
+    assert mock_compare.call_count == 0
