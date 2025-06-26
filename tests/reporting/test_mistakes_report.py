@@ -1,6 +1,8 @@
 import pytest
 from unittest.mock import patch
+import pandas as pd
 from reporting.mistakes_report import score_string_similarity, compare_dicts_keys, evaluate_mistakes
+from reporting.mistakes_report import transform_data
 
 
 # score_string_similarity
@@ -111,3 +113,141 @@ def test_evaluate_mistakes_invalid_inputs_raises_error(mock_compare, test_actual
         evaluate_mistakes(test_actual, test_expected, 0.8)
 
     assert mock_compare.call_count == 0
+
+
+# transform data
+@pytest.mark.parametrize(
+    "input_data, mock_side_effect, expected_rows",
+    [
+        # Test Case 1 — One match with 3 sub-mistakes
+        (
+            [
+                {
+                    "request": {
+                        "sentence": "She go to school every day.",
+                        "prompt_version": "v1_original.txt",
+                        "model": "gpt-3.5-turbo",
+                    },
+                    "response": {
+                        "mistakes": [{"type": "VerbTenseMistake", "original": "go", "corrected": "goes"}],
+                        "corrected_sentence": "She goes to school every day.",
+                    },
+                    "benchmark_eval": {
+                        "test_id": 2,
+                        "mistakes": [{"type": "VerbTenseMistake", "original": "go", "corrected": "goes"}],
+                        "corrected_sentence": "She goes to school every day.",
+                        "match": True,
+                        "run_id": "run_1",
+                    },
+                }
+            ],
+            [
+                [
+                    (0, 0, "type", "VerbTenseMistake", "VerbTenseMistake", 1.0, True),
+                    (0, 0, "original", "go", "go", 1.0, True),
+                    (0, 0, "corrected", "goes", "goes", 1.0, True),
+                ]
+            ],
+            3,
+        ),
+        # Test Case 2 — Two benchmark mistakes, 6 sub-mistakes total
+        (
+            [
+                {
+                    "request": {
+                        "sentence": "I bought eggs milk and bread.",
+                        "prompt_version": "v1_original.txt",
+                        "model": "gpt-3.5-turbo",
+                    },
+                    "response": {
+                        "mistakes": [{"type": "WordOrderMistake", "original": "eggs milk", "corrected": "eggs, milk"}],
+                        "corrected_sentence": "I bought eggs, milk, and bread.",
+                    },
+                    "benchmark_eval": {
+                        "test_id": 3,
+                        "mistakes": [
+                            {"type": "PunctuationMistake", "original": "eggs milk", "corrected": "eggs, milk"},
+                            {"type": "PunctuationMistake", "original": "eggs milk", "corrected": "eggs, milk"},
+                        ],
+                        "corrected_sentence": "I bought eggs, milk, and bread.",
+                        "match": True,
+                        "run_id": "run_2",
+                    },
+                }
+            ],
+            [
+                [
+                    (0, 0, "type", "WordOrderMistake", "PunctuationMistake", 0.47, False),
+                    (0, 0, "original", "eggs milk", "eggs milk", 1.0, True),
+                    (0, 0, "corrected", "eggs, milk", "eggs, milk", 1.0, True),
+                    (1, 1, "type", "WordOrderMistake", "PunctuationMistake", 0.47, False),
+                    (1, 1, "original", "eggs milk", "eggs milk", 1.0, True),
+                    (1, 1, "corrected", "eggs, milk", "eggs, milk", 1.0, True),
+                ]
+            ],
+            6,
+        ),
+        # Test Case 3 — No mistakes
+        (
+            [
+                {
+                    "request": {"prompt_version": "v1", "model": "gpt-3.5"},
+                    "response": {"mistakes": []},
+                    "benchmark_eval": {"mistakes": [], "test_id": 1, "run_id": "run_0"},
+                }
+            ],
+            [[]],
+            0,
+        ),
+    ],
+)
+@patch("reporting.mistakes_report.evaluate_mistakes")
+def test_transform_data_success(mock_eval, input_data, mock_side_effect, expected_rows):
+    mock_eval.side_effect = mock_side_effect
+
+    df_results = transform_data(input_data)
+
+    expected_cols = [
+        "run_id",
+        "test_id",
+        "prompt_version",
+        "model",
+        "source_index",
+        "target_index",
+        "key",
+        "source_value",
+        "target_value",
+        "fuzzy_score",
+        "is_match",
+    ]
+
+    assert df_results.shape[0] == expected_rows
+    assert df_results.shape[1] == len(expected_cols)
+    assert list(df_results.columns) == expected_cols
+    assert mock_eval.call_count == len(input_data)
+
+
+@patch("reporting.mistakes_report.evaluate_mistakes")
+def test_transform_data_empty_input(mock_eval):
+    df = transform_data([])
+    assert df.empty
+
+
+@patch("reporting.mistakes_report.evaluate_mistakes")
+def test_transform_data_missing_fields_in_raw_data(mock_eval):
+    mock_eval.return_value = [(0, 1, "spelling", "recieve", "receive", 0.85, True)]
+
+    raw_data = [{"request": {}, "response": {}, "benchmark_eval": {}}]
+
+    df = transform_data(raw_data)
+
+    assert pd.isna(df.iloc[0]["run_id"])
+    assert pd.isna(df.iloc[0]["prompt_version"])
+    assert df.iloc[0]["key"] == "spelling"
+
+
+@patch("reporting.mistakes_report.evaluate_mistakes")
+def test_transform_data_threshold_propagation(mock_eval):
+    raw_data = [{"response": {"mistakes": []}, "benchmark_eval": {"mistakes": []}, "request": {}}]
+    transform_data(raw_data, treshhold=0.75)
+    mock_eval.assert_called_once_with([], [], 0.75)
